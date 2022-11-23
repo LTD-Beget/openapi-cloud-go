@@ -1,0 +1,2116 @@
+openapi: 3.0.3
+info:
+  title: API Управляемых сервисов
+  version: v1.1.1
+servers:
+- url: https://api.beget.com
+security:
+- bearerAuth: []
+tags:
+- name: CloudService
+- name: MysqlService
+- name: MysqlStatisticService
+paths:
+  /v1/cloud:
+    get:
+      operationId: CloudService_GetList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_GetListResponse'
+          description: OK
+      tags:
+      - CloudService
+    post:
+      operationId: CloudService_Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cloud_CreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_CreateResponse'
+          description: OK
+      tags:
+      - CloudService
+  /v1/cloud/configuration:
+    get:
+      operationId: CloudService_GetConfigurationList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_GetConfigurationListResponse'
+          description: OK
+      tags:
+      - CloudService
+  /v1/cloud/mysql/{service_id}/config:
+    get:
+      operationId: MysqlService_GetConfig
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_GetConfigResponse'
+          description: OK
+      tags:
+      - MysqlService
+    put:
+      operationId: MysqlService_SetConfig
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mysql_SetConfigRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_SetConfigResponse'
+          description: OK
+      tags:
+      - MysqlService
+  /v1/cloud/mysql/{service_id}/db:
+    get:
+      operationId: MysqlService_GetDbList
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_GetDbListResponse'
+          description: OK
+      tags:
+      - MysqlService
+    post:
+      operationId: MysqlService_CreateDb
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mysql_CreateDbRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_CreateDbResponse'
+          description: OK
+      tags:
+      - MysqlService
+  /v1/cloud/mysql/{service_id}/db/{db_name}:
+    delete:
+      operationId: MysqlService_RemoveDb
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: db_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_RemoveDbResponse'
+          description: OK
+      tags:
+      - MysqlService
+    patch:
+      operationId: MysqlService_UpdateDb
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: db_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mysql_UpdateDbRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_UpdateDbResponse'
+          description: OK
+      tags:
+      - MysqlService
+  /v1/cloud/mysql/{service_id}/db/{db_name}/access:
+    post:
+      operationId: MysqlService_CreateAccess
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: db_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mysql_CreateAccessRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_CreateAccessResponse'
+          description: OK
+      tags:
+      - MysqlService
+  /v1/cloud/mysql/{service_id}/db/{db_name}/access/{host}:
+    delete:
+      operationId: MysqlService_RemoveAccess
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: db_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: host
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_RemoveAccessResponse'
+          description: OK
+      tags:
+      - MysqlService
+    patch:
+      operationId: MysqlService_ChangeAccessPassword
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: db_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: host
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mysql_ChangeAccessPasswordRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mysql_ChangeAccessPasswordResponse'
+          description: OK
+      tags:
+      - MysqlService
+  /v1/cloud/mysql/{service_id}/statistic/cpu:
+    get:
+      operationId: MysqlStatisticService_GetCpu
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetCpuResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/cpu-details:
+    get:
+      operationId: MysqlStatisticService_GetCpuDetails
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetCpuDetailsResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/disk:
+    get:
+      operationId: MysqlStatisticService_GetDisk
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetDiskResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/disk-usage:
+    get:
+      operationId: MysqlStatisticService_GetDiskUsage
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetDiskUsageResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/load-average:
+    get:
+      operationId: MysqlStatisticService_GetLoadAverage
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetLoadAverageResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/memory:
+    get:
+      operationId: MysqlStatisticService_GetMemory
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetMemoryResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/mysql/{service_id}/statistic/network:
+    get:
+      operationId: MysqlStatisticService_GetNetwork
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlStatistic_GetNetworkResponse'
+          description: OK
+      tags:
+      - MysqlStatisticService
+  /v1/cloud/{service_id}:
+    delete:
+      operationId: CloudService_Remove
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_RemoveResponse'
+          description: OK
+      tags:
+      - CloudService
+    get:
+      operationId: CloudService_Get
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_GetResponse'
+          description: OK
+      tags:
+      - CloudService
+    patch:
+      operationId: CloudService_Update
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cloud_UpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_UpdateResponse'
+          description: OK
+      tags:
+      - CloudService
+  /v1/cloud/{service_id}/configuration:
+    patch:
+      operationId: CloudService_ChangeConfiguration
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cloud_ChangeConfigurationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cloud_ChangeConfigurationResponse'
+          description: OK
+      tags:
+      - CloudService
+components:
+  schemas:
+    Cloud_ChangeConfigurationRequest:
+      properties:
+        service_id:
+          type: string
+        configuration_id:
+          type: string
+      type: object
+    Cloud_ChangeConfigurationResponse:
+      example:
+        service:
+          price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+        error:
+          code: _
+          message: message
+      properties:
+        service:
+          $ref: '#/components/schemas/Cloud_Service'
+        error:
+          $ref: '#/components/schemas/Cloud_ChangeConfigurationResponse_Error'
+      type: object
+    Cloud_ChangeConfigurationResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INVALID_CONFIGURATION
+          - INSUFFICIENT_FUNDS
+          format: enum
+          type: string
+      type: object
+    Cloud_CreateRequest:
+      properties:
+        configuration_id:
+          type: string
+        display_name:
+          type: string
+        description:
+          type: string
+        mysql_params:
+          $ref: '#/components/schemas/Mysql_CreateParams'
+      type: object
+    Cloud_CreateResponse:
+      example:
+        mysql_error:
+          code: _
+          message: message
+        service:
+          price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+      properties:
+        service:
+          $ref: '#/components/schemas/Cloud_Service'
+        mysql_error:
+          $ref: '#/components/schemas/Mysql_CreateError'
+      type: object
+    Cloud_GetConfigurationListResponse:
+      example:
+        configuration:
+        - price_month: 6.027456183070403
+          price_day: 0.8008281904610115
+          mysql8:
+            memory: 3
+            display_version: display_version
+            disk_size: 9
+            version: version
+            cpu_count: 7
+          id: id
+          mysql5:
+            memory: 5
+            display_version: display_version
+            disk_size: 5
+            version: version
+            cpu_count: 1
+        - price_month: 6.027456183070403
+          price_day: 0.8008281904610115
+          mysql8:
+            memory: 3
+            display_version: display_version
+            disk_size: 9
+            version: version
+            cpu_count: 7
+          id: id
+          mysql5:
+            memory: 5
+            display_version: display_version
+            disk_size: 5
+            version: version
+            cpu_count: 1
+      properties:
+        configuration:
+          items:
+            $ref: '#/components/schemas/Cloud_ServiceConfiguration'
+          type: array
+      type: object
+    Cloud_GetListResponse:
+      example:
+        service:
+        - price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+        - price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+      properties:
+        service:
+          items:
+            $ref: '#/components/schemas/Cloud_Service'
+          type: array
+      type: object
+    Cloud_GetResponse:
+      example:
+        service:
+          price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+      properties:
+        service:
+          $ref: '#/components/schemas/Cloud_Service'
+      type: object
+    Cloud_RemoveResponse:
+      example:
+        success: "{}"
+      properties:
+        success:
+          properties: {}
+          type: object
+      type: object
+    Cloud_RemoveResponse_Success:
+      properties: {}
+      type: object
+    Cloud_Service:
+      example:
+        price_month: 6.027456183070403
+        description: description
+        created_at: created_at
+        mysql8:
+          address_info:
+            private:
+            - network_id: network_id
+              ip: ip
+            - network_id: network_id
+              ip: ip
+            public:
+            - ip: ip
+            - ip: ip
+          disk_used: disk_used
+          configuration:
+            memory: 3
+            display_version: display_version
+            disk_size: 9
+            version: version
+            cpu_count: 7
+          port: 2
+          read_only: true
+          host: host
+          pma_installing: true
+          pma_url: pma_url
+          disk_left: disk_left
+        monitorable_resources:
+        - monitorable_resources
+        - monitorable_resources
+        display_name: display_name
+        mysql5:
+          address_info:
+            private:
+            - network_id: network_id
+              ip: ip
+            - network_id: network_id
+              ip: ip
+            public:
+            - ip: ip
+            - ip: ip
+          disk_used: disk_used
+          configuration:
+            memory: 5
+            display_version: display_version
+            disk_size: 5
+            version: version
+            cpu_count: 1
+          port: 2
+          read_only: true
+          host: host
+          pma_installing: true
+          pma_url: pma_url
+          disk_left: disk_left
+        unblocking: true
+        price_day: 0.8008281904610115
+        id: id
+        manage_enabled: true
+        configuration_id: configuration_id
+        slug: slug
+        migrating: true
+        status: CREATING
+      properties:
+        id:
+          type: string
+        configuration_id:
+          type: string
+        display_name:
+          type: string
+        description:
+          type: string
+        status:
+          enum:
+          - CREATING
+          - RUNNING
+          - RESTARTING
+          - STOPPED
+          - RECONFIGURING
+          format: enum
+          type: string
+        created_at:
+          type: string
+        price_day:
+          format: double
+          type: number
+        price_month:
+          format: double
+          type: number
+        mysql5:
+          $ref: '#/components/schemas/Mysql_Mysql5'
+        mysql8:
+          $ref: '#/components/schemas/Mysql_Mysql8'
+        manage_enabled:
+          type: boolean
+        slug:
+          type: string
+        monitorable_resources:
+          items:
+            type: string
+          type: array
+        unblocking:
+          type: boolean
+        migrating:
+          type: boolean
+      type: object
+    Cloud_ServiceConfiguration:
+      example:
+        price_month: 6.027456183070403
+        price_day: 0.8008281904610115
+        mysql8:
+          memory: 3
+          display_version: display_version
+          disk_size: 9
+          version: version
+          cpu_count: 7
+        id: id
+        mysql5:
+          memory: 5
+          display_version: display_version
+          disk_size: 5
+          version: version
+          cpu_count: 1
+      properties:
+        id:
+          type: string
+        price_day:
+          format: double
+          type: number
+        price_month:
+          format: double
+          type: number
+        mysql5:
+          $ref: '#/components/schemas/Mysql_Mysql5Configuration'
+        mysql8:
+          $ref: '#/components/schemas/Mysql_Mysql8Configuration'
+      type: object
+    Cloud_UpdateRequest:
+      properties:
+        service_id:
+          type: string
+        display_name:
+          type: string
+        description:
+          type: string
+      type: object
+    Cloud_UpdateResponse:
+      example:
+        service:
+          price_month: 6.027456183070403
+          description: description
+          created_at: created_at
+          mysql8:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 3
+              display_version: display_version
+              disk_size: 9
+              version: version
+              cpu_count: 7
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          monitorable_resources:
+          - monitorable_resources
+          - monitorable_resources
+          display_name: display_name
+          mysql5:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 5
+              display_version: display_version
+              disk_size: 5
+              version: version
+              cpu_count: 1
+            port: 2
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          configuration_id: configuration_id
+          slug: slug
+          migrating: true
+          status: CREATING
+        error:
+          code: _
+          message: message
+      properties:
+        service:
+          $ref: '#/components/schemas/Cloud_Service'
+        error:
+          $ref: '#/components/schemas/Cloud_UpdateResponse_Error'
+      type: object
+    Cloud_UpdateResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_DISPLAY_NAME
+          - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    MysqlStatistic_GetCpuDetailsResponse:
+      example:
+        date:
+        - date
+        - date
+        system:
+        - 1.4658129805029452
+        - 1.4658129805029452
+        softirq:
+        - 7.061401241503109
+        - 7.061401241503109
+        idle:
+        - 5.962133916683182
+        - 5.962133916683182
+        irq:
+        - 2.3021358869347655
+        - 2.3021358869347655
+        iowait:
+        - 5.637376656633329
+        - 5.637376656633329
+        user:
+        - 0.8008281904610115
+        - 0.8008281904610115
+        nice:
+        - 6.027456183070403
+        - 6.027456183070403
+      properties:
+        date:
+          items:
+            type: string
+          type: array
+        user:
+          items:
+            format: double
+            type: number
+          type: array
+        nice:
+          items:
+            format: double
+            type: number
+          type: array
+        system:
+          items:
+            format: double
+            type: number
+          type: array
+        idle:
+          items:
+            format: double
+            type: number
+          type: array
+        iowait:
+          items:
+            format: double
+            type: number
+          type: array
+        irq:
+          items:
+            format: double
+            type: number
+          type: array
+        softirq:
+          items:
+            format: double
+            type: number
+          type: array
+      type: object
+    MysqlStatistic_GetCpuResponse:
+      example:
+        cpu:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        cpu:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    MysqlStatistic_GetDiskResponse:
+      example:
+        data_write:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_read:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        data_read:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_write:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    MysqlStatistic_GetDiskUsageResponse:
+      example:
+        disk_usage:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        disk_usage:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    MysqlStatistic_GetLoadAverageResponse:
+      example:
+        date:
+        - date
+        - date
+        la5:
+        - 6.027456183070403
+        - 6.027456183070403
+        la15:
+        - 1.4658129805029452
+        - 1.4658129805029452
+        la1:
+        - 0.8008281904610115
+        - 0.8008281904610115
+      properties:
+        date:
+          items:
+            type: string
+          type: array
+        la1:
+          items:
+            format: double
+            type: number
+          type: array
+        la5:
+          items:
+            format: double
+            type: number
+          type: array
+        la15:
+          items:
+            format: double
+            type: number
+          type: array
+      type: object
+    MysqlStatistic_GetMemoryResponse:
+      example:
+        memory:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        memory:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    MysqlStatistic_GetNetworkResponse:
+      example:
+        data_rx_private:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_tx_private:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_tx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_rx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        data_rx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_tx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_rx_private:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_tx_private:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    Mysql_ChangeAccessPasswordRequest:
+      properties:
+        service_id:
+          type: string
+        db_name:
+          type: string
+        host:
+          type: string
+        password:
+          type: string
+        save_pma_password:
+          type: boolean
+      type: object
+    Mysql_ChangeAccessPasswordResponse:
+      example:
+        access:
+          password: password
+          host: host
+        error:
+          code: _
+          message: message
+      properties:
+        access:
+          $ref: '#/components/schemas/Mysql_Db_Access'
+        error:
+          $ref: '#/components/schemas/Mysql_ChangeAccessPasswordResponse_Error'
+      type: object
+    Mysql_ChangeAccessPasswordResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INVALID_ACCESS_PASSWORD
+          - BLACKLISTED_ACCESS_PASSWORD
+          format: enum
+          type: string
+      type: object
+    Mysql_Config:
+      example:
+        preset_name: preset_name
+        param:
+          key: param
+      properties:
+        param:
+          additionalProperties:
+            type: string
+          type: object
+        preset_name:
+          type: string
+      type: object
+    Mysql_CreateAccessRequest:
+      properties:
+        service_id:
+          type: string
+        db_name:
+          type: string
+        host:
+          type: string
+        password:
+          type: string
+        save_pma_password:
+          type: boolean
+      type: object
+    Mysql_CreateAccessResponse:
+      example:
+        access:
+          password: password
+          host: host
+        error:
+          code: _
+          message: message
+      properties:
+        access:
+          $ref: '#/components/schemas/Mysql_Db_Access'
+        error:
+          $ref: '#/components/schemas/Mysql_CreateAccessResponse_Error'
+      type: object
+    Mysql_CreateAccessResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INVALID_ACCESS_HOST
+          - INVALID_ACCESS_PASSWORD
+          - ACCESS_ALREADY_EXISTS
+          - BLACKLISTED_ACCESS_PASSWORD
+          format: enum
+          type: string
+      type: object
+    Mysql_CreateDbRequest:
+      properties:
+        service_id:
+          type: string
+        db_name:
+          type: string
+        password:
+          type: string
+        save_pma_password:
+          type: boolean
+        description:
+          type: string
+      type: object
+    Mysql_CreateDbResponse:
+      example:
+        error:
+          code: _
+          message: message
+        db:
+          access:
+          - password: password
+            host: host
+          - password: password
+            host: host
+          size: size
+          name: name
+          description: description
+          pma_password_saved: true
+      properties:
+        db:
+          $ref: '#/components/schemas/Mysql_Db'
+        error:
+          $ref: '#/components/schemas/Mysql_CreateDbResponse_Error'
+      type: object
+    Mysql_CreateDbResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INVALID_DB_NAME
+          - DB_ALREADY_EXISTS
+          - INVALID_ACCESS_PASSWORD
+          - INVALID_DESCRIPTION
+          - BLACKLISTED_ACCESS_PASSWORD
+          format: enum
+          type: string
+      type: object
+    Mysql_CreateError:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INSUFFICIENT_FUNDS
+          - CONFIGURATION_NOT_FOUND
+          - INVALID_DISPLAY_NAME
+          - INVALID_DESCRIPTION
+          - INVALID_DB_NAME
+          - INVALID_ACCESS_PASSWORD
+          - TEMPORARILY_UNAVAILABLE
+          - SERVICE_DISABLED
+          - BLACKLISTED_ACCESS_PASSWORD
+          - INVALID_CONFIG_PARAMS
+          format: enum
+          type: string
+      type: object
+    Mysql_CreateParams:
+      properties:
+        db_name:
+          type: string
+        access_password:
+          type: string
+        param:
+          additionalProperties:
+            type: string
+          type: object
+        preset_name:
+          type: string
+        save_pma_password:
+          type: boolean
+      type: object
+    Mysql_Db:
+      example:
+        access:
+        - password: password
+          host: host
+        - password: password
+          host: host
+        size: size
+        name: name
+        description: description
+        pma_password_saved: true
+      properties:
+        name:
+          type: string
+        size:
+          type: string
+        access:
+          items:
+            $ref: '#/components/schemas/Mysql_Db_Access'
+          type: array
+        pma_password_saved:
+          type: boolean
+        description:
+          type: string
+      type: object
+    Mysql_Db_Access:
+      example:
+        password: password
+        host: host
+      properties:
+        host:
+          type: string
+        password:
+          type: string
+      type: object
+    Mysql_GetConfigResponse:
+      example:
+        config:
+          preset_name: preset_name
+          param:
+            key: param
+      properties:
+        config:
+          $ref: '#/components/schemas/Mysql_Config'
+      type: object
+    Mysql_GetDbListResponse:
+      example:
+        db:
+        - access:
+          - password: password
+            host: host
+          - password: password
+            host: host
+          size: size
+          name: name
+          description: description
+          pma_password_saved: true
+        - access:
+          - password: password
+            host: host
+          - password: password
+            host: host
+          size: size
+          name: name
+          description: description
+          pma_password_saved: true
+      properties:
+        db:
+          items:
+            $ref: '#/components/schemas/Mysql_Db'
+          type: array
+      type: object
+    Mysql_Mysql5:
+      example:
+        address_info:
+          private:
+          - network_id: network_id
+            ip: ip
+          - network_id: network_id
+            ip: ip
+          public:
+          - ip: ip
+          - ip: ip
+        disk_used: disk_used
+        configuration:
+          memory: 5
+          display_version: display_version
+          disk_size: 5
+          version: version
+          cpu_count: 1
+        port: 2
+        read_only: true
+        host: host
+        pma_installing: true
+        pma_url: pma_url
+        disk_left: disk_left
+      properties:
+        configuration:
+          $ref: '#/components/schemas/Mysql_Mysql5Configuration'
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        address_info:
+          $ref: '#/components/schemas/Structures_AddressInfo'
+        pma_url:
+          type: string
+        disk_used:
+          type: string
+        disk_left:
+          type: string
+        read_only:
+          type: boolean
+        pma_installing:
+          type: boolean
+      type: object
+    Mysql_Mysql5Configuration:
+      example:
+        memory: 5
+        display_version: display_version
+        disk_size: 5
+        version: version
+        cpu_count: 1
+      properties:
+        cpu_count:
+          format: uint32
+          type: integer
+        disk_size:
+          format: uint32
+          type: integer
+        memory:
+          format: uint32
+          type: integer
+        version:
+          type: string
+        display_version:
+          type: string
+      type: object
+    Mysql_Mysql8:
+      example:
+        address_info:
+          private:
+          - network_id: network_id
+            ip: ip
+          - network_id: network_id
+            ip: ip
+          public:
+          - ip: ip
+          - ip: ip
+        disk_used: disk_used
+        configuration:
+          memory: 3
+          display_version: display_version
+          disk_size: 9
+          version: version
+          cpu_count: 7
+        port: 2
+        read_only: true
+        host: host
+        pma_installing: true
+        pma_url: pma_url
+        disk_left: disk_left
+      properties:
+        configuration:
+          $ref: '#/components/schemas/Mysql_Mysql8Configuration'
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        address_info:
+          $ref: '#/components/schemas/Structures_AddressInfo'
+        pma_url:
+          type: string
+        disk_used:
+          type: string
+        disk_left:
+          type: string
+        read_only:
+          type: boolean
+        pma_installing:
+          type: boolean
+      type: object
+    Mysql_Mysql8Configuration:
+      example:
+        memory: 3
+        display_version: display_version
+        disk_size: 9
+        version: version
+        cpu_count: 7
+      properties:
+        cpu_count:
+          format: uint32
+          type: integer
+        disk_size:
+          format: uint32
+          type: integer
+        memory:
+          format: uint32
+          type: integer
+        version:
+          type: string
+        display_version:
+          type: string
+      type: object
+    Mysql_RemoveAccessResponse:
+      example:
+        success: "{}"
+        error:
+          code: _
+          message: message
+      properties:
+        success:
+          properties: {}
+          type: object
+        error:
+          $ref: '#/components/schemas/Mysql_RemoveAccessResponse_Error'
+      type: object
+    Mysql_RemoveAccessResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+      type: object
+    Mysql_RemoveAccessResponse_Success:
+      properties: {}
+      type: object
+    Mysql_RemoveDbResponse:
+      example:
+        success: "{}"
+        error:
+          code: _
+          message: message
+      properties:
+        success:
+          properties: {}
+          type: object
+        error:
+          $ref: '#/components/schemas/Mysql_RemoveDbResponse_Error'
+      type: object
+    Mysql_RemoveDbResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+      type: object
+    Mysql_RemoveDbResponse_Success:
+      properties: {}
+      type: object
+    Mysql_SetConfigRequest:
+      properties:
+        service_id:
+          type: string
+        param:
+          additionalProperties:
+            type: string
+          type: object
+        preset_name:
+          type: string
+      type: object
+    Mysql_SetConfigResponse:
+      example:
+        error:
+          code: _
+          message: message
+        config:
+          preset_name: preset_name
+          param:
+            key: param
+      properties:
+        config:
+          $ref: '#/components/schemas/Mysql_Config'
+        error:
+          $ref: '#/components/schemas/Mysql_SetConfigResponse_Error'
+      type: object
+    Mysql_SetConfigResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INVALID_CONFIG_PARAMS
+          format: enum
+          type: string
+      type: object
+    Mysql_UpdateDbRequest:
+      properties:
+        service_id:
+          type: string
+        db_name:
+          type: string
+        description:
+          type: string
+      type: object
+    Mysql_UpdateDbResponse:
+      example:
+        error:
+          code: _
+          message: message
+        db:
+          access:
+          - password: password
+            host: host
+          - password: password
+            host: host
+          size: size
+          name: name
+          description: description
+          pma_password_saved: true
+      properties:
+        db:
+          $ref: '#/components/schemas/Mysql_Db'
+        error:
+          $ref: '#/components/schemas/Mysql_UpdateDbResponse_Error'
+      type: object
+    Mysql_UpdateDbResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    Structures_AddressInfo:
+      example:
+        private:
+        - network_id: network_id
+          ip: ip
+        - network_id: network_id
+          ip: ip
+        public:
+        - ip: ip
+        - ip: ip
+      properties:
+        public:
+          items:
+            $ref: '#/components/schemas/Structures_AddressInfo_PublicAddress'
+          type: array
+        private:
+          items:
+            $ref: '#/components/schemas/Structures_AddressInfo_PrivateAddress'
+          type: array
+      type: object
+    Structures_AddressInfo_PrivateAddress:
+      example:
+        network_id: network_id
+        ip: ip
+      properties:
+        ip:
+          type: string
+        network_id:
+          type: string
+      type: object
+    Structures_AddressInfo_PublicAddress:
+      example:
+        ip: ip
+      properties:
+        ip:
+          type: string
+      type: object
+    Structures_StatisticSeriesData:
+      example:
+        date:
+        - date
+        - date
+        value:
+        - 0.8008281904610115
+        - 0.8008281904610115
+      properties:
+        date:
+          items:
+            type: string
+          type: array
+        value:
+          items:
+            format: double
+            type: number
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
