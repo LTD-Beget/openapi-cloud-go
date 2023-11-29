@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.1.1
+  version: v1.2.0
 servers:
 - url: https://api.beget.com
 security:
@@ -704,6 +704,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true
@@ -744,6 +745,10 @@ components:
           type: string
         mysql_params:
           $ref: '#/components/schemas/Mysql_CreateParams'
+        extra:
+          type: string
+        region:
+          type: string
       type: object
     Cloud_CreateResponse:
       example:
@@ -808,6 +813,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true
@@ -830,6 +836,7 @@ components:
             version: version
             cpu_count: 7
           id: id
+          region: region
           mysql5:
             memory: 5
             display_version: display_version
@@ -845,6 +852,7 @@ components:
             version: version
             cpu_count: 7
           id: id
+          region: region
           mysql5:
             memory: 5
             display_version: display_version
@@ -917,6 +925,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true
@@ -978,6 +987,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true
@@ -1048,6 +1058,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true
@@ -1126,6 +1137,7 @@ components:
         price_day: 0.8008281904610115
         id: id
         manage_enabled: true
+        region: region
         configuration_id: configuration_id
         slug: slug
         migrating: true
@@ -1172,6 +1184,8 @@ components:
           type: boolean
         migrating:
           type: boolean
+        region:
+          type: string
       type: object
     Cloud_ServiceConfiguration:
       example:
@@ -1184,6 +1198,7 @@ components:
           version: version
           cpu_count: 7
         id: id
+        region: region
         mysql5:
           memory: 5
           display_version: display_version
@@ -1199,6 +1214,8 @@ components:
         price_month:
           format: double
           type: number
+        region:
+          type: string
         mysql5:
           $ref: '#/components/schemas/Mysql_Mysql5Configuration'
         mysql8:
@@ -1273,6 +1290,7 @@ components:
           price_day: 0.8008281904610115
           id: id
           manage_enabled: true
+          region: region
           configuration_id: configuration_id
           slug: slug
           migrating: true

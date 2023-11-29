@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **MysqlParams** | Pointer to [**MysqlCreateParams**](MysqlCreateParams.md) |  | [optional] 
+**Extra** | Pointer to **string** |  | [optional] 
+**Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +129,56 @@ SetMysqlParams sets MysqlParams field to given value.
 `func (o *CloudCreateRequest) HasMysqlParams() bool`
 
 HasMysqlParams returns a boolean if a field has been set.
+
+### GetExtra
+
+`func (o *CloudCreateRequest) GetExtra() string`
+
+GetExtra returns the Extra field if non-nil, zero value otherwise.
+
+### GetExtraOk
+
+`func (o *CloudCreateRequest) GetExtraOk() (*string, bool)`
+
+GetExtraOk returns a tuple with the Extra field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtra
+
+`func (o *CloudCreateRequest) SetExtra(v string)`
+
+SetExtra sets Extra field to given value.
+
+### HasExtra
+
+`func (o *CloudCreateRequest) HasExtra() bool`
+
+HasExtra returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *CloudCreateRequest) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *CloudCreateRequest) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *CloudCreateRequest) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *CloudCreateRequest) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

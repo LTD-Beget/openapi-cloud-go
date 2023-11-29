@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **PriceDay** | Pointer to **float64** |  | [optional] 
 **PriceMonth** | Pointer to **float64** |  | [optional] 
+**Region** | Pointer to **string** |  | [optional] 
 **Mysql5** | Pointer to [**MysqlMysql5Configuration**](MysqlMysql5Configuration.md) |  | [optional] 
 **Mysql8** | Pointer to [**MysqlMysql8Configuration**](MysqlMysql8Configuration.md) |  | [optional] 
 
@@ -103,6 +104,31 @@ SetPriceMonth sets PriceMonth field to given value.
 `func (o *CloudServiceConfiguration) HasPriceMonth() bool`
 
 HasPriceMonth returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *CloudServiceConfiguration) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *CloudServiceConfiguration) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *CloudServiceConfiguration) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *CloudServiceConfiguration) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetMysql5
 
