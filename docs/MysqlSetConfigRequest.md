@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceId** | Pointer to **string** |  | [optional] 
 **Param** | Pointer to **map[string]string** |  | [optional] 
-**PresetName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetParam sets Param field to given value.
 `func (o *MysqlSetConfigRequest) HasParam() bool`
 
 HasParam returns a boolean if a field has been set.
-
-### GetPresetName
-
-`func (o *MysqlSetConfigRequest) GetPresetName() string`
-
-GetPresetName returns the PresetName field if non-nil, zero value otherwise.
-
-### GetPresetNameOk
-
-`func (o *MysqlSetConfigRequest) GetPresetNameOk() (*string, bool)`
-
-GetPresetNameOk returns a tuple with the PresetName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresetName
-
-`func (o *MysqlSetConfigRequest) SetPresetName(v string)`
-
-SetPresetName sets PresetName field to given value.
-
-### HasPresetName
-
-`func (o *MysqlSetConfigRequest) HasPresetName() bool`
-
-HasPresetName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

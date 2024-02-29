@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **DbName** | Pointer to **string** |  | [optional] 
 **AccessPassword** | Pointer to **string** |  | [optional] 
 **Param** | Pointer to **map[string]string** |  | [optional] 
-**PresetName** | Pointer to **string** |  | [optional] 
 **SavePmaPassword** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -103,31 +102,6 @@ SetParam sets Param field to given value.
 `func (o *MysqlCreateParams) HasParam() bool`
 
 HasParam returns a boolean if a field has been set.
-
-### GetPresetName
-
-`func (o *MysqlCreateParams) GetPresetName() string`
-
-GetPresetName returns the PresetName field if non-nil, zero value otherwise.
-
-### GetPresetNameOk
-
-`func (o *MysqlCreateParams) GetPresetNameOk() (*string, bool)`
-
-GetPresetNameOk returns a tuple with the PresetName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresetName
-
-`func (o *MysqlCreateParams) SetPresetName(v string)`
-
-SetPresetName sets PresetName field to given value.
-
-### HasPresetName
-
-`func (o *MysqlCreateParams) HasPresetName() bool`
-
-HasPresetName returns a boolean if a field has been set.
 
 ### GetSavePmaPassword
 

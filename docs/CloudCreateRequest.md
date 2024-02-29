@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **MysqlParams** | Pointer to [**MysqlCreateParams**](MysqlCreateParams.md) |  | [optional] 
+**PostgresqlParams** | Pointer to [**PostgresqlPgCreateParams**](PostgresqlPgCreateParams.md) |  | [optional] 
 **Extra** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetMysqlParams sets MysqlParams field to given value.
 `func (o *CloudCreateRequest) HasMysqlParams() bool`
 
 HasMysqlParams returns a boolean if a field has been set.
+
+### GetPostgresqlParams
+
+`func (o *CloudCreateRequest) GetPostgresqlParams() PostgresqlPgCreateParams`
+
+GetPostgresqlParams returns the PostgresqlParams field if non-nil, zero value otherwise.
+
+### GetPostgresqlParamsOk
+
+`func (o *CloudCreateRequest) GetPostgresqlParamsOk() (*PostgresqlPgCreateParams, bool)`
+
+GetPostgresqlParamsOk returns a tuple with the PostgresqlParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresqlParams
+
+`func (o *CloudCreateRequest) SetPostgresqlParams(v PostgresqlPgCreateParams)`
+
+SetPostgresqlParams sets PostgresqlParams field to given value.
+
+### HasPostgresqlParams
+
+`func (o *CloudCreateRequest) HasPostgresqlParams() bool`
+
+HasPostgresqlParams returns a boolean if a field has been set.
 
 ### GetExtra
 

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **DisplayVersion** | Pointer to **string** |  | [optional] 
+**ParamConfig** | Pointer to [**[]StructuresParamConfig**](StructuresParamConfig.md) |  | [optional] 
+**ParamDefault** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +155,56 @@ SetDisplayVersion sets DisplayVersion field to given value.
 `func (o *MysqlMysql5Configuration) HasDisplayVersion() bool`
 
 HasDisplayVersion returns a boolean if a field has been set.
+
+### GetParamConfig
+
+`func (o *MysqlMysql5Configuration) GetParamConfig() []StructuresParamConfig`
+
+GetParamConfig returns the ParamConfig field if non-nil, zero value otherwise.
+
+### GetParamConfigOk
+
+`func (o *MysqlMysql5Configuration) GetParamConfigOk() (*[]StructuresParamConfig, bool)`
+
+GetParamConfigOk returns a tuple with the ParamConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParamConfig
+
+`func (o *MysqlMysql5Configuration) SetParamConfig(v []StructuresParamConfig)`
+
+SetParamConfig sets ParamConfig field to given value.
+
+### HasParamConfig
+
+`func (o *MysqlMysql5Configuration) HasParamConfig() bool`
+
+HasParamConfig returns a boolean if a field has been set.
+
+### GetParamDefault
+
+`func (o *MysqlMysql5Configuration) GetParamDefault() map[string]string`
+
+GetParamDefault returns the ParamDefault field if non-nil, zero value otherwise.
+
+### GetParamDefaultOk
+
+`func (o *MysqlMysql5Configuration) GetParamDefaultOk() (*map[string]string, bool)`
+
+GetParamDefaultOk returns a tuple with the ParamDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParamDefault
+
+`func (o *MysqlMysql5Configuration) SetParamDefault(v map[string]string)`
+
+SetParamDefault sets ParamDefault field to given value.
+
+### HasParamDefault
+
+`func (o *MysqlMysql5Configuration) HasParamDefault() bool`
+
+HasParamDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

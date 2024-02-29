@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** |  | [optional] 
 **Mysql5** | Pointer to [**MysqlMysql5Configuration**](MysqlMysql5Configuration.md) |  | [optional] 
 **Mysql8** | Pointer to [**MysqlMysql8Configuration**](MysqlMysql8Configuration.md) |  | [optional] 
+**Postgresql15** | Pointer to [**PostgresqlPostgresql15Configuration**](PostgresqlPostgresql15Configuration.md) |  | [optional] 
+**Postgresql14** | Pointer to [**PostgresqlPostgresql14Configuration**](PostgresqlPostgresql14Configuration.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetMysql8 sets Mysql8 field to given value.
 `func (o *CloudServiceConfiguration) HasMysql8() bool`
 
 HasMysql8 returns a boolean if a field has been set.
+
+### GetPostgresql15
+
+`func (o *CloudServiceConfiguration) GetPostgresql15() PostgresqlPostgresql15Configuration`
+
+GetPostgresql15 returns the Postgresql15 field if non-nil, zero value otherwise.
+
+### GetPostgresql15Ok
+
+`func (o *CloudServiceConfiguration) GetPostgresql15Ok() (*PostgresqlPostgresql15Configuration, bool)`
+
+GetPostgresql15Ok returns a tuple with the Postgresql15 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql15
+
+`func (o *CloudServiceConfiguration) SetPostgresql15(v PostgresqlPostgresql15Configuration)`
+
+SetPostgresql15 sets Postgresql15 field to given value.
+
+### HasPostgresql15
+
+`func (o *CloudServiceConfiguration) HasPostgresql15() bool`
+
+HasPostgresql15 returns a boolean if a field has been set.
+
+### GetPostgresql14
+
+`func (o *CloudServiceConfiguration) GetPostgresql14() PostgresqlPostgresql14Configuration`
+
+GetPostgresql14 returns the Postgresql14 field if non-nil, zero value otherwise.
+
+### GetPostgresql14Ok
+
+`func (o *CloudServiceConfiguration) GetPostgresql14Ok() (*PostgresqlPostgresql14Configuration, bool)`
+
+GetPostgresql14Ok returns a tuple with the Postgresql14 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql14
+
+`func (o *CloudServiceConfiguration) SetPostgresql14(v PostgresqlPostgresql14Configuration)`
+
+SetPostgresql14 sets Postgresql14 field to given value.
+
+### HasPostgresql14
+
+`func (o *CloudServiceConfiguration) HasPostgresql14() bool`
+
+HasPostgresql14 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

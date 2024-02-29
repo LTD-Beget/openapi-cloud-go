@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to [**MysqlConfig**](MysqlConfig.md) |  | [optional] 
+**Config** | Pointer to [**MysqlConfigInfo**](MysqlConfigInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConfig
 
-`func (o *MysqlGetConfigResponse) GetConfig() MysqlConfig`
+`func (o *MysqlGetConfigResponse) GetConfig() MysqlConfigInfo`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *MysqlGetConfigResponse) GetConfigOk() (*MysqlConfig, bool)`
+`func (o *MysqlGetConfigResponse) GetConfigOk() (*MysqlConfigInfo, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *MysqlGetConfigResponse) SetConfig(v MysqlConfig)`
+`func (o *MysqlGetConfigResponse) SetConfig(v MysqlConfigInfo)`
 
 SetConfig sets Config field to given value.
 

@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **PriceMonth** | Pointer to **float64** |  | [optional] 
 **Mysql5** | Pointer to [**MysqlMysql5**](MysqlMysql5.md) |  | [optional] 
 **Mysql8** | Pointer to [**MysqlMysql8**](MysqlMysql8.md) |  | [optional] 
+**Postgresql15** | Pointer to [**PostgresqlPostgresql15**](PostgresqlPostgresql15.md) |  | [optional] 
+**Postgresql14** | Pointer to [**PostgresqlPostgresql14**](PostgresqlPostgresql14.md) |  | [optional] 
 **ManageEnabled** | Pointer to **bool** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **MonitorableResources** | Pointer to **[]string** |  | [optional] 
@@ -289,6 +291,56 @@ SetMysql8 sets Mysql8 field to given value.
 `func (o *CloudService) HasMysql8() bool`
 
 HasMysql8 returns a boolean if a field has been set.
+
+### GetPostgresql15
+
+`func (o *CloudService) GetPostgresql15() PostgresqlPostgresql15`
+
+GetPostgresql15 returns the Postgresql15 field if non-nil, zero value otherwise.
+
+### GetPostgresql15Ok
+
+`func (o *CloudService) GetPostgresql15Ok() (*PostgresqlPostgresql15, bool)`
+
+GetPostgresql15Ok returns a tuple with the Postgresql15 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql15
+
+`func (o *CloudService) SetPostgresql15(v PostgresqlPostgresql15)`
+
+SetPostgresql15 sets Postgresql15 field to given value.
+
+### HasPostgresql15
+
+`func (o *CloudService) HasPostgresql15() bool`
+
+HasPostgresql15 returns a boolean if a field has been set.
+
+### GetPostgresql14
+
+`func (o *CloudService) GetPostgresql14() PostgresqlPostgresql14`
+
+GetPostgresql14 returns the Postgresql14 field if non-nil, zero value otherwise.
+
+### GetPostgresql14Ok
+
+`func (o *CloudService) GetPostgresql14Ok() (*PostgresqlPostgresql14, bool)`
+
+GetPostgresql14Ok returns a tuple with the Postgresql14 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql14
+
+`func (o *CloudService) SetPostgresql14(v PostgresqlPostgresql14)`
+
+SetPostgresql14 sets Postgresql14 field to given value.
+
+### HasPostgresql14
+
+`func (o *CloudService) HasPostgresql14() bool`
+
+HasPostgresql14 returns a boolean if a field has been set.
 
 ### GetManageEnabled
 
