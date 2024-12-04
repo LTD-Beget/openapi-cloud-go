@@ -1,17 +1,20 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.3.1
+  version: v1.4.0
 servers:
 - url: https://api.beget.com
 security:
 - bearerAuth: []
 tags:
 - name: CloudService
+- name: MysqlBackupService
 - name: MysqlService
 - name: MysqlStatisticService
+- name: PostgresqlBackupService
 - name: PostgresqlService
 - name: PostgresqlStatisticService
+- name: S3Service
 paths:
   /v1/cloud:
     get:
@@ -54,6 +57,73 @@ paths:
           description: OK
       tags:
       - CloudService
+  /v1/cloud/mysql/backup:
+    get:
+      operationId: MysqlBackupService_GetList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlBackup_GetListResponse'
+          description: OK
+      tags:
+      - MysqlBackupService
+  /v1/cloud/mysql/backup/orders:
+    get:
+      operationId: MysqlBackupService_GetOrders
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: uint32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: uint32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlBackup_GetOrdersResponse'
+          description: OK
+      tags:
+      - MysqlBackupService
+  /v1/cloud/mysql/backup/{copy_id}:
+    post:
+      operationId: MysqlBackupService_Restore
+      parameters:
+      - explode: false
+        in: path
+        name: copy_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MysqlBackup_RestoreRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MysqlBackup_RestoreResponse'
+          description: OK
+      tags:
+      - MysqlBackupService
   /v1/cloud/mysql/{service_id}/config:
     get:
       operationId: MysqlService_GetConfig
@@ -547,6 +617,73 @@ paths:
           description: OK
       tags:
       - MysqlStatisticService
+  /v1/cloud/postgresql/backup:
+    get:
+      operationId: PostgresqlBackupService_GetList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostgresqlBackup_GetListResponse'
+          description: OK
+      tags:
+      - PostgresqlBackupService
+  /v1/cloud/postgresql/backup/orders:
+    get:
+      operationId: PostgresqlBackupService_GetOrders
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: uint32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: uint32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostgresqlBackup_GetOrdersResponse'
+          description: OK
+      tags:
+      - PostgresqlBackupService
+  /v1/cloud/postgresql/backup/{copy_id}:
+    post:
+      operationId: PostgresqlBackupService_Restore
+      parameters:
+      - explode: false
+        in: path
+        name: copy_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostgresqlBackup_RestoreRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostgresqlBackup_RestoreResponse'
+          description: OK
+      tags:
+      - PostgresqlBackupService
   /v1/cloud/postgresql/{service_id}/config:
     get:
       operationId: PostgresqlService_GetConfig
@@ -1083,6 +1220,146 @@ paths:
           description: OK
       tags:
       - PostgresqlStatisticService
+  /v1/cloud/s3/prefix:
+    get:
+      operationId: S3Service_GetPrefix
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_GetPrefixResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/price:
+    get:
+      operationId: S3Service_GetPrice
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_GetPriceResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/quota:
+    get:
+      operationId: S3Service_GetQuota
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_GetQuotaResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/{service_id}/access-key:
+    patch:
+      operationId: S3Service_ChangeAccessKey
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3_ChangeAccessKeyRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_ChangeAccessKeyResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/{service_id}/cors:
+    patch:
+      operationId: S3Service_ChangeCors
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3_ChangeCorsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_ChangeCorsResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/{service_id}/domain:
+    patch:
+      operationId: S3Service_ChangeDomain
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3_ChangeDomainRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_ChangeDomainResponse'
+          description: OK
+      tags:
+      - S3Service
+  /v1/cloud/s3/{service_id}/public:
+    patch:
+      operationId: S3Service_ChangePublic
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3_ChangePublicRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_ChangePublicResponse'
+          description: OK
+      tags:
+      - S3Service
   /v1/cloud/{service_id}:
     delete:
       operationId: CloudService_Remove
@@ -1185,6 +1462,31 @@ components:
     Cloud_ChangeConfigurationResponse:
       example:
         service:
+          s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -1296,7 +1598,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -1343,62 +1806,6 @@ components:
                 key: param_default
               version: version
               cpu_count: 1
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
             port: 1
             read_only: true
             host: host
@@ -1447,6 +1854,8 @@ components:
           $ref: '#/components/schemas/Mysql_CreateParams'
         postgresql_params:
           $ref: '#/components/schemas/Postgresql_PgCreateParams'
+        s3_params:
+          $ref: '#/components/schemas/S3_S3CreateParams'
         extra:
           type: string
         region:
@@ -1458,6 +1867,31 @@ components:
           code: _
           message: message
         service:
+          s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -1569,7 +2003,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -1616,62 +2211,6 @@ components:
                 key: param_default
               version: version
               cpu_count: 1
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
             port: 1
             read_only: true
             host: host
@@ -1685,6 +2224,9 @@ components:
         postgresql_error:
           code: _
           message: message
+        s3_error:
+          code: _
+          message: message
       properties:
         service:
           $ref: '#/components/schemas/Cloud_Service'
@@ -1692,12 +2234,18 @@ components:
           $ref: '#/components/schemas/Mysql_CreateError'
         postgresql_error:
           $ref: '#/components/schemas/Postgresql_PgCreateError'
+        s3_error:
+          $ref: '#/components/schemas/S3_S3CreateError'
       type: object
     Cloud_GetConfigurationListResponse:
       example:
         configuration:
-        - postgresql14:
-            memory: 7
+        - s3:
+            price_overload_month: 5.637376656633329
+            price_overload_day: 5.962133916683182
+            subscription_disk_size: 1
+          postgresql14:
+            memory: 9
             display_version: display_version
             param_config:
             - string_value: "{}"
@@ -1726,12 +2274,82 @@ components:
               float_value: "{}"
               integer_value: "{}"
               documentation_link: documentation_link
-            disk_size: 6
+            disk_size: 5
             param_default:
               key: param_default
             version: version
-            cpu_count: 1
+            cpu_count: 4
+          postgresql164:
+            memory: 9
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 8
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 6
           price_month: 6.027456183070403
+          mysql84:
+            memory: 1
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 7
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 4
           price_day: 0.8008281904610115
           mysql8:
             memory: 3
@@ -1770,6 +2388,7 @@ components:
             cpu_count: 7
           id: id
           region: region
+          type: MYSQL5
           mysql5:
             memory: 5
             display_version: display_version
@@ -1806,41 +2425,6 @@ components:
             version: version
             cpu_count: 1
           postgresql15:
-            memory: 1
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 7
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 4
-        - postgresql14:
             memory: 7
             display_version: display_version
             param_config:
@@ -1875,7 +2459,116 @@ components:
               key: param_default
             version: version
             cpu_count: 1
+        - s3:
+            price_overload_month: 5.637376656633329
+            price_overload_day: 5.962133916683182
+            subscription_disk_size: 1
+          postgresql14:
+            memory: 9
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 5
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 4
+          postgresql164:
+            memory: 9
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 8
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 6
           price_month: 6.027456183070403
+          mysql84:
+            memory: 1
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 7
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 4
           price_day: 0.8008281904610115
           mysql8:
             memory: 3
@@ -1914,6 +2607,7 @@ components:
             cpu_count: 7
           id: id
           region: region
+          type: MYSQL5
           mysql5:
             memory: 5
             display_version: display_version
@@ -1950,7 +2644,7 @@ components:
             version: version
             cpu_count: 1
           postgresql15:
-            memory: 1
+            memory: 7
             display_version: display_version
             param_config:
             - string_value: "{}"
@@ -1979,11 +2673,11 @@ components:
               float_value: "{}"
               integer_value: "{}"
               documentation_link: documentation_link
-            disk_size: 7
+            disk_size: 6
             param_default:
               key: param_default
             version: version
-            cpu_count: 4
+            cpu_count: 1
       properties:
         configuration:
           items:
@@ -1993,7 +2687,32 @@ components:
     Cloud_GetListResponse:
       example:
         service:
-        - price_month: 6.027456183070403
+        - s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
+          price_month: 6.027456183070403
           description: description
           created_at: created_at
           mysql8:
@@ -2104,7 +2823,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -2151,62 +3031,6 @@ components:
                 key: param_default
               version: version
               cpu_count: 1
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
             port: 1
             read_only: true
             host: host
@@ -2217,7 +3041,32 @@ components:
           slug: slug
           migrating: true
           status: CREATING
-        - price_month: 6.027456183070403
+        - s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
+          price_month: 6.027456183070403
           description: description
           created_at: created_at
           mysql8:
@@ -2328,7 +3177,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -2375,62 +3385,6 @@ components:
                 key: param_default
               version: version
               cpu_count: 1
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
             port: 1
             read_only: true
             host: host
@@ -2450,6 +3404,31 @@ components:
     Cloud_GetResponse:
       example:
         service:
+          s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -2561,7 +3540,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -2608,62 +3748,6 @@ components:
                 key: param_default
               version: version
               cpu_count: 1
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
             port: 1
             read_only: true
             host: host
@@ -2691,6 +3775,31 @@ components:
       type: object
     Cloud_Service:
       example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
         price_month: 6.027456183070403
         description: description
         created_at: created_at
@@ -2802,7 +3911,168 @@ components:
           pma_installing: true
           pma_url: pma_url
           disk_left: disk_left
+        type: MYSQL5
         postgresql14:
+          webui_installing: true
+          address_info:
+            private:
+            - network_id: network_id
+              ip: ip
+            - network_id: network_id
+              ip: ip
+            public:
+            - ip: ip
+            - ip: ip
+          disk_used: disk_used
+          configuration:
+            memory: 9
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 5
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 4
+          port: 9
+          read_only: true
+          host: host
+          webui_url: webui_url
+          disk_left: disk_left
+        postgresql164:
+          webui_installing: true
+          address_info:
+            private:
+            - network_id: network_id
+              ip: ip
+            - network_id: network_id
+              ip: ip
+            public:
+            - ip: ip
+            - ip: ip
+          disk_used: disk_used
+          configuration:
+            memory: 9
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 8
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 6
+          port: 6
+          read_only: true
+          host: host
+          webui_url: webui_url
+          disk_left: disk_left
+        mysql84:
+          address_info:
+            private:
+            - network_id: network_id
+              ip: ip
+            - network_id: network_id
+              ip: ip
+            public:
+            - ip: ip
+            - ip: ip
+          disk_used: disk_used
+          configuration:
+            memory: 1
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 7
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 4
+          port: 1
+          read_only: true
+          host: host
+          pma_installing: true
+          pma_url: pma_url
+          disk_left: disk_left
+        unblocking: true
+        price_day: 0.8008281904610115
+        id: id
+        manage_enabled: true
+        postgresql15:
           webui_installing: true
           address_info:
             private:
@@ -2854,62 +4124,6 @@ components:
           host: host
           webui_url: webui_url
           disk_left: disk_left
-        unblocking: true
-        price_day: 0.8008281904610115
-        id: id
-        manage_enabled: true
-        postgresql15:
-          webui_installing: true
-          address_info:
-            private:
-            - network_id: network_id
-              ip: ip
-            - network_id: network_id
-              ip: ip
-            public:
-            - ip: ip
-            - ip: ip
-          disk_used: disk_used
-          configuration:
-            memory: 1
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 7
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 4
-          port: 1
-          read_only: true
-          host: host
-          webui_url: webui_url
-          disk_left: disk_left
         region: region
         configuration_id: configuration_id
         slug: slug
@@ -2945,10 +4159,16 @@ components:
           $ref: '#/components/schemas/Mysql_Mysql5'
         mysql8:
           $ref: '#/components/schemas/Mysql_Mysql8'
+        mysql84:
+          $ref: '#/components/schemas/Mysql_Mysql84'
         postgresql15:
           $ref: '#/components/schemas/Postgresql_Postgresql15'
         postgresql14:
           $ref: '#/components/schemas/Postgresql_Postgresql14'
+        postgresql164:
+          $ref: '#/components/schemas/Postgresql_Postgresql164'
+        s3:
+          $ref: '#/components/schemas/S3_S3'
         manage_enabled:
           type: boolean
         slug:
@@ -2963,11 +4183,26 @@ components:
           type: boolean
         region:
           type: string
+        type:
+          enum:
+          - MYSQL5
+          - MYSQL8
+          - MYSQL84
+          - POSTGRESQL14
+          - POSTGRESQL15
+          - S_3
+          - POSTGRESQL164
+          format: enum
+          type: string
       type: object
     Cloud_ServiceConfiguration:
       example:
+        s3:
+          price_overload_month: 5.637376656633329
+          price_overload_day: 5.962133916683182
+          subscription_disk_size: 1
         postgresql14:
-          memory: 7
+          memory: 9
           display_version: display_version
           param_config:
           - string_value: "{}"
@@ -2996,12 +4231,82 @@ components:
             float_value: "{}"
             integer_value: "{}"
             documentation_link: documentation_link
-          disk_size: 6
+          disk_size: 5
           param_default:
             key: param_default
           version: version
-          cpu_count: 1
+          cpu_count: 4
+        postgresql164:
+          memory: 9
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 8
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 6
         price_month: 6.027456183070403
+        mysql84:
+          memory: 1
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 7
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 4
         price_day: 0.8008281904610115
         mysql8:
           memory: 3
@@ -3040,6 +4345,7 @@ components:
           cpu_count: 7
         id: id
         region: region
+        type: MYSQL5
         mysql5:
           memory: 5
           display_version: display_version
@@ -3076,7 +4382,7 @@ components:
           version: version
           cpu_count: 1
         postgresql15:
-          memory: 1
+          memory: 7
           display_version: display_version
           param_config:
           - string_value: "{}"
@@ -3105,11 +4411,11 @@ components:
             float_value: "{}"
             integer_value: "{}"
             documentation_link: documentation_link
-          disk_size: 7
+          disk_size: 6
           param_default:
             key: param_default
           version: version
-          cpu_count: 4
+          cpu_count: 1
       properties:
         id:
           type: string
@@ -3121,14 +4427,31 @@ components:
           type: number
         region:
           type: string
+        type:
+          enum:
+          - MYSQL5
+          - MYSQL8
+          - MYSQL84
+          - POSTGRESQL14
+          - POSTGRESQL15
+          - S_3
+          - POSTGRESQL164
+          format: enum
+          type: string
         mysql5:
           $ref: '#/components/schemas/Mysql_Mysql5Configuration'
         mysql8:
           $ref: '#/components/schemas/Mysql_Mysql8Configuration'
+        mysql84:
+          $ref: '#/components/schemas/Mysql_Mysql84Configuration'
         postgresql15:
           $ref: '#/components/schemas/Postgresql_Postgresql15Configuration'
         postgresql14:
           $ref: '#/components/schemas/Postgresql_Postgresql14Configuration'
+        postgresql164:
+          $ref: '#/components/schemas/Postgresql_Postgresql164Configuration'
+        s3:
+          $ref: '#/components/schemas/S3_S3Configuration'
       type: object
     Cloud_UpdateRequest:
       properties:
@@ -3142,6 +4465,31 @@ components:
     Cloud_UpdateResponse:
       example:
         service:
+          s3:
+            secret_key: secret_key
+            cors:
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            - http_method:
+              - http_method
+              - http_method
+              fqdn: fqdn
+              cache_ttl: cache_ttl
+              id: 3
+              http_header:
+              - http_header
+              - http_header
+            public: true
+            fqdn: fqdn
+            access_key: access_key
+            quota_used_size: 6
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -3253,7 +4601,168 @@ components:
             pma_installing: true
             pma_url: pma_url
             disk_left: disk_left
+          type: MYSQL5
           postgresql14:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 5
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 9
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          postgresql164:
+            webui_installing: true
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 9
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 8
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 6
+            port: 6
+            read_only: true
+            host: host
+            webui_url: webui_url
+            disk_left: disk_left
+          mysql84:
+            address_info:
+              private:
+              - network_id: network_id
+                ip: ip
+              - network_id: network_id
+                ip: ip
+              public:
+              - ip: ip
+              - ip: ip
+            disk_used: disk_used
+            configuration:
+              memory: 1
+              display_version: display_version
+              param_config:
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              - string_value: "{}"
+                set_value:
+                  value:
+                  - value
+                  - value
+                name: name
+                enum_value:
+                  value:
+                  - value
+                  - value
+                float_value: "{}"
+                integer_value: "{}"
+                documentation_link: documentation_link
+              disk_size: 7
+              param_default:
+                key: param_default
+              version: version
+              cpu_count: 4
+            port: 1
+            read_only: true
+            host: host
+            pma_installing: true
+            pma_url: pma_url
+            disk_left: disk_left
+          unblocking: true
+          price_day: 0.8008281904610115
+          id: id
+          manage_enabled: true
+          postgresql15:
             webui_installing: true
             address_info:
               private:
@@ -3305,62 +4814,6 @@ components:
             host: host
             webui_url: webui_url
             disk_left: disk_left
-          unblocking: true
-          price_day: 0.8008281904610115
-          id: id
-          manage_enabled: true
-          postgresql15:
-            webui_installing: true
-            address_info:
-              private:
-              - network_id: network_id
-                ip: ip
-              - network_id: network_id
-                ip: ip
-              public:
-              - ip: ip
-              - ip: ip
-            disk_used: disk_used
-            configuration:
-              memory: 1
-              display_version: display_version
-              param_config:
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              - string_value: "{}"
-                set_value:
-                  value:
-                  - value
-                  - value
-                name: name
-                enum_value:
-                  value:
-                  - value
-                  - value
-                float_value: "{}"
-                integer_value: "{}"
-                documentation_link: documentation_link
-              disk_size: 7
-              param_default:
-                key: param_default
-              version: version
-              cpu_count: 4
-            port: 1
-            read_only: true
-            host: host
-            webui_url: webui_url
-            disk_left: disk_left
           region: region
           configuration_id: configuration_id
           slug: slug
@@ -3387,6 +4840,118 @@ components:
           - _
           - INVALID_DISPLAY_NAME
           - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    MysqlBackup_GetListResponse:
+      example:
+        copy:
+        - date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: MYSQL5
+        - date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: MYSQL5
+      properties:
+        copy:
+          items:
+            $ref: '#/components/schemas/Structures_MysqlCopy'
+          type: array
+      type: object
+    MysqlBackup_GetOrdersResponse:
+      example:
+        order:
+        - copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: MYSQL5
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+        - copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: MYSQL5
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+      properties:
+        order:
+          items:
+            $ref: '#/components/schemas/Structures_MysqlRestoreOrder'
+          type: array
+      type: object
+    MysqlBackup_RestoreRequest:
+      properties:
+        copy_id:
+          type: string
+        service_uuid:
+          type: string
+      type: object
+    MysqlBackup_RestoreResponse:
+      example:
+        error:
+          code: _
+          message: message
+        order:
+          copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: MYSQL5
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+      properties:
+        order:
+          $ref: '#/components/schemas/Structures_MysqlRestoreOrder'
+        error:
+          $ref: '#/components/schemas/MysqlBackup_RestoreResponse_Error'
+      type: object
+    MysqlBackup_RestoreResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INSUFFICIENT_CONFIGURATION
           format: enum
           type: string
       type: object
@@ -4127,6 +5692,139 @@ components:
         pma_installing:
           type: boolean
       type: object
+    Mysql_Mysql84:
+      example:
+        address_info:
+          private:
+          - network_id: network_id
+            ip: ip
+          - network_id: network_id
+            ip: ip
+          public:
+          - ip: ip
+          - ip: ip
+        disk_used: disk_used
+        configuration:
+          memory: 1
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 7
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 4
+        port: 1
+        read_only: true
+        host: host
+        pma_installing: true
+        pma_url: pma_url
+        disk_left: disk_left
+      properties:
+        configuration:
+          $ref: '#/components/schemas/Mysql_Mysql84Configuration'
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        address_info:
+          $ref: '#/components/schemas/Structures_AddressInfo'
+        pma_url:
+          type: string
+        disk_used:
+          type: string
+        disk_left:
+          type: string
+        read_only:
+          type: boolean
+        pma_installing:
+          type: boolean
+      type: object
+    Mysql_Mysql84Configuration:
+      example:
+        memory: 1
+        display_version: display_version
+        param_config:
+        - string_value: "{}"
+          set_value:
+            value:
+            - value
+            - value
+          name: name
+          enum_value:
+            value:
+            - value
+            - value
+          float_value: "{}"
+          integer_value: "{}"
+          documentation_link: documentation_link
+        - string_value: "{}"
+          set_value:
+            value:
+            - value
+            - value
+          name: name
+          enum_value:
+            value:
+            - value
+            - value
+          float_value: "{}"
+          integer_value: "{}"
+          documentation_link: documentation_link
+        disk_size: 7
+        param_default:
+          key: param_default
+        version: version
+        cpu_count: 4
+      properties:
+        cpu_count:
+          format: uint32
+          type: integer
+        disk_size:
+          format: uint32
+          type: integer
+        memory:
+          format: uint32
+          type: integer
+        version:
+          type: string
+        display_version:
+          type: string
+        param_config:
+          items:
+            $ref: '#/components/schemas/Structures_ParamConfig'
+          type: array
+        param_default:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
     Mysql_Mysql8Configuration:
       example:
         memory: 3
@@ -4357,6 +6055,118 @@ components:
           enum:
           - _
           - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    PostgresqlBackup_GetListResponse:
+      example:
+        copy:
+        - date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: POSTGRESQL14
+        - date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: POSTGRESQL14
+      properties:
+        copy:
+          items:
+            $ref: '#/components/schemas/Structures_PostgresqlCopy'
+          type: array
+      type: object
+    PostgresqlBackup_GetOrdersResponse:
+      example:
+        order:
+        - copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: POSTGRESQL14
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+        - copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: POSTGRESQL14
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+      properties:
+        order:
+          items:
+            $ref: '#/components/schemas/Structures_PostgresqlRestoreOrder'
+          type: array
+      type: object
+    PostgresqlBackup_RestoreRequest:
+      properties:
+        copy_id:
+          type: string
+        service_uuid:
+          type: string
+      type: object
+    PostgresqlBackup_RestoreResponse:
+      example:
+        error:
+          code: _
+          message: message
+        order:
+          copy_info:
+            date: date
+            service_uuid: service_uuid
+            size: size
+            service_name: service_name
+            id: id
+            region: region
+            version: POSTGRESQL14
+          date_create: date_create
+          service_name: service_name
+          service_id: service_id
+          backup_date_create: backup_date_create
+          date_complete: date_complete
+          id: id
+          status: _
+      properties:
+        order:
+          $ref: '#/components/schemas/Structures_PostgresqlRestoreOrder'
+        error:
+          $ref: '#/components/schemas/PostgresqlBackup_RestoreResponse_Error'
+      type: object
+    PostgresqlBackup_RestoreResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INVALID_STATE
+          - SERVICE_DISABLED
+          - INSUFFICIENT_CONFIGURATION
           format: enum
           type: string
       type: object
@@ -5137,6 +6947,139 @@ components:
           - ip: ip
         disk_used: disk_used
         configuration:
+          memory: 9
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 5
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 4
+        port: 9
+        read_only: true
+        host: host
+        webui_url: webui_url
+        disk_left: disk_left
+      properties:
+        configuration:
+          $ref: '#/components/schemas/Postgresql_Postgresql14Configuration'
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        address_info:
+          $ref: '#/components/schemas/Structures_AddressInfo'
+        webui_url:
+          type: string
+        disk_used:
+          type: string
+        disk_left:
+          type: string
+        read_only:
+          type: boolean
+        webui_installing:
+          type: boolean
+      type: object
+    Postgresql_Postgresql14Configuration:
+      example:
+        memory: 9
+        display_version: display_version
+        param_config:
+        - string_value: "{}"
+          set_value:
+            value:
+            - value
+            - value
+          name: name
+          enum_value:
+            value:
+            - value
+            - value
+          float_value: "{}"
+          integer_value: "{}"
+          documentation_link: documentation_link
+        - string_value: "{}"
+          set_value:
+            value:
+            - value
+            - value
+          name: name
+          enum_value:
+            value:
+            - value
+            - value
+          float_value: "{}"
+          integer_value: "{}"
+          documentation_link: documentation_link
+        disk_size: 5
+        param_default:
+          key: param_default
+        version: version
+        cpu_count: 4
+      properties:
+        cpu_count:
+          format: uint32
+          type: integer
+        disk_size:
+          format: uint32
+          type: integer
+        memory:
+          format: uint32
+          type: integer
+        version:
+          type: string
+        display_version:
+          type: string
+        param_config:
+          items:
+            $ref: '#/components/schemas/Structures_ParamConfig'
+          type: array
+        param_default:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    Postgresql_Postgresql15:
+      example:
+        webui_installing: true
+        address_info:
+          private:
+          - network_id: network_id
+            ip: ip
+          - network_id: network_id
+            ip: ip
+          public:
+          - ip: ip
+          - ip: ip
+        disk_used: disk_used
+        configuration:
           memory: 7
           display_version: display_version
           param_config:
@@ -5178,7 +7121,7 @@ components:
         disk_left: disk_left
       properties:
         configuration:
-          $ref: '#/components/schemas/Postgresql_Postgresql14Configuration'
+          $ref: '#/components/schemas/Postgresql_Postgresql15Configuration'
         host:
           type: string
         port:
@@ -5197,7 +7140,7 @@ components:
         webui_installing:
           type: boolean
       type: object
-    Postgresql_Postgresql14Configuration:
+    Postgresql_Postgresql15Configuration:
       example:
         memory: 7
         display_version: display_version
@@ -5256,7 +7199,7 @@ components:
             type: string
           type: object
       type: object
-    Postgresql_Postgresql15:
+    Postgresql_Postgresql164:
       example:
         webui_installing: true
         address_info:
@@ -5270,7 +7213,7 @@ components:
           - ip: ip
         disk_used: disk_used
         configuration:
-          memory: 1
+          memory: 9
           display_version: display_version
           param_config:
           - string_value: "{}"
@@ -5299,19 +7242,19 @@ components:
             float_value: "{}"
             integer_value: "{}"
             documentation_link: documentation_link
-          disk_size: 7
+          disk_size: 8
           param_default:
             key: param_default
           version: version
-          cpu_count: 4
-        port: 1
+          cpu_count: 6
+        port: 6
         read_only: true
         host: host
         webui_url: webui_url
         disk_left: disk_left
       properties:
         configuration:
-          $ref: '#/components/schemas/Postgresql_Postgresql15Configuration'
+          $ref: '#/components/schemas/Postgresql_Postgresql164Configuration'
         host:
           type: string
         port:
@@ -5330,9 +7273,9 @@ components:
         webui_installing:
           type: boolean
       type: object
-    Postgresql_Postgresql15Configuration:
+    Postgresql_Postgresql164Configuration:
       example:
-        memory: 1
+        memory: 9
         display_version: display_version
         param_config:
         - string_value: "{}"
@@ -5361,11 +7304,11 @@ components:
           float_value: "{}"
           integer_value: "{}"
           documentation_link: documentation_link
-        disk_size: 7
+        disk_size: 8
         param_default:
           key: param_default
         version: version
-        cpu_count: 4
+        cpu_count: 6
       properties:
         cpu_count:
           format: uint32
@@ -5409,6 +7352,384 @@ components:
         predefined:
           type: boolean
       type: object
+    S3_ChangeAccessKeyRequest:
+      properties:
+        service_id:
+          type: string
+      type: object
+    S3_ChangeAccessKeyResponse:
+      example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
+        error:
+          code: _
+          message: message
+      properties:
+        s3:
+          $ref: '#/components/schemas/S3_S3'
+        error:
+          $ref: '#/components/schemas/S3_ChangeAccessKeyResponse_Error'
+      type: object
+    S3_ChangeAccessKeyResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+      type: object
+    S3_ChangeCorsRequest:
+      properties:
+        service_id:
+          type: string
+        cors:
+          items:
+            $ref: '#/components/schemas/S3_Cors'
+          type: array
+      type: object
+    S3_ChangeCorsResponse:
+      example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
+        error:
+          code: _
+          message: message
+      properties:
+        s3:
+          $ref: '#/components/schemas/S3_S3'
+        error:
+          $ref: '#/components/schemas/S3_ChangeCorsResponse_Error'
+      type: object
+    S3_ChangeCorsResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - INVALID_DOMAIN
+          format: enum
+          type: string
+      type: object
+    S3_ChangeDomainRequest:
+      properties:
+        service_id:
+          type: string
+        fqdn:
+          type: string
+      type: object
+    S3_ChangeDomainResponse:
+      example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
+        error:
+          code: _
+          message: message
+      properties:
+        s3:
+          $ref: '#/components/schemas/S3_S3'
+        error:
+          $ref: '#/components/schemas/S3_ChangeDomainResponse_Error'
+      type: object
+    S3_ChangeDomainResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - DOMAIN_NOT_REGISTERED
+          - DOMAIN_INCORRECT_NS
+          - NOT_SUBDOMAIN
+          - DOMAIN_NOT_FOUND
+          format: enum
+          type: string
+      type: object
+    S3_ChangePublicRequest:
+      properties:
+        service_id:
+          type: string
+        public:
+          type: boolean
+      type: object
+    S3_ChangePublicResponse:
+      example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            cache_ttl: cache_ttl
+            id: 3
+            http_header:
+            - http_header
+            - http_header
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
+        error:
+          code: _
+          message: message
+      properties:
+        s3:
+          $ref: '#/components/schemas/S3_S3'
+        error:
+          $ref: '#/components/schemas/S3_ChangePublicResponse_Error'
+      type: object
+    S3_ChangePublicResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+      type: object
+    S3_Cors:
+      example:
+        http_method:
+        - http_method
+        - http_method
+        fqdn: fqdn
+        cache_ttl: cache_ttl
+        id: 3
+        http_header:
+        - http_header
+        - http_header
+      properties:
+        id:
+          format: uint32
+          type: integer
+        http_method:
+          items:
+            type: string
+          type: array
+        http_header:
+          items:
+            type: string
+          type: array
+        cache_ttl:
+          type: string
+        fqdn:
+          type: string
+      type: object
+    S3_GetPrefixResponse:
+      example:
+        prefix: prefix
+      properties:
+        prefix:
+          type: string
+      type: object
+    S3_GetPriceResponse:
+      example:
+        rate_day: 0.8008281904610115
+        rate_day_overload: 6.027456183070403
+      properties:
+        rate_day:
+          format: double
+          type: number
+        rate_day_overload:
+          format: double
+          type: number
+      type: object
+    S3_GetQuotaResponse:
+      example:
+        available_size: 6
+        used_size: 0
+      properties:
+        used_size:
+          format: uint32
+          type: integer
+        available_size:
+          format: uint32
+          type: integer
+      type: object
+    S3_S3:
+      example:
+        secret_key: secret_key
+        cors:
+        - http_method:
+          - http_method
+          - http_method
+          fqdn: fqdn
+          cache_ttl: cache_ttl
+          id: 3
+          http_header:
+          - http_header
+          - http_header
+        - http_method:
+          - http_method
+          - http_method
+          fqdn: fqdn
+          cache_ttl: cache_ttl
+          id: 3
+          http_header:
+          - http_header
+          - http_header
+        public: true
+        fqdn: fqdn
+        access_key: access_key
+        quota_used_size: 6
+      properties:
+        public:
+          type: boolean
+        access_key:
+          type: string
+        secret_key:
+          type: string
+        fqdn:
+          type: string
+        cors:
+          items:
+            $ref: '#/components/schemas/S3_Cors'
+          type: array
+        quota_used_size:
+          format: uint32
+          type: integer
+      type: object
+    S3_S3Configuration:
+      example:
+        price_overload_month: 5.637376656633329
+        price_overload_day: 5.962133916683182
+        subscription_disk_size: 1
+      properties:
+        subscription_disk_size:
+          format: uint32
+          type: integer
+        price_overload_day:
+          format: double
+          type: number
+        price_overload_month:
+          format: double
+          type: number
+      type: object
+    S3_S3CreateError:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INSUFFICIENT_FUNDS
+          - CONFIGURATION_NOT_FOUND
+          - INVALID_DISPLAY_NAME
+          - BUCKET_NAME_ALREADY_EXISTS
+          - INVALID_BUCKET_NAME
+          - BUCKET_LIMIT_REACHED
+          - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    S3_S3CreateParams:
+      properties:
+        public:
+          type: boolean
+        bucket_name:
+          type: string
+      type: object
     Structures_AddressInfo:
       example:
         private:
@@ -5444,6 +7765,77 @@ components:
         ip: ip
       properties:
         ip:
+          type: string
+      type: object
+    Structures_MysqlCopy:
+      example:
+        date: date
+        service_uuid: service_uuid
+        size: size
+        service_name: service_name
+        id: id
+        region: region
+        version: MYSQL5
+      properties:
+        id:
+          type: string
+        service_uuid:
+          type: string
+        service_name:
+          type: string
+        version:
+          enum:
+          - MYSQL5
+          - MYSQL8
+          - MYSQL84
+          format: enum
+          type: string
+        date:
+          type: string
+        size:
+          type: string
+        region:
+          type: string
+      type: object
+    Structures_MysqlRestoreOrder:
+      example:
+        copy_info:
+          date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: MYSQL5
+        date_create: date_create
+        service_name: service_name
+        service_id: service_id
+        backup_date_create: backup_date_create
+        date_complete: date_complete
+        id: id
+        status: _
+      properties:
+        id:
+          type: string
+        copy_info:
+          $ref: '#/components/schemas/Structures_MysqlCopy'
+        backup_date_create:
+          type: string
+        service_id:
+          type: string
+        service_name:
+          type: string
+        date_create:
+          type: string
+        date_complete:
+          type: string
+        status:
+          enum:
+          - _
+          - PROCESSING
+          - COMPLETED
+          - ERROR
+          format: enum
           type: string
       type: object
     Structures_ParamConfig:
@@ -5510,6 +7902,77 @@ components:
       type: object
     Structures_ParamConfig_StringValue:
       properties: {}
+      type: object
+    Structures_PostgresqlCopy:
+      example:
+        date: date
+        service_uuid: service_uuid
+        size: size
+        service_name: service_name
+        id: id
+        region: region
+        version: POSTGRESQL14
+      properties:
+        id:
+          type: string
+        service_uuid:
+          type: string
+        service_name:
+          type: string
+        version:
+          enum:
+          - POSTGRESQL14
+          - POSTGRESQL15
+          - POSTGRESQL164
+          format: enum
+          type: string
+        date:
+          type: string
+        size:
+          type: string
+        region:
+          type: string
+      type: object
+    Structures_PostgresqlRestoreOrder:
+      example:
+        copy_info:
+          date: date
+          service_uuid: service_uuid
+          size: size
+          service_name: service_name
+          id: id
+          region: region
+          version: POSTGRESQL14
+        date_create: date_create
+        service_name: service_name
+        service_id: service_id
+        backup_date_create: backup_date_create
+        date_complete: date_complete
+        id: id
+        status: _
+      properties:
+        id:
+          type: string
+        copy_info:
+          $ref: '#/components/schemas/Structures_PostgresqlCopy'
+        backup_date_create:
+          type: string
+        service_id:
+          type: string
+        service_name:
+          type: string
+        date_create:
+          type: string
+        date_complete:
+          type: string
+        status:
+          enum:
+          - _
+          - PROCESSING
+          - COMPLETED
+          - ERROR
+          format: enum
+          type: string
       type: object
     Structures_StatisticSeriesData:
       example:

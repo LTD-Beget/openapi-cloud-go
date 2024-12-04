@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **MysqlParams** | Pointer to [**MysqlCreateParams**](MysqlCreateParams.md) |  | [optional] 
 **PostgresqlParams** | Pointer to [**PostgresqlPgCreateParams**](PostgresqlPgCreateParams.md) |  | [optional] 
+**S3Params** | Pointer to [**S3S3CreateParams**](S3S3CreateParams.md) |  | [optional] 
 **Extra** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
@@ -155,6 +156,31 @@ SetPostgresqlParams sets PostgresqlParams field to given value.
 `func (o *CloudCreateRequest) HasPostgresqlParams() bool`
 
 HasPostgresqlParams returns a boolean if a field has been set.
+
+### GetS3Params
+
+`func (o *CloudCreateRequest) GetS3Params() S3S3CreateParams`
+
+GetS3Params returns the S3Params field if non-nil, zero value otherwise.
+
+### GetS3ParamsOk
+
+`func (o *CloudCreateRequest) GetS3ParamsOk() (*S3S3CreateParams, bool)`
+
+GetS3ParamsOk returns a tuple with the S3Params field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3Params
+
+`func (o *CloudCreateRequest) SetS3Params(v S3S3CreateParams)`
+
+SetS3Params sets S3Params field to given value.
+
+### HasS3Params
+
+`func (o *CloudCreateRequest) HasS3Params() bool`
+
+HasS3Params returns a boolean if a field has been set.
 
 ### GetExtra
 

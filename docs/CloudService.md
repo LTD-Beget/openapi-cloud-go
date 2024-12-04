@@ -14,14 +14,18 @@ Name | Type | Description | Notes
 **PriceMonth** | Pointer to **float64** |  | [optional] 
 **Mysql5** | Pointer to [**MysqlMysql5**](MysqlMysql5.md) |  | [optional] 
 **Mysql8** | Pointer to [**MysqlMysql8**](MysqlMysql8.md) |  | [optional] 
+**Mysql84** | Pointer to [**MysqlMysql84**](MysqlMysql84.md) |  | [optional] 
 **Postgresql15** | Pointer to [**PostgresqlPostgresql15**](PostgresqlPostgresql15.md) |  | [optional] 
 **Postgresql14** | Pointer to [**PostgresqlPostgresql14**](PostgresqlPostgresql14.md) |  | [optional] 
+**Postgresql164** | Pointer to [**PostgresqlPostgresql164**](PostgresqlPostgresql164.md) |  | [optional] 
+**S3** | Pointer to [**S3S3**](S3S3.md) |  | [optional] 
 **ManageEnabled** | Pointer to **bool** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **MonitorableResources** | Pointer to **[]string** |  | [optional] 
 **Unblocking** | Pointer to **bool** |  | [optional] 
 **Migrating** | Pointer to **bool** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -292,6 +296,31 @@ SetMysql8 sets Mysql8 field to given value.
 
 HasMysql8 returns a boolean if a field has been set.
 
+### GetMysql84
+
+`func (o *CloudService) GetMysql84() MysqlMysql84`
+
+GetMysql84 returns the Mysql84 field if non-nil, zero value otherwise.
+
+### GetMysql84Ok
+
+`func (o *CloudService) GetMysql84Ok() (*MysqlMysql84, bool)`
+
+GetMysql84Ok returns a tuple with the Mysql84 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMysql84
+
+`func (o *CloudService) SetMysql84(v MysqlMysql84)`
+
+SetMysql84 sets Mysql84 field to given value.
+
+### HasMysql84
+
+`func (o *CloudService) HasMysql84() bool`
+
+HasMysql84 returns a boolean if a field has been set.
+
 ### GetPostgresql15
 
 `func (o *CloudService) GetPostgresql15() PostgresqlPostgresql15`
@@ -341,6 +370,56 @@ SetPostgresql14 sets Postgresql14 field to given value.
 `func (o *CloudService) HasPostgresql14() bool`
 
 HasPostgresql14 returns a boolean if a field has been set.
+
+### GetPostgresql164
+
+`func (o *CloudService) GetPostgresql164() PostgresqlPostgresql164`
+
+GetPostgresql164 returns the Postgresql164 field if non-nil, zero value otherwise.
+
+### GetPostgresql164Ok
+
+`func (o *CloudService) GetPostgresql164Ok() (*PostgresqlPostgresql164, bool)`
+
+GetPostgresql164Ok returns a tuple with the Postgresql164 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql164
+
+`func (o *CloudService) SetPostgresql164(v PostgresqlPostgresql164)`
+
+SetPostgresql164 sets Postgresql164 field to given value.
+
+### HasPostgresql164
+
+`func (o *CloudService) HasPostgresql164() bool`
+
+HasPostgresql164 returns a boolean if a field has been set.
+
+### GetS3
+
+`func (o *CloudService) GetS3() S3S3`
+
+GetS3 returns the S3 field if non-nil, zero value otherwise.
+
+### GetS3Ok
+
+`func (o *CloudService) GetS3Ok() (*S3S3, bool)`
+
+GetS3Ok returns a tuple with the S3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3
+
+`func (o *CloudService) SetS3(v S3S3)`
+
+SetS3 sets S3 field to given value.
+
+### HasS3
+
+`func (o *CloudService) HasS3() bool`
+
+HasS3 returns a boolean if a field has been set.
 
 ### GetManageEnabled
 
@@ -491,6 +570,31 @@ SetRegion sets Region field to given value.
 `func (o *CloudService) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *CloudService) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CloudService) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CloudService) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *CloudService) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

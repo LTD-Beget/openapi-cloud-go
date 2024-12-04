@@ -8,10 +8,14 @@ Name | Type | Description | Notes
 **PriceDay** | Pointer to **float64** |  | [optional] 
 **PriceMonth** | Pointer to **float64** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 **Mysql5** | Pointer to [**MysqlMysql5Configuration**](MysqlMysql5Configuration.md) |  | [optional] 
 **Mysql8** | Pointer to [**MysqlMysql8Configuration**](MysqlMysql8Configuration.md) |  | [optional] 
+**Mysql84** | Pointer to [**MysqlMysql84Configuration**](MysqlMysql84Configuration.md) |  | [optional] 
 **Postgresql15** | Pointer to [**PostgresqlPostgresql15Configuration**](PostgresqlPostgresql15Configuration.md) |  | [optional] 
 **Postgresql14** | Pointer to [**PostgresqlPostgresql14Configuration**](PostgresqlPostgresql14Configuration.md) |  | [optional] 
+**Postgresql164** | Pointer to [**PostgresqlPostgresql164Configuration**](PostgresqlPostgresql164Configuration.md) |  | [optional] 
+**S3** | Pointer to [**S3S3Configuration**](S3S3Configuration.md) |  | [optional] 
 
 ## Methods
 
@@ -132,6 +136,31 @@ SetRegion sets Region field to given value.
 
 HasRegion returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *CloudServiceConfiguration) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CloudServiceConfiguration) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CloudServiceConfiguration) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *CloudServiceConfiguration) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetMysql5
 
 `func (o *CloudServiceConfiguration) GetMysql5() MysqlMysql5Configuration`
@@ -182,6 +211,31 @@ SetMysql8 sets Mysql8 field to given value.
 
 HasMysql8 returns a boolean if a field has been set.
 
+### GetMysql84
+
+`func (o *CloudServiceConfiguration) GetMysql84() MysqlMysql84Configuration`
+
+GetMysql84 returns the Mysql84 field if non-nil, zero value otherwise.
+
+### GetMysql84Ok
+
+`func (o *CloudServiceConfiguration) GetMysql84Ok() (*MysqlMysql84Configuration, bool)`
+
+GetMysql84Ok returns a tuple with the Mysql84 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMysql84
+
+`func (o *CloudServiceConfiguration) SetMysql84(v MysqlMysql84Configuration)`
+
+SetMysql84 sets Mysql84 field to given value.
+
+### HasMysql84
+
+`func (o *CloudServiceConfiguration) HasMysql84() bool`
+
+HasMysql84 returns a boolean if a field has been set.
+
 ### GetPostgresql15
 
 `func (o *CloudServiceConfiguration) GetPostgresql15() PostgresqlPostgresql15Configuration`
@@ -231,6 +285,56 @@ SetPostgresql14 sets Postgresql14 field to given value.
 `func (o *CloudServiceConfiguration) HasPostgresql14() bool`
 
 HasPostgresql14 returns a boolean if a field has been set.
+
+### GetPostgresql164
+
+`func (o *CloudServiceConfiguration) GetPostgresql164() PostgresqlPostgresql164Configuration`
+
+GetPostgresql164 returns the Postgresql164 field if non-nil, zero value otherwise.
+
+### GetPostgresql164Ok
+
+`func (o *CloudServiceConfiguration) GetPostgresql164Ok() (*PostgresqlPostgresql164Configuration, bool)`
+
+GetPostgresql164Ok returns a tuple with the Postgresql164 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostgresql164
+
+`func (o *CloudServiceConfiguration) SetPostgresql164(v PostgresqlPostgresql164Configuration)`
+
+SetPostgresql164 sets Postgresql164 field to given value.
+
+### HasPostgresql164
+
+`func (o *CloudServiceConfiguration) HasPostgresql164() bool`
+
+HasPostgresql164 returns a boolean if a field has been set.
+
+### GetS3
+
+`func (o *CloudServiceConfiguration) GetS3() S3S3Configuration`
+
+GetS3 returns the S3 field if non-nil, zero value otherwise.
+
+### GetS3Ok
+
+`func (o *CloudServiceConfiguration) GetS3Ok() (*S3S3Configuration, bool)`
+
+GetS3Ok returns a tuple with the S3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3
+
+`func (o *CloudServiceConfiguration) SetS3(v S3S3Configuration)`
+
+SetS3 sets S3 field to given value.
+
+### HasS3
+
+`func (o *CloudServiceConfiguration) HasS3() bool`
+
+HasS3 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

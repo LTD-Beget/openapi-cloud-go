@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Service** | Pointer to [**CloudService**](CloudService.md) |  | [optional] 
 **MysqlError** | Pointer to [**MysqlCreateError**](MysqlCreateError.md) |  | [optional] 
 **PostgresqlError** | Pointer to [**PostgresqlPgCreateError**](PostgresqlPgCreateError.md) |  | [optional] 
+**S3Error** | Pointer to [**S3S3CreateError**](S3S3CreateError.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetPostgresqlError sets PostgresqlError field to given value.
 `func (o *CloudCreateResponse) HasPostgresqlError() bool`
 
 HasPostgresqlError returns a boolean if a field has been set.
+
+### GetS3Error
+
+`func (o *CloudCreateResponse) GetS3Error() S3S3CreateError`
+
+GetS3Error returns the S3Error field if non-nil, zero value otherwise.
+
+### GetS3ErrorOk
+
+`func (o *CloudCreateResponse) GetS3ErrorOk() (*S3S3CreateError, bool)`
+
+GetS3ErrorOk returns a tuple with the S3Error field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3Error
+
+`func (o *CloudCreateResponse) SetS3Error(v S3S3CreateError)`
+
+SetS3Error sets S3Error field to given value.
+
+### HasS3Error
+
+`func (o *CloudCreateResponse) HasS3Error() bool`
+
+HasS3Error returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
