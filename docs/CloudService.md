@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **Migrating** | Pointer to **bool** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**Restoring** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -595,6 +596,31 @@ SetType sets Type field to given value.
 `func (o *CloudService) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetRestoring
+
+`func (o *CloudService) GetRestoring() bool`
+
+GetRestoring returns the Restoring field if non-nil, zero value otherwise.
+
+### GetRestoringOk
+
+`func (o *CloudService) GetRestoringOk() (*bool, bool)`
+
+GetRestoringOk returns a tuple with the Restoring field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestoring
+
+`func (o *CloudService) SetRestoring(v bool)`
+
+SetRestoring sets Restoring field to given value.
+
+### HasRestoring
+
+`func (o *CloudService) HasRestoring() bool`
+
+HasRestoring returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -78,6 +78,20 @@ func Test_begetOpenapiCloud_S3ServiceApiService(t *testing.T) {
 
     })
 
+    t.Run("Test S3ServiceApiService S3ServiceEnableFtp", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        var serviceId string
+
+        resp, httpRes, err := apiClient.S3ServiceApi.S3ServiceEnableFtp(context.Background(), serviceId).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
     t.Run("Test S3ServiceApiService S3ServiceGetPrefix", func(t *testing.T) {
 
         t.Skip("skip test")  // remove to run test

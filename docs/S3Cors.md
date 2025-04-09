@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int32** |  | [optional] 
 **HttpMethod** | Pointer to **[]string** |  | [optional] 
-**HttpHeader** | Pointer to **[]string** |  | [optional] 
+**AccessControlAllowHeaders** | Pointer to **[]string** |  | [optional] 
+**AccessControlExposeHeaders** | Pointer to **[]string** |  | [optional] 
 **CacheTtl** | Pointer to **string** |  | [optional] 
 **Fqdn** | Pointer to **string** |  | [optional] 
 
@@ -79,30 +80,55 @@ SetHttpMethod sets HttpMethod field to given value.
 
 HasHttpMethod returns a boolean if a field has been set.
 
-### GetHttpHeader
+### GetAccessControlAllowHeaders
 
-`func (o *S3Cors) GetHttpHeader() []string`
+`func (o *S3Cors) GetAccessControlAllowHeaders() []string`
 
-GetHttpHeader returns the HttpHeader field if non-nil, zero value otherwise.
+GetAccessControlAllowHeaders returns the AccessControlAllowHeaders field if non-nil, zero value otherwise.
 
-### GetHttpHeaderOk
+### GetAccessControlAllowHeadersOk
 
-`func (o *S3Cors) GetHttpHeaderOk() (*[]string, bool)`
+`func (o *S3Cors) GetAccessControlAllowHeadersOk() (*[]string, bool)`
 
-GetHttpHeaderOk returns a tuple with the HttpHeader field if it's non-nil, zero value otherwise
+GetAccessControlAllowHeadersOk returns a tuple with the AccessControlAllowHeaders field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHttpHeader
+### SetAccessControlAllowHeaders
 
-`func (o *S3Cors) SetHttpHeader(v []string)`
+`func (o *S3Cors) SetAccessControlAllowHeaders(v []string)`
 
-SetHttpHeader sets HttpHeader field to given value.
+SetAccessControlAllowHeaders sets AccessControlAllowHeaders field to given value.
 
-### HasHttpHeader
+### HasAccessControlAllowHeaders
 
-`func (o *S3Cors) HasHttpHeader() bool`
+`func (o *S3Cors) HasAccessControlAllowHeaders() bool`
 
-HasHttpHeader returns a boolean if a field has been set.
+HasAccessControlAllowHeaders returns a boolean if a field has been set.
+
+### GetAccessControlExposeHeaders
+
+`func (o *S3Cors) GetAccessControlExposeHeaders() []string`
+
+GetAccessControlExposeHeaders returns the AccessControlExposeHeaders field if non-nil, zero value otherwise.
+
+### GetAccessControlExposeHeadersOk
+
+`func (o *S3Cors) GetAccessControlExposeHeadersOk() (*[]string, bool)`
+
+GetAccessControlExposeHeadersOk returns a tuple with the AccessControlExposeHeaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessControlExposeHeaders
+
+`func (o *S3Cors) SetAccessControlExposeHeaders(v []string)`
+
+SetAccessControlExposeHeaders sets AccessControlExposeHeaders field to given value.
+
+### HasAccessControlExposeHeaders
+
+`func (o *S3Cors) HasAccessControlExposeHeaders() bool`
+
+HasAccessControlExposeHeaders returns a boolean if a field has been set.
 
 ### GetCacheTtl
 

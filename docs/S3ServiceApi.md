@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**S3ServiceChangeCors**](S3ServiceApi.md#S3ServiceChangeCors) | **Patch** /v1/cloud/s3/{service_id}/cors | 
 [**S3ServiceChangeDomain**](S3ServiceApi.md#S3ServiceChangeDomain) | **Patch** /v1/cloud/s3/{service_id}/domain | 
 [**S3ServiceChangePublic**](S3ServiceApi.md#S3ServiceChangePublic) | **Patch** /v1/cloud/s3/{service_id}/public | 
+[**S3ServiceEnableFtp**](S3ServiceApi.md#S3ServiceEnableFtp) | **Patch** /v1/cloud/s3/{service_id}/enable-ftp | 
 [**S3ServiceGetPrefix**](S3ServiceApi.md#S3ServiceGetPrefix) | **Get** /v1/cloud/s3/prefix | 
 [**S3ServiceGetPrice**](S3ServiceApi.md#S3ServiceGetPrice) | **Get** /v1/cloud/s3/price | 
 [**S3ServiceGetQuota**](S3ServiceApi.md#S3ServiceGetQuota) | **Get** /v1/cloud/s3/quota | 
@@ -279,6 +280,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**S3ChangePublicResponse**](S3ChangePublicResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## S3ServiceEnableFtp
+
+> S3EnableFtpResponse S3ServiceEnableFtp(ctx, serviceId).S3EnableFtpRequest(s3EnableFtpRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    serviceId := "serviceId_example" // string | 
+    s3EnableFtpRequest := *openapiclient.NewS3EnableFtpRequest() // S3EnableFtpRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.S3ServiceApi.S3ServiceEnableFtp(context.Background(), serviceId).S3EnableFtpRequest(s3EnableFtpRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `S3ServiceApi.S3ServiceEnableFtp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `S3ServiceEnableFtp`: S3EnableFtpResponse
+    fmt.Fprintf(os.Stdout, "Response from `S3ServiceApi.S3ServiceEnableFtp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiS3ServiceEnableFtpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **s3EnableFtpRequest** | [**S3EnableFtpRequest**](S3EnableFtpRequest.md) |  | 
+
+### Return type
+
+[**S3EnableFtpResponse**](S3EnableFtpResponse.md)
 
 ### Authorization
 

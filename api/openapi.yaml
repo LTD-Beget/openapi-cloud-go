@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.4.0
+  version: v1.4.1
 servers:
 - url: https://api.beget.com
 security:
@@ -15,6 +15,7 @@ tags:
 - name: PostgresqlService
 - name: PostgresqlStatisticService
 - name: S3Service
+- name: S3StatisticService
 paths:
   /v1/cloud:
     get:
@@ -401,6 +402,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -435,6 +437,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -469,6 +472,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -503,6 +507,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -537,6 +542,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -571,6 +577,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -605,6 +612,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1004,6 +1012,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1038,6 +1047,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1072,6 +1082,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1106,6 +1117,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1140,6 +1152,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1174,6 +1187,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1208,6 +1222,7 @@ paths:
           - DAY
           - WEEK
           - MONTH
+          - YEAR
           format: enum
           type: string
         style: form
@@ -1334,6 +1349,32 @@ paths:
           description: OK
       tags:
       - S3Service
+  /v1/cloud/s3/{service_id}/enable-ftp:
+    patch:
+      operationId: S3Service_EnableFtp
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3_EnableFtpRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3_EnableFtpResponse'
+          description: OK
+      tags:
+      - S3Service
   /v1/cloud/s3/{service_id}/public:
     patch:
       operationId: S3Service_ChangePublic
@@ -1360,6 +1401,146 @@ paths:
           description: OK
       tags:
       - S3Service
+  /v1/cloud/s3/{service_id}/statistic/count-request:
+    get:
+      operationId: S3StatisticService_GetRequest
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3Statistic_GetRequestResponse'
+          description: OK
+      tags:
+      - S3StatisticService
+  /v1/cloud/s3/{service_id}/statistic/network:
+    get:
+      operationId: S3StatisticService_GetNetwork
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3Statistic_GetNetworkResponse'
+          description: OK
+      tags:
+      - S3StatisticService
+  /v1/cloud/s3/{service_id}/statistic/quota:
+    get:
+      operationId: S3StatisticService_GetQuota
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3Statistic_GetQuotaResponse'
+          description: OK
+      tags:
+      - S3StatisticService
+  /v1/cloud/s3/{service_id}/statistic/traffic-usage:
+    get:
+      operationId: S3StatisticService_GetTraffic
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          enum:
+          - UNKNOWN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3Statistic_GetTrafficResponse'
+          description: OK
+      tags:
+      - S3StatisticService
   /v1/cloud/{service_id}:
     delete:
       operationId: CloudService_Remove
@@ -1469,24 +1650,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -1545,6 +1744,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -1874,24 +2074,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -1950,6 +2168,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -2694,24 +2913,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -2770,6 +3007,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -3048,24 +3286,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -3124,6 +3380,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -3411,24 +3668,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -3487,6 +3762,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -3782,24 +4058,42 @@ components:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
           - http_method:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
           public: true
           fqdn: fqdn
           access_key: access_key
           quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
         price_month: 6.027456183070403
         description: description
         created_at: created_at
@@ -3858,6 +4152,7 @@ components:
         monitorable_resources:
         - monitorable_resources
         - monitorable_resources
+        restoring: true
         display_name: display_name
         mysql5:
           address_info:
@@ -4194,6 +4489,8 @@ components:
           - POSTGRESQL164
           format: enum
           type: string
+        restoring:
+          type: boolean
       type: object
     Cloud_ServiceConfiguration:
       example:
@@ -4472,24 +4769,42 @@ components:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
             - http_method:
               - http_method
               - http_method
               fqdn: fqdn
+              access_control_expose_headers:
+              - access_control_expose_headers
+              - access_control_expose_headers
               cache_ttl: cache_ttl
+              access_control_allow_headers:
+              - access_control_allow_headers
+              - access_control_allow_headers
               id: 3
-              http_header:
-              - http_header
-              - http_header
+            ftp:
+              password: password
+              port: 1
+              host: host
+              login: login
+              status: ENABLED
             public: true
             fqdn: fqdn
             access_key: access_key
             quota_used_size: 6
+            sftp:
+              password: password
+              port: 2
+              host: host
+              login: login
+              status: ENABLED
           price_month: 6.027456183070403
           description: description
           created_at: created_at
@@ -4548,6 +4863,7 @@ components:
           monitorable_resources:
           - monitorable_resources
           - monitorable_resources
+          restoring: true
           display_name: display_name
           mysql5:
             address_info:
@@ -7352,6 +7668,121 @@ components:
         predefined:
           type: boolean
       type: object
+    S3Statistic_GetNetworkResponse:
+      example:
+        data_tx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_rx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        data_rx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_tx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    S3Statistic_GetQuotaResponse:
+      example:
+        size:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        size:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    S3Statistic_GetRequestResponse:
+      example:
+        method_options:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        method_post:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        method_head:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        method_get:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        method_delete:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        method_put:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        method_get:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        method_post:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        method_put:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        method_head:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        method_delete:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        method_options:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
+    S3Statistic_GetTrafficResponse:
+      example:
+        data_tx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        data_rx:
+          date:
+          - date
+          - date
+          value:
+          - 0.8008281904610115
+          - 0.8008281904610115
+      properties:
+        data_rx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+        data_tx:
+          $ref: '#/components/schemas/Structures_StatisticSeriesData'
+      type: object
     S3_ChangeAccessKeyRequest:
       properties:
         service_id:
@@ -7366,24 +7797,42 @@ components:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
           - http_method:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
           public: true
           fqdn: fqdn
           access_key: access_key
           quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
         error:
           code: _
           message: message
@@ -7425,24 +7874,42 @@ components:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
           - http_method:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
           public: true
           fqdn: fqdn
           access_key: access_key
           quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
         error:
           code: _
           message: message
@@ -7483,24 +7950,42 @@ components:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
           - http_method:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
           public: true
           fqdn: fqdn
           access_key: access_key
           quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
         error:
           code: _
           message: message
@@ -7544,24 +8029,42 @@ components:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
           - http_method:
             - http_method
             - http_method
             fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
             cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
             id: 3
-            http_header:
-            - http_header
-            - http_header
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
           public: true
           fqdn: fqdn
           access_key: access_key
           quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
         error:
           code: _
           message: message
@@ -7591,11 +8094,14 @@ components:
         - http_method
         - http_method
         fqdn: fqdn
+        access_control_expose_headers:
+        - access_control_expose_headers
+        - access_control_expose_headers
         cache_ttl: cache_ttl
+        access_control_allow_headers:
+        - access_control_allow_headers
+        - access_control_allow_headers
         id: 3
-        http_header:
-        - http_header
-        - http_header
       properties:
         id:
           format: uint32
@@ -7604,13 +8110,117 @@ components:
           items:
             type: string
           type: array
-        http_header:
+        access_control_allow_headers:
+          items:
+            type: string
+          type: array
+        access_control_expose_headers:
           items:
             type: string
           type: array
         cache_ttl:
           type: string
         fqdn:
+          type: string
+      type: object
+    S3_EnableFtpRequest:
+      properties:
+        service_id:
+          type: string
+        enable:
+          type: boolean
+      type: object
+    S3_EnableFtpResponse:
+      example:
+        s3:
+          secret_key: secret_key
+          cors:
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
+            cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
+            id: 3
+          - http_method:
+            - http_method
+            - http_method
+            fqdn: fqdn
+            access_control_expose_headers:
+            - access_control_expose_headers
+            - access_control_expose_headers
+            cache_ttl: cache_ttl
+            access_control_allow_headers:
+            - access_control_allow_headers
+            - access_control_allow_headers
+            id: 3
+          ftp:
+            password: password
+            port: 1
+            host: host
+            login: login
+            status: ENABLED
+          public: true
+          fqdn: fqdn
+          access_key: access_key
+          quota_used_size: 6
+          sftp:
+            password: password
+            port: 2
+            host: host
+            login: login
+            status: ENABLED
+        error:
+          code: _
+          message: message
+      properties:
+        s3:
+          $ref: '#/components/schemas/S3_S3'
+        error:
+          $ref: '#/components/schemas/S3_EnableFtpResponse_Error'
+      type: object
+    S3_EnableFtpResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+      type: object
+    S3_Ftp:
+      example:
+        password: password
+        port: 1
+        host: host
+        login: login
+        status: ENABLED
+      properties:
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        login:
+          type: string
+        password:
+          type: string
+        status:
+          enum:
+          - ENABLED
+          - DISABLED
+          - BLOCKED
+          format: enum
           type: string
       type: object
     S3_GetPrefixResponse:
@@ -7652,24 +8262,42 @@ components:
           - http_method
           - http_method
           fqdn: fqdn
+          access_control_expose_headers:
+          - access_control_expose_headers
+          - access_control_expose_headers
           cache_ttl: cache_ttl
+          access_control_allow_headers:
+          - access_control_allow_headers
+          - access_control_allow_headers
           id: 3
-          http_header:
-          - http_header
-          - http_header
         - http_method:
           - http_method
           - http_method
           fqdn: fqdn
+          access_control_expose_headers:
+          - access_control_expose_headers
+          - access_control_expose_headers
           cache_ttl: cache_ttl
+          access_control_allow_headers:
+          - access_control_allow_headers
+          - access_control_allow_headers
           id: 3
-          http_header:
-          - http_header
-          - http_header
+        ftp:
+          password: password
+          port: 1
+          host: host
+          login: login
+          status: ENABLED
         public: true
         fqdn: fqdn
         access_key: access_key
         quota_used_size: 6
+        sftp:
+          password: password
+          port: 2
+          host: host
+          login: login
+          status: ENABLED
       properties:
         public:
           type: boolean
@@ -7686,6 +8314,10 @@ components:
         quota_used_size:
           format: uint32
           type: integer
+        ftp:
+          $ref: '#/components/schemas/S3_Ftp'
+        sftp:
+          $ref: '#/components/schemas/S3_Sftp'
       type: object
     S3_S3Configuration:
       example:
@@ -7728,6 +8360,31 @@ components:
         public:
           type: boolean
         bucket_name:
+          type: string
+      type: object
+    S3_Sftp:
+      example:
+        password: password
+        port: 2
+        host: host
+        login: login
+        status: ENABLED
+      properties:
+        host:
+          type: string
+        port:
+          format: uint32
+          type: integer
+        login:
+          type: string
+        password:
+          type: string
+        status:
+          enum:
+          - ENABLED
+          - DISABLED
+          - BLOCKED
+          format: enum
           type: string
       type: object
     Structures_AddressInfo:
