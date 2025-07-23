@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SubscriptionDiskSize** | Pointer to **int32** |  | [optional] 
-**PriceOverloadDay** | Pointer to **float64** |  | [optional] 
-**PriceOverloadMonth** | Pointer to **float64** |  | [optional] 
+**FreeTrafficAmount** | Pointer to **int32** |  | [optional] 
+**TrafficPriceDay** | Pointer to **float64** |  | [optional] 
+**TrafficPriceMonth** | Pointer to **float64** |  | [optional] 
 
 ## Methods
 
@@ -27,80 +27,80 @@ NewS3S3ConfigurationWithDefaults instantiates a new S3S3Configuration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSubscriptionDiskSize
+### GetFreeTrafficAmount
 
-`func (o *S3S3Configuration) GetSubscriptionDiskSize() int32`
+`func (o *S3S3Configuration) GetFreeTrafficAmount() int32`
 
-GetSubscriptionDiskSize returns the SubscriptionDiskSize field if non-nil, zero value otherwise.
+GetFreeTrafficAmount returns the FreeTrafficAmount field if non-nil, zero value otherwise.
 
-### GetSubscriptionDiskSizeOk
+### GetFreeTrafficAmountOk
 
-`func (o *S3S3Configuration) GetSubscriptionDiskSizeOk() (*int32, bool)`
+`func (o *S3S3Configuration) GetFreeTrafficAmountOk() (*int32, bool)`
 
-GetSubscriptionDiskSizeOk returns a tuple with the SubscriptionDiskSize field if it's non-nil, zero value otherwise
+GetFreeTrafficAmountOk returns a tuple with the FreeTrafficAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSubscriptionDiskSize
+### SetFreeTrafficAmount
 
-`func (o *S3S3Configuration) SetSubscriptionDiskSize(v int32)`
+`func (o *S3S3Configuration) SetFreeTrafficAmount(v int32)`
 
-SetSubscriptionDiskSize sets SubscriptionDiskSize field to given value.
+SetFreeTrafficAmount sets FreeTrafficAmount field to given value.
 
-### HasSubscriptionDiskSize
+### HasFreeTrafficAmount
 
-`func (o *S3S3Configuration) HasSubscriptionDiskSize() bool`
+`func (o *S3S3Configuration) HasFreeTrafficAmount() bool`
 
-HasSubscriptionDiskSize returns a boolean if a field has been set.
+HasFreeTrafficAmount returns a boolean if a field has been set.
 
-### GetPriceOverloadDay
+### GetTrafficPriceDay
 
-`func (o *S3S3Configuration) GetPriceOverloadDay() float64`
+`func (o *S3S3Configuration) GetTrafficPriceDay() float64`
 
-GetPriceOverloadDay returns the PriceOverloadDay field if non-nil, zero value otherwise.
+GetTrafficPriceDay returns the TrafficPriceDay field if non-nil, zero value otherwise.
 
-### GetPriceOverloadDayOk
+### GetTrafficPriceDayOk
 
-`func (o *S3S3Configuration) GetPriceOverloadDayOk() (*float64, bool)`
+`func (o *S3S3Configuration) GetTrafficPriceDayOk() (*float64, bool)`
 
-GetPriceOverloadDayOk returns a tuple with the PriceOverloadDay field if it's non-nil, zero value otherwise
+GetTrafficPriceDayOk returns a tuple with the TrafficPriceDay field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPriceOverloadDay
+### SetTrafficPriceDay
 
-`func (o *S3S3Configuration) SetPriceOverloadDay(v float64)`
+`func (o *S3S3Configuration) SetTrafficPriceDay(v float64)`
 
-SetPriceOverloadDay sets PriceOverloadDay field to given value.
+SetTrafficPriceDay sets TrafficPriceDay field to given value.
 
-### HasPriceOverloadDay
+### HasTrafficPriceDay
 
-`func (o *S3S3Configuration) HasPriceOverloadDay() bool`
+`func (o *S3S3Configuration) HasTrafficPriceDay() bool`
 
-HasPriceOverloadDay returns a boolean if a field has been set.
+HasTrafficPriceDay returns a boolean if a field has been set.
 
-### GetPriceOverloadMonth
+### GetTrafficPriceMonth
 
-`func (o *S3S3Configuration) GetPriceOverloadMonth() float64`
+`func (o *S3S3Configuration) GetTrafficPriceMonth() float64`
 
-GetPriceOverloadMonth returns the PriceOverloadMonth field if non-nil, zero value otherwise.
+GetTrafficPriceMonth returns the TrafficPriceMonth field if non-nil, zero value otherwise.
 
-### GetPriceOverloadMonthOk
+### GetTrafficPriceMonthOk
 
-`func (o *S3S3Configuration) GetPriceOverloadMonthOk() (*float64, bool)`
+`func (o *S3S3Configuration) GetTrafficPriceMonthOk() (*float64, bool)`
 
-GetPriceOverloadMonthOk returns a tuple with the PriceOverloadMonth field if it's non-nil, zero value otherwise
+GetTrafficPriceMonthOk returns a tuple with the TrafficPriceMonth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPriceOverloadMonth
+### SetTrafficPriceMonth
 
-`func (o *S3S3Configuration) SetPriceOverloadMonth(v float64)`
+`func (o *S3S3Configuration) SetTrafficPriceMonth(v float64)`
 
-SetPriceOverloadMonth sets PriceOverloadMonth field to given value.
+SetTrafficPriceMonth sets TrafficPriceMonth field to given value.
 
-### HasPriceOverloadMonth
+### HasTrafficPriceMonth
 
-`func (o *S3S3Configuration) HasPriceOverloadMonth() bool`
+`func (o *S3S3Configuration) HasTrafficPriceMonth() bool`
 
-HasPriceOverloadMonth returns a boolean if a field has been set.
+HasTrafficPriceMonth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

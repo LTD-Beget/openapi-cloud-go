@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.4.1
+  version: v1.4.2
 servers:
 - url: https://api.beget.com
 security:
@@ -2460,9 +2460,9 @@ components:
       example:
         configuration:
         - s3:
-            price_overload_month: 5.637376656633329
-            price_overload_day: 5.962133916683182
-            subscription_disk_size: 1
+            traffic_price_day: 5.962133916683182
+            traffic_price_month: 5.637376656633329
+            free_traffic_amount: 1
           postgresql14:
             memory: 9
             display_version: display_version
@@ -2679,9 +2679,9 @@ components:
             version: version
             cpu_count: 1
         - s3:
-            price_overload_month: 5.637376656633329
-            price_overload_day: 5.962133916683182
-            subscription_disk_size: 1
+            traffic_price_day: 5.962133916683182
+            traffic_price_month: 5.637376656633329
+            free_traffic_amount: 1
           postgresql14:
             memory: 9
             display_version: display_version
@@ -4495,9 +4495,9 @@ components:
     Cloud_ServiceConfiguration:
       example:
         s3:
-          price_overload_month: 5.637376656633329
-          price_overload_day: 5.962133916683182
-          subscription_disk_size: 1
+          traffic_price_day: 5.962133916683182
+          traffic_price_month: 5.637376656633329
+          free_traffic_amount: 1
         postgresql14:
           memory: 9
           display_version: display_version
@@ -8232,25 +8232,56 @@ components:
       type: object
     S3_GetPriceResponse:
       example:
-        rate_day: 0.8008281904610115
-        rate_day_overload: 6.027456183070403
+        bucket:
+        - traffic_amount: 1
+          traffic_rate: 5.962133916683182
+          name: name
+          storage_size: 0
+          storage_rate: 6.027456183070403
+          display_name: display_name
+        - traffic_amount: 1
+          traffic_rate: 5.962133916683182
+          name: name
+          storage_size: 0
+          storage_rate: 6.027456183070403
+          display_name: display_name
       properties:
-        rate_day:
+        bucket:
+          items:
+            $ref: '#/components/schemas/S3_GetPriceResponse_Bucket'
+          type: array
+      type: object
+    S3_GetPriceResponse_Bucket:
+      example:
+        traffic_amount: 1
+        traffic_rate: 5.962133916683182
+        name: name
+        storage_size: 0
+        storage_rate: 6.027456183070403
+        display_name: display_name
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        storage_size:
+          format: uint32
+          type: integer
+        storage_rate:
           format: double
           type: number
-        rate_day_overload:
+        traffic_amount:
+          format: uint32
+          type: integer
+        traffic_rate:
           format: double
           type: number
       type: object
     S3_GetQuotaResponse:
       example:
-        available_size: 6
         used_size: 0
       properties:
         used_size:
-          format: uint32
-          type: integer
-        available_size:
           format: uint32
           type: integer
       type: object
@@ -8321,17 +8352,17 @@ components:
       type: object
     S3_S3Configuration:
       example:
-        price_overload_month: 5.637376656633329
-        price_overload_day: 5.962133916683182
-        subscription_disk_size: 1
+        traffic_price_day: 5.962133916683182
+        traffic_price_month: 5.637376656633329
+        free_traffic_amount: 1
       properties:
-        subscription_disk_size:
+        free_traffic_amount:
           format: uint32
           type: integer
-        price_overload_day:
+        traffic_price_day:
           format: double
           type: number
-        price_overload_month:
+        traffic_price_month:
           format: double
           type: number
       type: object

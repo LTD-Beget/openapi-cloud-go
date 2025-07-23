@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RateDay** | Pointer to **float64** |  | [optional] 
-**RateDayOverload** | Pointer to **float64** |  | [optional] 
+**Bucket** | Pointer to [**[]S3GetPriceResponseBucket**](S3GetPriceResponseBucket.md) |  | [optional] 
 
 ## Methods
 
@@ -26,55 +25,30 @@ NewS3GetPriceResponseWithDefaults instantiates a new S3GetPriceResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetRateDay
+### GetBucket
 
-`func (o *S3GetPriceResponse) GetRateDay() float64`
+`func (o *S3GetPriceResponse) GetBucket() []S3GetPriceResponseBucket`
 
-GetRateDay returns the RateDay field if non-nil, zero value otherwise.
+GetBucket returns the Bucket field if non-nil, zero value otherwise.
 
-### GetRateDayOk
+### GetBucketOk
 
-`func (o *S3GetPriceResponse) GetRateDayOk() (*float64, bool)`
+`func (o *S3GetPriceResponse) GetBucketOk() (*[]S3GetPriceResponseBucket, bool)`
 
-GetRateDayOk returns a tuple with the RateDay field if it's non-nil, zero value otherwise
+GetBucketOk returns a tuple with the Bucket field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRateDay
+### SetBucket
 
-`func (o *S3GetPriceResponse) SetRateDay(v float64)`
+`func (o *S3GetPriceResponse) SetBucket(v []S3GetPriceResponseBucket)`
 
-SetRateDay sets RateDay field to given value.
+SetBucket sets Bucket field to given value.
 
-### HasRateDay
+### HasBucket
 
-`func (o *S3GetPriceResponse) HasRateDay() bool`
+`func (o *S3GetPriceResponse) HasBucket() bool`
 
-HasRateDay returns a boolean if a field has been set.
-
-### GetRateDayOverload
-
-`func (o *S3GetPriceResponse) GetRateDayOverload() float64`
-
-GetRateDayOverload returns the RateDayOverload field if non-nil, zero value otherwise.
-
-### GetRateDayOverloadOk
-
-`func (o *S3GetPriceResponse) GetRateDayOverloadOk() (*float64, bool)`
-
-GetRateDayOverloadOk returns a tuple with the RateDayOverload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRateDayOverload
-
-`func (o *S3GetPriceResponse) SetRateDayOverload(v float64)`
-
-SetRateDayOverload sets RateDayOverload field to given value.
-
-### HasRateDayOverload
-
-`func (o *S3GetPriceResponse) HasRateDayOverload() bool`
-
-HasRateDayOverload returns a boolean if a field has been set.
+HasBucket returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
