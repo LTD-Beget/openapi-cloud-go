@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **MysqlError** | Pointer to [**MysqlCreateError**](MysqlCreateError.md) |  | [optional] 
 **PostgresqlError** | Pointer to [**PostgresqlPgCreateError**](PostgresqlPgCreateError.md) |  | [optional] 
 **S3Error** | Pointer to [**S3S3CreateError**](S3S3CreateError.md) |  | [optional] 
+**CdnError** | Pointer to [**CdnCdnCreateError**](CdnCdnCreateError.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetS3Error sets S3Error field to given value.
 `func (o *CloudCreateResponse) HasS3Error() bool`
 
 HasS3Error returns a boolean if a field has been set.
+
+### GetCdnError
+
+`func (o *CloudCreateResponse) GetCdnError() CdnCdnCreateError`
+
+GetCdnError returns the CdnError field if non-nil, zero value otherwise.
+
+### GetCdnErrorOk
+
+`func (o *CloudCreateResponse) GetCdnErrorOk() (*CdnCdnCreateError, bool)`
+
+GetCdnErrorOk returns a tuple with the CdnError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCdnError
+
+`func (o *CloudCreateResponse) SetCdnError(v CdnCdnCreateError)`
+
+SetCdnError sets CdnError field to given value.
+
+### HasCdnError
+
+`func (o *CloudCreateResponse) HasCdnError() bool`
+
+HasCdnError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**StatusDetails** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **PriceDay** | Pointer to **float64** |  | [optional] 
 **PriceMonth** | Pointer to **float64** |  | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **Postgresql14** | Pointer to [**PostgresqlPostgresql14**](PostgresqlPostgresql14.md) |  | [optional] 
 **Postgresql164** | Pointer to [**PostgresqlPostgresql164**](PostgresqlPostgresql164.md) |  | [optional] 
 **S3** | Pointer to [**S3S3**](S3S3.md) |  | [optional] 
+**Cdn** | Pointer to [**CdnCdn**](CdnCdn.md) |  | [optional] 
 **ManageEnabled** | Pointer to **bool** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **MonitorableResources** | Pointer to **[]string** |  | [optional] 
@@ -171,6 +173,31 @@ SetStatus sets Status field to given value.
 `func (o *CloudService) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetStatusDetails
+
+`func (o *CloudService) GetStatusDetails() string`
+
+GetStatusDetails returns the StatusDetails field if non-nil, zero value otherwise.
+
+### GetStatusDetailsOk
+
+`func (o *CloudService) GetStatusDetailsOk() (*string, bool)`
+
+GetStatusDetailsOk returns a tuple with the StatusDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusDetails
+
+`func (o *CloudService) SetStatusDetails(v string)`
+
+SetStatusDetails sets StatusDetails field to given value.
+
+### HasStatusDetails
+
+`func (o *CloudService) HasStatusDetails() bool`
+
+HasStatusDetails returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -421,6 +448,31 @@ SetS3 sets S3 field to given value.
 `func (o *CloudService) HasS3() bool`
 
 HasS3 returns a boolean if a field has been set.
+
+### GetCdn
+
+`func (o *CloudService) GetCdn() CdnCdn`
+
+GetCdn returns the Cdn field if non-nil, zero value otherwise.
+
+### GetCdnOk
+
+`func (o *CloudService) GetCdnOk() (*CdnCdn, bool)`
+
+GetCdnOk returns a tuple with the Cdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCdn
+
+`func (o *CloudService) SetCdn(v CdnCdn)`
+
+SetCdn sets Cdn field to given value.
+
+### HasCdn
+
+`func (o *CloudService) HasCdn() bool`
+
+HasCdn returns a boolean if a field has been set.
 
 ### GetManageEnabled
 

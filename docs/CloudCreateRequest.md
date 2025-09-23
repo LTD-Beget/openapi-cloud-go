@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MysqlParams** | Pointer to [**MysqlCreateParams**](MysqlCreateParams.md) |  | [optional] 
 **PostgresqlParams** | Pointer to [**PostgresqlPgCreateParams**](PostgresqlPgCreateParams.md) |  | [optional] 
 **S3Params** | Pointer to [**S3S3CreateParams**](S3S3CreateParams.md) |  | [optional] 
+**CdnParams** | Pointer to [**CdnCdnCreateParams**](CdnCdnCreateParams.md) |  | [optional] 
 **Extra** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
@@ -181,6 +182,31 @@ SetS3Params sets S3Params field to given value.
 `func (o *CloudCreateRequest) HasS3Params() bool`
 
 HasS3Params returns a boolean if a field has been set.
+
+### GetCdnParams
+
+`func (o *CloudCreateRequest) GetCdnParams() CdnCdnCreateParams`
+
+GetCdnParams returns the CdnParams field if non-nil, zero value otherwise.
+
+### GetCdnParamsOk
+
+`func (o *CloudCreateRequest) GetCdnParamsOk() (*CdnCdnCreateParams, bool)`
+
+GetCdnParamsOk returns a tuple with the CdnParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCdnParams
+
+`func (o *CloudCreateRequest) SetCdnParams(v CdnCdnCreateParams)`
+
+SetCdnParams sets CdnParams field to given value.
+
+### HasCdnParams
+
+`func (o *CloudCreateRequest) HasCdnParams() bool`
+
+HasCdnParams returns a boolean if a field has been set.
 
 ### GetExtra
 
