@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **bool** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 **Time** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetEnable sets Enable field to given value.
 `func (o *CdnSettingsCachingTimeBrowser) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *CdnSettingsCachingTimeBrowser) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CdnSettingsCachingTimeBrowser) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CdnSettingsCachingTimeBrowser) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *CdnSettingsCachingTimeBrowser) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetTime
 

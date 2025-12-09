@@ -50,6 +50,30 @@ func Test_begetOpenapiCloud_CdnServiceApiService(t *testing.T) {
 
     })
 
+    t.Run("Test CdnServiceApiService CdnServiceGetIso3166Countries", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Countries(context.Background()).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
+    t.Run("Test CdnServiceApiService CdnServiceGetIso3166Regions", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Regions(context.Background()).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
     t.Run("Test CdnServiceApiService CdnServiceGetPrice", func(t *testing.T) {
 
         t.Skip("skip test")  // remove to run test

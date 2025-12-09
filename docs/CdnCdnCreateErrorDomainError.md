@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Message** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **Domain** | Pointer to **string** |  | [optional] 
+**DomainAlreadyUsedDetails** | Pointer to [**CdnCdnCreateErrorDomainErrorDomainAlreadyUsedDetails**](CdnCdnCreateErrorDomainErrorDomainAlreadyUsedDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetDomain sets Domain field to given value.
 `func (o *CdnCdnCreateErrorDomainError) HasDomain() bool`
 
 HasDomain returns a boolean if a field has been set.
+
+### GetDomainAlreadyUsedDetails
+
+`func (o *CdnCdnCreateErrorDomainError) GetDomainAlreadyUsedDetails() CdnCdnCreateErrorDomainErrorDomainAlreadyUsedDetails`
+
+GetDomainAlreadyUsedDetails returns the DomainAlreadyUsedDetails field if non-nil, zero value otherwise.
+
+### GetDomainAlreadyUsedDetailsOk
+
+`func (o *CdnCdnCreateErrorDomainError) GetDomainAlreadyUsedDetailsOk() (*CdnCdnCreateErrorDomainErrorDomainAlreadyUsedDetails, bool)`
+
+GetDomainAlreadyUsedDetailsOk returns a tuple with the DomainAlreadyUsedDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainAlreadyUsedDetails
+
+`func (o *CdnCdnCreateErrorDomainError) SetDomainAlreadyUsedDetails(v CdnCdnCreateErrorDomainErrorDomainAlreadyUsedDetails)`
+
+SetDomainAlreadyUsedDetails sets DomainAlreadyUsedDetails field to given value.
+
+### HasDomainAlreadyUsedDetails
+
+`func (o *CdnCdnCreateErrorDomainError) HasDomainAlreadyUsedDetails() bool`
+
+HasDomainAlreadyUsedDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **SourceServiceId** | Pointer to **string** |  | [optional] 
 **SourceServiceType** | Pointer to **string** |  | [optional] 
 **Domain** | Pointer to **string** |  | [optional] 
+**SourceServiceDisplayName** | Pointer to **string** |  | [optional] 
+**SourceServiceSlug** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +129,56 @@ SetDomain sets Domain field to given value.
 `func (o *CdnSourceDomain) HasDomain() bool`
 
 HasDomain returns a boolean if a field has been set.
+
+### GetSourceServiceDisplayName
+
+`func (o *CdnSourceDomain) GetSourceServiceDisplayName() string`
+
+GetSourceServiceDisplayName returns the SourceServiceDisplayName field if non-nil, zero value otherwise.
+
+### GetSourceServiceDisplayNameOk
+
+`func (o *CdnSourceDomain) GetSourceServiceDisplayNameOk() (*string, bool)`
+
+GetSourceServiceDisplayNameOk returns a tuple with the SourceServiceDisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceServiceDisplayName
+
+`func (o *CdnSourceDomain) SetSourceServiceDisplayName(v string)`
+
+SetSourceServiceDisplayName sets SourceServiceDisplayName field to given value.
+
+### HasSourceServiceDisplayName
+
+`func (o *CdnSourceDomain) HasSourceServiceDisplayName() bool`
+
+HasSourceServiceDisplayName returns a boolean if a field has been set.
+
+### GetSourceServiceSlug
+
+`func (o *CdnSourceDomain) GetSourceServiceSlug() string`
+
+GetSourceServiceSlug returns the SourceServiceSlug field if non-nil, zero value otherwise.
+
+### GetSourceServiceSlugOk
+
+`func (o *CdnSourceDomain) GetSourceServiceSlugOk() (*string, bool)`
+
+GetSourceServiceSlugOk returns a tuple with the SourceServiceSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceServiceSlug
+
+`func (o *CdnSourceDomain) SetSourceServiceSlug(v string)`
+
+SetSourceServiceSlug sets SourceServiceSlug field to given value.
+
+### HasSourceServiceSlug
+
+`func (o *CdnSourceDomain) HasSourceServiceSlug() bool`
+
+HasSourceServiceSlug returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

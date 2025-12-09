@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ResourceDomain** | Pointer to [**[]CdnResourceDomain**](CdnResourceDomain.md) |  | [optional] 
 **SourceDomain** | Pointer to [**CdnSourceDomain**](CdnSourceDomain.md) |  | [optional] 
 **Settings** | Pointer to [**CdnSettings**](CdnSettings.md) |  | [optional] 
+**Traffic** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetSettings sets Settings field to given value.
 `func (o *CdnCdn) HasSettings() bool`
 
 HasSettings returns a boolean if a field has been set.
+
+### GetTraffic
+
+`func (o *CdnCdn) GetTraffic() string`
+
+GetTraffic returns the Traffic field if non-nil, zero value otherwise.
+
+### GetTrafficOk
+
+`func (o *CdnCdn) GetTrafficOk() (*string, bool)`
+
+GetTrafficOk returns a tuple with the Traffic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTraffic
+
+`func (o *CdnCdn) SetTraffic(v string)`
+
+SetTraffic sets Traffic field to given value.
+
+### HasTraffic
+
+`func (o *CdnCdn) HasTraffic() bool`
+
+HasTraffic returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

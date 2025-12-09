@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **ConfigurationId** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**ProjectId** | Pointer to **string** |  | [optional] 
+**UiPinned** | Pointer to **bool** |  | [optional] 
+**UiPinChangedAt** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDetails** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
@@ -148,6 +151,81 @@ SetDescription sets Description field to given value.
 `func (o *CloudService) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *CloudService) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *CloudService) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *CloudService) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *CloudService) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
+
+### GetUiPinned
+
+`func (o *CloudService) GetUiPinned() bool`
+
+GetUiPinned returns the UiPinned field if non-nil, zero value otherwise.
+
+### GetUiPinnedOk
+
+`func (o *CloudService) GetUiPinnedOk() (*bool, bool)`
+
+GetUiPinnedOk returns a tuple with the UiPinned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinned
+
+`func (o *CloudService) SetUiPinned(v bool)`
+
+SetUiPinned sets UiPinned field to given value.
+
+### HasUiPinned
+
+`func (o *CloudService) HasUiPinned() bool`
+
+HasUiPinned returns a boolean if a field has been set.
+
+### GetUiPinChangedAt
+
+`func (o *CloudService) GetUiPinChangedAt() string`
+
+GetUiPinChangedAt returns the UiPinChangedAt field if non-nil, zero value otherwise.
+
+### GetUiPinChangedAtOk
+
+`func (o *CloudService) GetUiPinChangedAtOk() (*string, bool)`
+
+GetUiPinChangedAtOk returns a tuple with the UiPinChangedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinChangedAt
+
+`func (o *CloudService) SetUiPinChangedAt(v string)`
+
+SetUiPinChangedAt sets UiPinChangedAt field to given value.
+
+### HasUiPinChangedAt
+
+`func (o *CloudService) HasUiPinChangedAt() bool`
+
+HasUiPinChangedAt returns a boolean if a field has been set.
 
 ### GetStatus
 

@@ -22,6 +22,20 @@ func Test_begetOpenapiCloud_CloudServiceApiService(t *testing.T) {
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
 
+    t.Run("Test CloudServiceApiService CloudServiceBindProject", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        var serviceId string
+
+        resp, httpRes, err := apiClient.CloudServiceApi.CloudServiceBindProject(context.Background(), serviceId).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
     t.Run("Test CloudServiceApiService CloudServiceChangeConfiguration", func(t *testing.T) {
 
         t.Skip("skip test")  // remove to run test
@@ -29,6 +43,20 @@ func Test_begetOpenapiCloud_CloudServiceApiService(t *testing.T) {
         var serviceId string
 
         resp, httpRes, err := apiClient.CloudServiceApi.CloudServiceChangeConfiguration(context.Background(), serviceId).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
+    t.Run("Test CloudServiceApiService CloudServiceChangePinned", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        var serviceId string
+
+        resp, httpRes, err := apiClient.CloudServiceApi.CloudServiceChangePinned(context.Background(), serviceId).Execute()
 
         require.Nil(t, err)
         require.NotNil(t, resp)

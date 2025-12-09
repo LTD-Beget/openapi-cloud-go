@@ -4,7 +4,9 @@ All URIs are relative to *https://api.beget.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CloudServiceBindProject**](CloudServiceApi.md#CloudServiceBindProject) | **Put** /v1/cloud/{service_id}/project | 
 [**CloudServiceChangeConfiguration**](CloudServiceApi.md#CloudServiceChangeConfiguration) | **Patch** /v1/cloud/{service_id}/configuration | 
+[**CloudServiceChangePinned**](CloudServiceApi.md#CloudServiceChangePinned) | **Put** /v1/cloud/{service_id}/pin | 
 [**CloudServiceCreate**](CloudServiceApi.md#CloudServiceCreate) | **Post** /v1/cloud | 
 [**CloudServiceGet**](CloudServiceApi.md#CloudServiceGet) | **Get** /v1/cloud/{service_id} | 
 [**CloudServiceGetConfigurationList**](CloudServiceApi.md#CloudServiceGetConfigurationList) | **Get** /v1/cloud/configuration | 
@@ -12,6 +14,76 @@ Method | HTTP request | Description
 [**CloudServiceRemove**](CloudServiceApi.md#CloudServiceRemove) | **Delete** /v1/cloud/{service_id} | 
 [**CloudServiceUpdate**](CloudServiceApi.md#CloudServiceUpdate) | **Patch** /v1/cloud/{service_id} | 
 
+
+
+## CloudServiceBindProject
+
+> CloudBindProjectResponse CloudServiceBindProject(ctx, serviceId).CloudBindProjectRequest(cloudBindProjectRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    serviceId := "serviceId_example" // string | 
+    cloudBindProjectRequest := *openapiclient.NewCloudBindProjectRequest() // CloudBindProjectRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudServiceApi.CloudServiceBindProject(context.Background(), serviceId).CloudBindProjectRequest(cloudBindProjectRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudServiceApi.CloudServiceBindProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloudServiceBindProject`: CloudBindProjectResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudServiceApi.CloudServiceBindProject`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloudServiceBindProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudBindProjectRequest** | [**CloudBindProjectRequest**](CloudBindProjectRequest.md) |  | 
+
+### Return type
+
+[**CloudBindProjectResponse**](CloudBindProjectResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CloudServiceChangeConfiguration
@@ -69,6 +141,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CloudChangeConfigurationResponse**](CloudChangeConfigurationResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CloudServiceChangePinned
+
+> CloudChangePinnedResponse CloudServiceChangePinned(ctx, serviceId).CloudChangePinnedRequest(cloudChangePinnedRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    serviceId := "serviceId_example" // string | 
+    cloudChangePinnedRequest := *openapiclient.NewCloudChangePinnedRequest() // CloudChangePinnedRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudServiceApi.CloudServiceChangePinned(context.Background(), serviceId).CloudChangePinnedRequest(cloudChangePinnedRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudServiceApi.CloudServiceChangePinned``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloudServiceChangePinned`: CloudChangePinnedResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudServiceApi.CloudServiceChangePinned`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloudServiceChangePinnedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudChangePinnedRequest** | [**CloudChangePinnedRequest**](CloudChangePinnedRequest.md) |  | 
+
+### Return type
+
+[**CloudChangePinnedResponse**](CloudChangePinnedResponse.md)
 
 ### Authorization
 
@@ -277,7 +419,7 @@ Other parameters are passed through a pointer to a apiCloudServiceGetConfigurati
 
 ## CloudServiceGetList
 
-> CloudGetListResponse CloudServiceGetList(ctx).Execute()
+> CloudGetListResponse CloudServiceGetList(ctx).Offset(offset).Limit(limit).Sort(sort).Filter(filter).View(view).Execute()
 
 
 
@@ -294,10 +436,15 @@ import (
 )
 
 func main() {
+    offset := int32(56) // int32 |  (optional)
+    limit := int32(56) // int32 |  (optional)
+    sort := "sort_example" // string |  (optional)
+    filter := "filter_example" // string |  (optional)
+    view := "view_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudServiceApi.CloudServiceGetList(context.Background()).Execute()
+    resp, r, err := apiClient.CloudServiceApi.CloudServiceGetList(context.Background()).Offset(offset).Limit(limit).Sort(sort).Filter(filter).View(view).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudServiceApi.CloudServiceGetList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -309,12 +456,20 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCloudServiceGetListRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int32** |  | 
+ **limit** | **int32** |  | 
+ **sort** | **string** |  | 
+ **filter** | **string** |  | 
+ **view** | **string** |  | 
 
 ### Return type
 

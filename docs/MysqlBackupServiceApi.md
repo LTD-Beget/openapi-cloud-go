@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## MysqlBackupServiceGetList
 
-> MysqlBackupGetListResponse MysqlBackupServiceGetList(ctx).Execute()
+> MysqlBackupGetListResponse MysqlBackupServiceGetList(ctx).Filter(filter).Execute()
 
 
 
@@ -29,10 +29,11 @@ import (
 )
 
 func main() {
+    filter := "filter_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MysqlBackupServiceApi.MysqlBackupServiceGetList(context.Background()).Execute()
+    resp, r, err := apiClient.MysqlBackupServiceApi.MysqlBackupServiceGetList(context.Background()).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MysqlBackupServiceApi.MysqlBackupServiceGetList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -44,12 +45,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiMysqlBackupServiceGetListRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **string** |  | 
 
 ### Return type
 

@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CdnServiceChangeResourceDomains**](CdnServiceApi.md#CdnServiceChangeResourceDomains) | **Post** /v1/cloud/cdn/{service_id}/resource-domains | 
 [**CdnServiceChangeSetting**](CdnServiceApi.md#CdnServiceChangeSetting) | **Post** /v1/cloud/cdn/{service_id}/setting | 
+[**CdnServiceGetIso3166Countries**](CdnServiceApi.md#CdnServiceGetIso3166Countries) | **Get** /v1/cloud/cdn/iso3166-countries | 
+[**CdnServiceGetIso3166Regions**](CdnServiceApi.md#CdnServiceGetIso3166Regions) | **Post** /v1/cloud/cdn/iso3166-regions | 
 [**CdnServiceGetPrice**](CdnServiceApi.md#CdnServiceGetPrice) | **Get** /v1/cloud/cdn/price | 
 [**CdnServiceGetSourceDomains**](CdnServiceApi.md#CdnServiceGetSourceDomains) | **Get** /v1/cloud/cdn/source-domains | 
 [**CdnServicePreloadCacheByPaths**](CdnServiceApi.md#CdnServicePreloadCacheByPaths) | **Post** /v1/cloud/cdn/{service_id}/preload-cache-by-paths | 
@@ -139,6 +141,129 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CdnChangeSettingResponse**](CdnChangeSettingResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CdnServiceGetIso3166Countries
+
+> CdnGetCountriesResponse CdnServiceGetIso3166Countries(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Countries(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CdnServiceApi.CdnServiceGetIso3166Countries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CdnServiceGetIso3166Countries`: CdnGetCountriesResponse
+    fmt.Fprintf(os.Stdout, "Response from `CdnServiceApi.CdnServiceGetIso3166Countries`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCdnServiceGetIso3166CountriesRequest struct via the builder pattern
+
+
+### Return type
+
+[**CdnGetCountriesResponse**](CdnGetCountriesResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CdnServiceGetIso3166Regions
+
+> CdnGetRegionsResponse CdnServiceGetIso3166Regions(ctx).CdnGetRegionsRequest(cdnGetRegionsRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    cdnGetRegionsRequest := *openapiclient.NewCdnGetRegionsRequest() // CdnGetRegionsRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Regions(context.Background()).CdnGetRegionsRequest(cdnGetRegionsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CdnServiceApi.CdnServiceGetIso3166Regions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CdnServiceGetIso3166Regions`: CdnGetRegionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `CdnServiceApi.CdnServiceGetIso3166Regions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCdnServiceGetIso3166RegionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cdnGetRegionsRequest** | [**CdnGetRegionsRequest**](CdnGetRegionsRequest.md) |  | 
+
+### Return type
+
+[**CdnGetRegionsResponse**](CdnGetRegionsResponse.md)
 
 ### Authorization
 
