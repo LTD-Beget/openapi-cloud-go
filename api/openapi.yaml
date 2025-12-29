@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.0
+  version: v1.6.1
 servers:
 - url: https://api.beget.com
 security:
@@ -1624,6 +1624,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1675,6 +1682,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project_UpdateProjectResponse'
+          description: OK
+      tags:
+      - ProjectService
+  /v1/cloud/projects/{project_id}/pin:
+    put:
+      operationId: ProjectService_ChangePinned
+      parameters:
+      - explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project_ChangePinnedRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project_ChangePinnedResponse'
           description: OK
       tags:
       - ProjectService
@@ -2300,6 +2333,7 @@ components:
           source_service_type: DOMAIN
           source_service_slug: source_service_slug
           cdn_service_id: cdn_service_id
+        ssl_enabled: true
         traffic: traffic
       properties:
         resource_domain:
@@ -2310,6 +2344,8 @@ components:
           $ref: '#/components/schemas/Cdn_SourceDomain'
         settings:
           $ref: '#/components/schemas/Cdn_Settings'
+        ssl_enabled:
+          type: boolean
         traffic:
           type: string
       type: object
@@ -2652,6 +2688,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+          ssl_enabled: true
           traffic: traffic
         error:
           code: _
@@ -2912,6 +2949,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+          ssl_enabled: true
           traffic: traffic
         error:
           code: _
@@ -3043,6 +3081,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+          ssl_enabled: true
           traffic: traffic
         error:
           code: _
@@ -3184,6 +3223,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+          ssl_enabled: true
           traffic: traffic
         error:
           code: _
@@ -3223,6 +3263,7 @@ components:
           - _
           - CONFIGURING
           - WORKING
+          - WORKING_NO_SSL
           format: enum
           type: string
       type: object
@@ -4126,6 +4167,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -4644,6 +4686,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -5163,6 +5206,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -5700,6 +5744,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -6668,6 +6713,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -7151,6 +7197,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -7647,6 +7694,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -8147,6 +8195,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+          ssl_enabled: true
           traffic: traffic
         postgresql164:
           webui_installing: true
@@ -8985,6 +9034,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+            ssl_enabled: true
             traffic: traffic
           postgresql164:
             webui_installing: true
@@ -11576,6 +11626,47 @@ components:
         predefined:
           type: boolean
       type: object
+    Project_ChangePinnedRequest:
+      properties:
+        project_id:
+          type: string
+        ui_pinned:
+          type: boolean
+      type: object
+    Project_ChangePinnedResponse:
+      example:
+        project:
+          ui_pin_changed_at: ui_pin_changed_at
+          updated_at: updated_at
+          name: name
+          description: description
+          created_at: created_at
+          id: id
+          is_default: true
+          ui_pinned: true
+          display_rank: display_rank
+        error:
+          code: _
+          message: message
+      properties:
+        project:
+          $ref: '#/components/schemas/Project_Project'
+        error:
+          $ref: '#/components/schemas/Project_ChangePinnedResponse_Error'
+      type: object
+    Project_ChangePinnedResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        code:
+          enum:
+          - _
+          format: enum
+          type: string
+        message:
+          type: string
+      type: object
     Project_CreateProjectRequest:
       properties:
         name:
@@ -11586,12 +11677,15 @@ components:
     Project_CreateProjectResponse:
       example:
         project:
+          ui_pin_changed_at: ui_pin_changed_at
           updated_at: updated_at
           name: name
           description: description
           created_at: created_at
           id: id
           is_default: true
+          ui_pinned: true
+          display_rank: display_rank
         error:
           code: _
           message: message
@@ -11620,18 +11714,24 @@ components:
       example:
         page:
           projects:
-          - updated_at: updated_at
+          - ui_pin_changed_at: ui_pin_changed_at
+            updated_at: updated_at
             name: name
             description: description
             created_at: created_at
             id: id
             is_default: true
-          - updated_at: updated_at
+            ui_pinned: true
+            display_rank: display_rank
+          - ui_pin_changed_at: ui_pin_changed_at
+            updated_at: updated_at
             name: name
             description: description
             created_at: created_at
             id: id
             is_default: true
+            ui_pinned: true
+            display_rank: display_rank
           total_count: 0
         error: "{}"
       properties:
@@ -11647,18 +11747,24 @@ components:
     Project_GetProjectListResponse_ProjectPage:
       example:
         projects:
-        - updated_at: updated_at
+        - ui_pin_changed_at: ui_pin_changed_at
+          updated_at: updated_at
           name: name
           description: description
           created_at: created_at
           id: id
           is_default: true
-        - updated_at: updated_at
+          ui_pinned: true
+          display_rank: display_rank
+        - ui_pin_changed_at: ui_pin_changed_at
+          updated_at: updated_at
           name: name
           description: description
           created_at: created_at
           id: id
           is_default: true
+          ui_pinned: true
+          display_rank: display_rank
         total_count: 0
       properties:
         projects:
@@ -11671,12 +11777,15 @@ components:
       type: object
     Project_Project:
       example:
+        ui_pin_changed_at: ui_pin_changed_at
         updated_at: updated_at
         name: name
         description: description
         created_at: created_at
         id: id
         is_default: true
+        ui_pinned: true
+        display_rank: display_rank
       properties:
         id:
           type: string
@@ -11689,6 +11798,12 @@ components:
         created_at:
           type: string
         updated_at:
+          type: string
+        ui_pinned:
+          type: boolean
+        ui_pin_changed_at:
+          type: string
+        display_rank:
           type: string
       type: object
     Project_RemoveProjectResponse:
@@ -11733,12 +11848,15 @@ components:
     Project_UpdateProjectResponse:
       example:
         project:
+          ui_pin_changed_at: ui_pin_changed_at
           updated_at: updated_at
           name: name
           description: description
           created_at: created_at
           id: id
           is_default: true
+          ui_pinned: true
+          display_rank: display_rank
         error:
           code: _
           message: message
@@ -12026,6 +12144,10 @@ components:
           - _
           - SERVICE_DISABLED
           - INVALID_DOMAIN
+          - INVALID_HTTP_METHODS
+          - INVALID_CACHE_TTL
+          - INVALID_ALLOW_HEADERS
+          - INVALID_EXPOSE_HEADERS
           format: enum
           type: string
       type: object

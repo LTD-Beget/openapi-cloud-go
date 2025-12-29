@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ResourceDomain** | Pointer to [**[]CdnResourceDomain**](CdnResourceDomain.md) |  | [optional] 
 **SourceDomain** | Pointer to [**CdnSourceDomain**](CdnSourceDomain.md) |  | [optional] 
 **Settings** | Pointer to [**CdnSettings**](CdnSettings.md) |  | [optional] 
+**SslEnabled** | Pointer to **bool** |  | [optional] 
 **Traffic** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetSettings sets Settings field to given value.
 `func (o *CdnCdn) HasSettings() bool`
 
 HasSettings returns a boolean if a field has been set.
+
+### GetSslEnabled
+
+`func (o *CdnCdn) GetSslEnabled() bool`
+
+GetSslEnabled returns the SslEnabled field if non-nil, zero value otherwise.
+
+### GetSslEnabledOk
+
+`func (o *CdnCdn) GetSslEnabledOk() (*bool, bool)`
+
+GetSslEnabledOk returns a tuple with the SslEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSslEnabled
+
+`func (o *CdnCdn) SetSslEnabled(v bool)`
+
+SetSslEnabled sets SslEnabled field to given value.
+
+### HasSslEnabled
+
+`func (o *CdnCdn) HasSslEnabled() bool`
+
+HasSslEnabled returns a boolean if a field has been set.
 
 ### GetTraffic
 

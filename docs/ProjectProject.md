@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **IsDefault** | Pointer to **bool** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
+**UiPinned** | Pointer to **bool** |  | [optional] 
+**UiPinChangedAt** | Pointer to **string** |  | [optional] 
+**DisplayRank** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +182,81 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *ProjectProject) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetUiPinned
+
+`func (o *ProjectProject) GetUiPinned() bool`
+
+GetUiPinned returns the UiPinned field if non-nil, zero value otherwise.
+
+### GetUiPinnedOk
+
+`func (o *ProjectProject) GetUiPinnedOk() (*bool, bool)`
+
+GetUiPinnedOk returns a tuple with the UiPinned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinned
+
+`func (o *ProjectProject) SetUiPinned(v bool)`
+
+SetUiPinned sets UiPinned field to given value.
+
+### HasUiPinned
+
+`func (o *ProjectProject) HasUiPinned() bool`
+
+HasUiPinned returns a boolean if a field has been set.
+
+### GetUiPinChangedAt
+
+`func (o *ProjectProject) GetUiPinChangedAt() string`
+
+GetUiPinChangedAt returns the UiPinChangedAt field if non-nil, zero value otherwise.
+
+### GetUiPinChangedAtOk
+
+`func (o *ProjectProject) GetUiPinChangedAtOk() (*string, bool)`
+
+GetUiPinChangedAtOk returns a tuple with the UiPinChangedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinChangedAt
+
+`func (o *ProjectProject) SetUiPinChangedAt(v string)`
+
+SetUiPinChangedAt sets UiPinChangedAt field to given value.
+
+### HasUiPinChangedAt
+
+`func (o *ProjectProject) HasUiPinChangedAt() bool`
+
+HasUiPinChangedAt returns a boolean if a field has been set.
+
+### GetDisplayRank
+
+`func (o *ProjectProject) GetDisplayRank() string`
+
+GetDisplayRank returns the DisplayRank field if non-nil, zero value otherwise.
+
+### GetDisplayRankOk
+
+`func (o *ProjectProject) GetDisplayRankOk() (*string, bool)`
+
+GetDisplayRankOk returns a tuple with the DisplayRank field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayRank
+
+`func (o *ProjectProject) SetDisplayRank(v string)`
+
+SetDisplayRank sets DisplayRank field to given value.
+
+### HasDisplayRank
+
+`func (o *ProjectProject) HasDisplayRank() bool`
+
+HasDisplayRank returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
