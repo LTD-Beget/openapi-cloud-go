@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.1
+  version: v1.6.2
 servers:
 - url: https://api.beget.com
 security:
@@ -2333,6 +2333,7 @@ components:
           source_service_type: DOMAIN
           source_service_slug: source_service_slug
           cdn_service_id: cdn_service_id
+          source_protocol: HTTPS
         ssl_enabled: true
         traffic: traffic
       properties:
@@ -2476,27 +2477,32 @@ components:
           - domain: domain
             is_technical: true
             status: _
+        domain_errors:
+          domain_error:
+          - code: _
+            domain_already_used_details:
+              service_type: _
+              service_uuid: service_uuid
+            domain: domain
+            message: message
+          - code: _
+            domain_already_used_details:
+              service_type: _
+              service_uuid: service_uuid
+            domain: domain
+            message: message
         error:
-          error:
-          - code: _
-            domain_already_used_details:
-              service_type: _
-              service_uuid: service_uuid
-            domain: domain
-            message: message
-          - code: _
-            domain_already_used_details:
-              service_type: _
-              service_uuid: service_uuid
-            domain: domain
-            message: message
+          code: _
+          message: message
       properties:
         resource_domain:
           $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_ResourceDomains'
+        domain_errors:
+          $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_DomainErrors'
         error:
-          $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_Errors'
+          $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_Error'
       type: object
-    Cdn_ChangeResourceDomainsResponse_Error:
+    Cdn_ChangeResourceDomainsResponse_DomainError:
       example:
         code: _
         domain_already_used_details:
@@ -2522,9 +2528,9 @@ components:
         domain:
           type: string
         domain_already_used_details:
-          $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_Error_DomainAlreadyUsedDetails'
+          $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_DomainError_DomainAlreadyUsedDetails'
       type: object
-    Cdn_ChangeResourceDomainsResponse_Error_DomainAlreadyUsedDetails:
+    Cdn_ChangeResourceDomainsResponse_DomainError_DomainAlreadyUsedDetails:
       example:
         service_type: _
         service_uuid: service_uuid
@@ -2538,9 +2544,9 @@ components:
           format: enum
           type: string
       type: object
-    Cdn_ChangeResourceDomainsResponse_Errors:
+    Cdn_ChangeResourceDomainsResponse_DomainErrors:
       example:
-        error:
+        domain_error:
         - code: _
           domain_already_used_details:
             service_type: _
@@ -2554,10 +2560,25 @@ components:
           domain: domain
           message: message
       properties:
-        error:
+        domain_error:
           items:
-            $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_Error'
+            $ref: '#/components/schemas/Cdn_ChangeResourceDomainsResponse_DomainError'
           type: array
+      type: object
+    Cdn_ChangeResourceDomainsResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        code:
+          enum:
+          - _
+          - INTERNAL_ERROR
+          - SERVICE_DISABLED
+          format: enum
+          type: string
+        message:
+          type: string
       type: object
     Cdn_ChangeResourceDomainsResponse_ResourceDomains:
       example:
@@ -2688,6 +2709,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+            source_protocol: HTTPS
           ssl_enabled: true
           traffic: traffic
         error:
@@ -2709,6 +2731,7 @@ components:
           - _
           - INTERNAL_ERROR
           - INVALID_OPTION
+          - SERVICE_DISABLED
           format: enum
           type: string
         message:
@@ -2821,12 +2844,14 @@ components:
           source_service_type: DOMAIN
           source_service_slug: source_service_slug
           cdn_service_id: cdn_service_id
+          source_protocol: HTTPS
         - source_service_id: source_service_id
           domain: domain
           source_service_display_name: source_service_display_name
           source_service_type: DOMAIN
           source_service_slug: source_service_slug
           cdn_service_id: cdn_service_id
+          source_protocol: HTTPS
       properties:
         source_domain:
           items:
@@ -2949,6 +2974,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+            source_protocol: HTTPS
           ssl_enabled: true
           traffic: traffic
         error:
@@ -2969,6 +2995,7 @@ components:
           enum:
           - _
           - INTERNAL_ERROR
+          - SERVICE_DISABLED
           format: enum
           type: string
         message:
@@ -3081,6 +3108,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+            source_protocol: HTTPS
           ssl_enabled: true
           traffic: traffic
         error:
@@ -3102,6 +3130,7 @@ components:
           - _
           - INTERNAL_ERROR
           - TOO_MANY_REQUESTS
+          - SERVICE_DISABLED
           format: enum
           type: string
         message:
@@ -3223,6 +3252,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+            source_protocol: HTTPS
           ssl_enabled: true
           traffic: traffic
         error:
@@ -3243,6 +3273,7 @@ components:
           enum:
           - _
           - INTERNAL_ERROR
+          - SERVICE_DISABLED
           format: enum
           type: string
         message:
@@ -3711,6 +3742,7 @@ components:
         source_service_type: DOMAIN
         source_service_slug: source_service_slug
         cdn_service_id: cdn_service_id
+        source_protocol: HTTPS
       properties:
         cdn_service_id:
           type: string
@@ -3728,6 +3760,12 @@ components:
         source_service_display_name:
           type: string
         source_service_slug:
+          type: string
+        source_protocol:
+          enum:
+          - HTTPS
+          - HTTP
+          format: enum
           type: string
       type: object
     Cloud_BindProjectRequest:
@@ -4167,6 +4205,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -4686,6 +4725,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -5206,6 +5246,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -5744,6 +5785,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -6713,6 +6755,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -7197,6 +7240,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -7694,6 +7738,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:
@@ -8195,6 +8240,7 @@ components:
             source_service_type: DOMAIN
             source_service_slug: source_service_slug
             cdn_service_id: cdn_service_id
+            source_protocol: HTTPS
           ssl_enabled: true
           traffic: traffic
         postgresql164:
@@ -8281,6 +8327,7 @@ components:
           enum:
           - _
           - SUSPENDED_INSUFFICIENT_FUNDS
+          - SUSPENDED_SERVICE_MAINTENANCE
           format: enum
           type: string
         created_at:
@@ -9034,6 +9081,7 @@ components:
               source_service_type: DOMAIN
               source_service_slug: source_service_slug
               cdn_service_id: cdn_service_id
+              source_protocol: HTTPS
             ssl_enabled: true
             traffic: traffic
           postgresql164:

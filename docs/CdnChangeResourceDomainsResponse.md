@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceDomain** | Pointer to [**CdnChangeResourceDomainsResponseResourceDomains**](CdnChangeResourceDomainsResponseResourceDomains.md) |  | [optional] 
-**Error** | Pointer to [**CdnChangeResourceDomainsResponseErrors**](CdnChangeResourceDomainsResponseErrors.md) |  | [optional] 
+**DomainErrors** | Pointer to [**CdnChangeResourceDomainsResponseDomainErrors**](CdnChangeResourceDomainsResponseDomainErrors.md) |  | [optional] 
+**Error** | Pointer to [**CdnChangeResourceDomainsResponseError**](CdnChangeResourceDomainsResponseError.md) |  | [optional] 
 
 ## Methods
 
@@ -51,22 +52,47 @@ SetResourceDomain sets ResourceDomain field to given value.
 
 HasResourceDomain returns a boolean if a field has been set.
 
+### GetDomainErrors
+
+`func (o *CdnChangeResourceDomainsResponse) GetDomainErrors() CdnChangeResourceDomainsResponseDomainErrors`
+
+GetDomainErrors returns the DomainErrors field if non-nil, zero value otherwise.
+
+### GetDomainErrorsOk
+
+`func (o *CdnChangeResourceDomainsResponse) GetDomainErrorsOk() (*CdnChangeResourceDomainsResponseDomainErrors, bool)`
+
+GetDomainErrorsOk returns a tuple with the DomainErrors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainErrors
+
+`func (o *CdnChangeResourceDomainsResponse) SetDomainErrors(v CdnChangeResourceDomainsResponseDomainErrors)`
+
+SetDomainErrors sets DomainErrors field to given value.
+
+### HasDomainErrors
+
+`func (o *CdnChangeResourceDomainsResponse) HasDomainErrors() bool`
+
+HasDomainErrors returns a boolean if a field has been set.
+
 ### GetError
 
-`func (o *CdnChangeResourceDomainsResponse) GetError() CdnChangeResourceDomainsResponseErrors`
+`func (o *CdnChangeResourceDomainsResponse) GetError() CdnChangeResourceDomainsResponseError`
 
 GetError returns the Error field if non-nil, zero value otherwise.
 
 ### GetErrorOk
 
-`func (o *CdnChangeResourceDomainsResponse) GetErrorOk() (*CdnChangeResourceDomainsResponseErrors, bool)`
+`func (o *CdnChangeResourceDomainsResponse) GetErrorOk() (*CdnChangeResourceDomainsResponseError, bool)`
 
 GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetError
 
-`func (o *CdnChangeResourceDomainsResponse) SetError(v CdnChangeResourceDomainsResponseErrors)`
+`func (o *CdnChangeResourceDomainsResponse) SetError(v CdnChangeResourceDomainsResponseError)`
 
 SetError sets Error field to given value.
 
