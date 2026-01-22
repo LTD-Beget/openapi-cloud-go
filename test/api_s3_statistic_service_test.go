@@ -10,72 +10,72 @@ Testing S3StatisticServiceApiService
 package begetOpenapiCloud
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func Test_begetOpenapiCloud_S3StatisticServiceApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetNetwork", func(t *testing.T) {
+	t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetNetwork", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetNetwork(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetNetwork(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetQuota", func(t *testing.T) {
+	t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetQuota", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetQuota(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetQuota(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetRequest", func(t *testing.T) {
+	t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetRequest", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetRequest(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetRequest(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetTraffic", func(t *testing.T) {
+	t.Run("Test S3StatisticServiceApiService S3StatisticServiceGetTraffic", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetTraffic(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.S3StatisticServiceApi.S3StatisticServiceGetTraffic(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

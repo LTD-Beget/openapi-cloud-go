@@ -10,188 +10,188 @@ Testing PostgresqlServiceApiService
 package begetOpenapiCloud
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func Test_begetOpenapiCloud_PostgresqlServiceApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceCreateDb", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceCreateDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceCreateDb(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceCreateDb(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceCreateRole", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceCreateRole", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceCreateRole(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceCreateRole(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetConfig", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetConfig", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetConfig(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetConfig(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetDbList", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetDbList", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetDbList(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetDbList(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetRemoteAccess", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetRemoteAccess", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetRemoteAccess(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetRemoteAccess(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetRoleList", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceGetRoleList", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetRoleList(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceGetRoleList(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceRemoveDb", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceRemoveDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
+		var serviceId string
+		var dbName string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceRemoveDb(context.Background(), serviceId, dbName).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceRemoveDb(context.Background(), serviceId, dbName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceRemoveRole", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceRemoveRole", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var roleName string
+		var serviceId string
+		var roleName string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceRemoveRole(context.Background(), serviceId, roleName).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceRemoveRole(context.Background(), serviceId, roleName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceSetConfig", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceSetConfig", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceSetConfig(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceSetConfig(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateDb", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
+		var serviceId string
+		var dbName string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateDb(context.Background(), serviceId, dbName).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateDb(context.Background(), serviceId, dbName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateRemoteAccess", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateRemoteAccess", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateRemoteAccess(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateRemoteAccess(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateRole", func(t *testing.T) {
+	t.Run("Test PostgresqlServiceApiService PostgresqlServiceUpdateRole", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var roleName string
+		var serviceId string
+		var roleName string
 
-        resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateRole(context.Background(), serviceId, roleName).Execute()
+		resp, httpRes, err := apiClient.PostgresqlServiceApi.PostgresqlServiceUpdateRole(context.Background(), serviceId, roleName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

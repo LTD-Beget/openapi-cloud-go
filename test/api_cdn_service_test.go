@@ -10,134 +10,134 @@ Testing CdnServiceApiService
 package begetOpenapiCloud
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func Test_begetOpenapiCloud_CdnServiceApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test CdnServiceApiService CdnServiceChangeResourceDomains", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceChangeResourceDomains", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceChangeResourceDomains(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceChangeResourceDomains(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServiceChangeSetting", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceChangeSetting", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceChangeSetting(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceChangeSetting(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServiceGetIso3166Countries", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceGetIso3166Countries", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Countries(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Countries(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServiceGetIso3166Regions", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceGetIso3166Regions", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Regions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetIso3166Regions(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServiceGetPrice", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceGetPrice", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetPrice(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetPrice(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServiceGetSourceDomains", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServiceGetSourceDomains", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetSourceDomains(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServiceGetSourceDomains(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServicePreloadCacheByPaths", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServicePreloadCacheByPaths", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePreloadCacheByPaths(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePreloadCacheByPaths(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServicePurgeAllCache", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServicePurgeAllCache", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePurgeAllCache(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePurgeAllCache(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnServiceApiService CdnServicePurgeCacheByPaths", func(t *testing.T) {
+	t.Run("Test CdnServiceApiService CdnServicePurgeCacheByPaths", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePurgeCacheByPaths(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnServiceApi.CdnServicePurgeCacheByPaths(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

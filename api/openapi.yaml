@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.2
+  version: v1.6.3
 servers:
 - url: https://api.beget.com
 security:

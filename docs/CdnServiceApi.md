@@ -31,7 +31,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -101,7 +101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -294,7 +294,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -353,7 +353,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -412,7 +412,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -482,7 +482,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {
@@ -550,7 +550,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func main() {

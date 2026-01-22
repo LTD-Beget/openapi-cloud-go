@@ -10,149 +10,149 @@ Testing MysqlServiceApiService
 package begetOpenapiCloud
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func Test_begetOpenapiCloud_MysqlServiceApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test MysqlServiceApiService MysqlServiceChangeAccessPassword", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceChangeAccessPassword", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
-        var host string
+		var serviceId string
+		var dbName string
+		var host string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceChangeAccessPassword(context.Background(), serviceId, dbName, host).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceChangeAccessPassword(context.Background(), serviceId, dbName, host).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceCreateAccess", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceCreateAccess", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
+		var serviceId string
+		var dbName string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceCreateAccess(context.Background(), serviceId, dbName).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceCreateAccess(context.Background(), serviceId, dbName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceCreateDb", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceCreateDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceCreateDb(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceCreateDb(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceGetConfig", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceGetConfig", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceGetConfig(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceGetConfig(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceGetDbList", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceGetDbList", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceGetDbList(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceGetDbList(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceRemoveAccess", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceRemoveAccess", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
-        var host string
+		var serviceId string
+		var dbName string
+		var host string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceRemoveAccess(context.Background(), serviceId, dbName, host).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceRemoveAccess(context.Background(), serviceId, dbName, host).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceRemoveDb", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceRemoveDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
+		var serviceId string
+		var dbName string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceRemoveDb(context.Background(), serviceId, dbName).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceRemoveDb(context.Background(), serviceId, dbName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceSetConfig", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceSetConfig", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceSetConfig(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceSetConfig(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test MysqlServiceApiService MysqlServiceUpdateDb", func(t *testing.T) {
+	t.Run("Test MysqlServiceApiService MysqlServiceUpdateDb", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
-        var dbName string
+		var serviceId string
+		var dbName string
 
-        resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceUpdateDb(context.Background(), serviceId, dbName).Execute()
+		resp, httpRes, err := apiClient.MysqlServiceApi.MysqlServiceUpdateDb(context.Background(), serviceId, dbName).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

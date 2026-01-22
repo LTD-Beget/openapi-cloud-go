@@ -10,58 +10,58 @@ Testing CdnStatisticServiceApiService
 package begetOpenapiCloud
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/LTD-Beget/openapi-cloud-go"
 )
 
 func Test_begetOpenapiCloud_CdnStatisticServiceApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetNetwork", func(t *testing.T) {
+	t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetNetwork", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetNetwork(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetNetwork(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetRequest", func(t *testing.T) {
+	t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetRequest", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetRequest(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetRequest(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetTraffic", func(t *testing.T) {
+	t.Run("Test CdnStatisticServiceApiService CdnStatisticServiceGetTraffic", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        var serviceId string
+		var serviceId string
 
-        resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetTraffic(context.Background(), serviceId).Execute()
+		resp, httpRes, err := apiClient.CdnStatisticServiceApi.CdnStatisticServiceGetTraffic(context.Background(), serviceId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }
