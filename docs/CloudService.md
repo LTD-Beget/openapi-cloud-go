@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Restoring** | Pointer to **bool** |  | [optional] 
+**DisplayRank** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -751,6 +752,31 @@ SetRestoring sets Restoring field to given value.
 `func (o *CloudService) HasRestoring() bool`
 
 HasRestoring returns a boolean if a field has been set.
+
+### GetDisplayRank
+
+`func (o *CloudService) GetDisplayRank() string`
+
+GetDisplayRank returns the DisplayRank field if non-nil, zero value otherwise.
+
+### GetDisplayRankOk
+
+`func (o *CloudService) GetDisplayRankOk() (*string, bool)`
+
+GetDisplayRankOk returns a tuple with the DisplayRank field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayRank
+
+`func (o *CloudService) SetDisplayRank(v string)`
+
+SetDisplayRank sets DisplayRank field to given value.
+
+### HasDisplayRank
+
+`func (o *CloudService) HasDisplayRank() bool`
+
+HasDisplayRank returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

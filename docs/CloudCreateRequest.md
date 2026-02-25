@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** |  | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **UiPinned** | Pointer to **bool** |  | [optional] 
+**UiPinnedAfterRank** | Pointer to **string** |  | [optional] 
+**UiPinnedBeforeRank** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -309,6 +311,56 @@ SetUiPinned sets UiPinned field to given value.
 `func (o *CloudCreateRequest) HasUiPinned() bool`
 
 HasUiPinned returns a boolean if a field has been set.
+
+### GetUiPinnedAfterRank
+
+`func (o *CloudCreateRequest) GetUiPinnedAfterRank() string`
+
+GetUiPinnedAfterRank returns the UiPinnedAfterRank field if non-nil, zero value otherwise.
+
+### GetUiPinnedAfterRankOk
+
+`func (o *CloudCreateRequest) GetUiPinnedAfterRankOk() (*string, bool)`
+
+GetUiPinnedAfterRankOk returns a tuple with the UiPinnedAfterRank field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinnedAfterRank
+
+`func (o *CloudCreateRequest) SetUiPinnedAfterRank(v string)`
+
+SetUiPinnedAfterRank sets UiPinnedAfterRank field to given value.
+
+### HasUiPinnedAfterRank
+
+`func (o *CloudCreateRequest) HasUiPinnedAfterRank() bool`
+
+HasUiPinnedAfterRank returns a boolean if a field has been set.
+
+### GetUiPinnedBeforeRank
+
+`func (o *CloudCreateRequest) GetUiPinnedBeforeRank() string`
+
+GetUiPinnedBeforeRank returns the UiPinnedBeforeRank field if non-nil, zero value otherwise.
+
+### GetUiPinnedBeforeRankOk
+
+`func (o *CloudCreateRequest) GetUiPinnedBeforeRankOk() (*string, bool)`
+
+GetUiPinnedBeforeRankOk returns a tuple with the UiPinnedBeforeRank field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUiPinnedBeforeRank
+
+`func (o *CloudCreateRequest) SetUiPinnedBeforeRank(v string)`
+
+SetUiPinnedBeforeRank sets UiPinnedBeforeRank field to given value.
+
+### HasUiPinnedBeforeRank
+
+`func (o *CloudCreateRequest) HasUiPinnedBeforeRank() bool`
+
+HasUiPinnedBeforeRank returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
