@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **bool** |  | [optional] 
-**ContentType** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -50,31 +49,6 @@ SetEnable sets Enable field to given value.
 `func (o *CdnSettingsGzipCompression) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
-
-### GetContentType
-
-`func (o *CdnSettingsGzipCompression) GetContentType() []string`
-
-GetContentType returns the ContentType field if non-nil, zero value otherwise.
-
-### GetContentTypeOk
-
-`func (o *CdnSettingsGzipCompression) GetContentTypeOk() (*[]string, bool)`
-
-GetContentTypeOk returns a tuple with the ContentType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContentType
-
-`func (o *CdnSettingsGzipCompression) SetContentType(v []string)`
-
-SetContentType sets ContentType field to given value.
-
-### HasContentType
-
-`func (o *CdnSettingsGzipCompression) HasContentType() bool`
-
-HasContentType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

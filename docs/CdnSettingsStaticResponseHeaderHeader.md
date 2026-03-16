@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **[]string** |  | [optional] 
-**Always** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetValue sets Value field to given value.
 `func (o *CdnSettingsStaticResponseHeaderHeader) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
-
-### GetAlways
-
-`func (o *CdnSettingsStaticResponseHeaderHeader) GetAlways() bool`
-
-GetAlways returns the Always field if non-nil, zero value otherwise.
-
-### GetAlwaysOk
-
-`func (o *CdnSettingsStaticResponseHeaderHeader) GetAlwaysOk() (*bool, bool)`
-
-GetAlwaysOk returns a tuple with the Always field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAlways
-
-`func (o *CdnSettingsStaticResponseHeaderHeader) SetAlways(v bool)`
-
-SetAlways sets Always field to given value.
-
-### HasAlways
-
-`func (o *CdnSettingsStaticResponseHeaderHeader) HasAlways() bool`
-
-HasAlways returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

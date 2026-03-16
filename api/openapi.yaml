@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.4
+  version: v1.6.5
 servers:
 - url: https://api.beget.com
 security:
@@ -2237,12 +2237,6 @@ components:
           is_technical: true
           status: _
         settings:
-          ip_address_acl:
-            excepted_ip:
-            - excepted_ip
-            - excepted_ip
-            policy_type: ALLOW
-            enable: true
           cors:
             always: true
             value:
@@ -2252,35 +2246,23 @@ components:
           static_response_headers:
             enable: true
             header:
-            - always: true
-              name: name
+            - name: name
               value:
               - value
               - value
-            - always: true
-              name: name
+            - name: name
               value:
               - value
               - value
           ignore_cookie: true
           caching_time: 6
-          referer_acl:
-            policy_type: ALLOW
-            enable: true
-            excepted_domain:
-            - excepted_domain
-            - excepted_domain
           response_headers_hiding_policy:
-            mode: HIDE
+            header:
+            - header
+            - header
             enabled: true
-            excepted:
-            - excepted
-            - excepted
           ignore_query_string: true
           follow_origin_redirect:
-            code:
-            - HTTP_301
-            - HTTP_301
             enable: true
           http3_enabled: true
           stale:
@@ -2289,23 +2271,6 @@ components:
             - HTTP_403
             - HTTP_403
           gzip_compression:
-            content_type:
-            - content_type
-            - content_type
-            enable: true
-          user_agent_acl:
-            excepted_user_agent:
-            - excepted_user_agent
-            - excepted_user_agent
-            policy_type: ALLOW
-            enable: true
-          geo_acl:
-            excepted_values:
-              key:
-                values:
-                - values
-                - values
-            policy_type: ALLOW
             enable: true
           content_slice: true
           tokenized_url_secure_key:
@@ -2325,7 +2290,6 @@ components:
           caching_time_browser:
             enable: true
             time: 6
-            type: SOURCE
         source_domain:
           source_service_id: source_service_id
           domain: domain
@@ -2614,12 +2578,6 @@ components:
             is_technical: true
             status: _
           settings:
-            ip_address_acl:
-              excepted_ip:
-              - excepted_ip
-              - excepted_ip
-              policy_type: ALLOW
-              enable: true
             cors:
               always: true
               value:
@@ -2629,35 +2587,23 @@ components:
             static_response_headers:
               enable: true
               header:
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
             ignore_cookie: true
             caching_time: 6
-            referer_acl:
-              policy_type: ALLOW
-              enable: true
-              excepted_domain:
-              - excepted_domain
-              - excepted_domain
             response_headers_hiding_policy:
-              mode: HIDE
+              header:
+              - header
+              - header
               enabled: true
-              excepted:
-              - excepted
-              - excepted
             ignore_query_string: true
             follow_origin_redirect:
-              code:
-              - HTTP_301
-              - HTTP_301
               enable: true
             http3_enabled: true
             stale:
@@ -2666,23 +2612,6 @@ components:
               - HTTP_403
               - HTTP_403
             gzip_compression:
-              content_type:
-              - content_type
-              - content_type
-              enable: true
-            user_agent_acl:
-              excepted_user_agent:
-              - excepted_user_agent
-              - excepted_user_agent
-              policy_type: ALLOW
-              enable: true
-            geo_acl:
-              excepted_values:
-                key:
-                  values:
-                  - values
-                  - values
-              policy_type: ALLOW
               enable: true
             content_slice: true
             tokenized_url_secure_key:
@@ -2702,7 +2631,6 @@ components:
             caching_time_browser:
               enable: true
               time: 6
-              type: SOURCE
           source_domain:
             source_service_id: source_service_id
             domain: domain
@@ -2879,12 +2807,6 @@ components:
             is_technical: true
             status: _
           settings:
-            ip_address_acl:
-              excepted_ip:
-              - excepted_ip
-              - excepted_ip
-              policy_type: ALLOW
-              enable: true
             cors:
               always: true
               value:
@@ -2894,35 +2816,23 @@ components:
             static_response_headers:
               enable: true
               header:
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
             ignore_cookie: true
             caching_time: 6
-            referer_acl:
-              policy_type: ALLOW
-              enable: true
-              excepted_domain:
-              - excepted_domain
-              - excepted_domain
             response_headers_hiding_policy:
-              mode: HIDE
+              header:
+              - header
+              - header
               enabled: true
-              excepted:
-              - excepted
-              - excepted
             ignore_query_string: true
             follow_origin_redirect:
-              code:
-              - HTTP_301
-              - HTTP_301
               enable: true
             http3_enabled: true
             stale:
@@ -2931,23 +2841,6 @@ components:
               - HTTP_403
               - HTTP_403
             gzip_compression:
-              content_type:
-              - content_type
-              - content_type
-              enable: true
-            user_agent_acl:
-              excepted_user_agent:
-              - excepted_user_agent
-              - excepted_user_agent
-              policy_type: ALLOW
-              enable: true
-            geo_acl:
-              excepted_values:
-                key:
-                  values:
-                  - values
-                  - values
-              policy_type: ALLOW
               enable: true
             content_slice: true
             tokenized_url_secure_key:
@@ -2967,7 +2860,6 @@ components:
             caching_time_browser:
               enable: true
               time: 6
-              type: SOURCE
           source_domain:
             source_service_id: source_service_id
             domain: domain
@@ -3013,12 +2905,6 @@ components:
             is_technical: true
             status: _
           settings:
-            ip_address_acl:
-              excepted_ip:
-              - excepted_ip
-              - excepted_ip
-              policy_type: ALLOW
-              enable: true
             cors:
               always: true
               value:
@@ -3028,35 +2914,23 @@ components:
             static_response_headers:
               enable: true
               header:
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
             ignore_cookie: true
             caching_time: 6
-            referer_acl:
-              policy_type: ALLOW
-              enable: true
-              excepted_domain:
-              - excepted_domain
-              - excepted_domain
             response_headers_hiding_policy:
-              mode: HIDE
+              header:
+              - header
+              - header
               enabled: true
-              excepted:
-              - excepted
-              - excepted
             ignore_query_string: true
             follow_origin_redirect:
-              code:
-              - HTTP_301
-              - HTTP_301
               enable: true
             http3_enabled: true
             stale:
@@ -3065,23 +2939,6 @@ components:
               - HTTP_403
               - HTTP_403
             gzip_compression:
-              content_type:
-              - content_type
-              - content_type
-              enable: true
-            user_agent_acl:
-              excepted_user_agent:
-              - excepted_user_agent
-              - excepted_user_agent
-              policy_type: ALLOW
-              enable: true
-            geo_acl:
-              excepted_values:
-                key:
-                  values:
-                  - values
-                  - values
-              policy_type: ALLOW
               enable: true
             content_slice: true
             tokenized_url_secure_key:
@@ -3101,7 +2958,6 @@ components:
             caching_time_browser:
               enable: true
               time: 6
-              type: SOURCE
           source_domain:
             source_service_id: source_service_id
             domain: domain
@@ -3157,12 +3013,6 @@ components:
             is_technical: true
             status: _
           settings:
-            ip_address_acl:
-              excepted_ip:
-              - excepted_ip
-              - excepted_ip
-              policy_type: ALLOW
-              enable: true
             cors:
               always: true
               value:
@@ -3172,35 +3022,23 @@ components:
             static_response_headers:
               enable: true
               header:
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
             ignore_cookie: true
             caching_time: 6
-            referer_acl:
-              policy_type: ALLOW
-              enable: true
-              excepted_domain:
-              - excepted_domain
-              - excepted_domain
             response_headers_hiding_policy:
-              mode: HIDE
+              header:
+              - header
+              - header
               enabled: true
-              excepted:
-              - excepted
-              - excepted
             ignore_query_string: true
             follow_origin_redirect:
-              code:
-              - HTTP_301
-              - HTTP_301
               enable: true
             http3_enabled: true
             stale:
@@ -3209,23 +3047,6 @@ components:
               - HTTP_403
               - HTTP_403
             gzip_compression:
-              content_type:
-              - content_type
-              - content_type
-              enable: true
-            user_agent_acl:
-              excepted_user_agent:
-              - excepted_user_agent
-              - excepted_user_agent
-              policy_type: ALLOW
-              enable: true
-            geo_acl:
-              excepted_values:
-                key:
-                  values:
-                  - values
-                  - values
-              policy_type: ALLOW
               enable: true
             content_slice: true
             tokenized_url_secure_key:
@@ -3245,7 +3066,6 @@ components:
             caching_time_browser:
               enable: true
               time: 6
-              type: SOURCE
           source_domain:
             source_service_id: source_service_id
             domain: domain
@@ -3301,12 +3121,6 @@ components:
       type: object
     Cdn_Settings:
       example:
-        ip_address_acl:
-          excepted_ip:
-          - excepted_ip
-          - excepted_ip
-          policy_type: ALLOW
-          enable: true
         cors:
           always: true
           value:
@@ -3316,35 +3130,23 @@ components:
         static_response_headers:
           enable: true
           header:
-          - always: true
-            name: name
+          - name: name
             value:
             - value
             - value
-          - always: true
-            name: name
+          - name: name
             value:
             - value
             - value
         ignore_cookie: true
         caching_time: 6
-        referer_acl:
-          policy_type: ALLOW
-          enable: true
-          excepted_domain:
-          - excepted_domain
-          - excepted_domain
         response_headers_hiding_policy:
-          mode: HIDE
+          header:
+          - header
+          - header
           enabled: true
-          excepted:
-          - excepted
-          - excepted
         ignore_query_string: true
         follow_origin_redirect:
-          code:
-          - HTTP_301
-          - HTTP_301
           enable: true
         http3_enabled: true
         stale:
@@ -3353,23 +3155,6 @@ components:
           - HTTP_403
           - HTTP_403
         gzip_compression:
-          content_type:
-          - content_type
-          - content_type
-          enable: true
-        user_agent_acl:
-          excepted_user_agent:
-          - excepted_user_agent
-          - excepted_user_agent
-          policy_type: ALLOW
-          enable: true
-        geo_acl:
-          excepted_values:
-            key:
-              values:
-              - values
-              - values
-          policy_type: ALLOW
           enable: true
         content_slice: true
         tokenized_url_secure_key:
@@ -3389,7 +3174,6 @@ components:
         caching_time_browser:
           enable: true
           time: 6
-          type: SOURCE
       properties:
         caching_time:
           format: uint32
@@ -3404,16 +3188,8 @@ components:
           type: boolean
         stale:
           $ref: '#/components/schemas/Cdn_Settings_Stale'
-        geo_acl:
-          $ref: '#/components/schemas/Cdn_Settings_GeoAcl'
-        referer_acl:
-          $ref: '#/components/schemas/Cdn_Settings_RefererAcl'
-        ip_address_acl:
-          $ref: '#/components/schemas/Cdn_Settings_IpAddressAcl'
         redirect_http_to_https:
           type: boolean
-        user_agent_acl:
-          $ref: '#/components/schemas/Cdn_Settings_UserAgentAcl'
         tokenized_url_secure_key:
           $ref: '#/components/schemas/Cdn_Settings_TokenizedUrlSecureKey'
         allowed_http_methods:
@@ -3460,16 +3236,9 @@ components:
       example:
         enable: true
         time: 6
-        type: SOURCE
       properties:
         enable:
           type: boolean
-        type:
-          enum:
-          - SOURCE
-          - CUSTOM
-          format: enum
-          type: string
         time:
           format: uint32
           type: integer
@@ -3493,135 +3262,31 @@ components:
       type: object
     Cdn_Settings_FollowOriginRedirect:
       example:
-        code:
-        - HTTP_301
-        - HTTP_301
         enable: true
       properties:
         enable:
           type: boolean
-        code:
-          items:
-            enum:
-            - HTTP_301
-            - HTTP_302
-            - HTTP_303
-            - HTTP_307
-            - HTTP_308
-            format: enum
-            type: string
-          type: array
-      type: object
-    Cdn_Settings_GeoAcl:
-      example:
-        excepted_values:
-          key:
-            values:
-            - values
-            - values
-        policy_type: ALLOW
-        enable: true
-      properties:
-        enable:
-          type: boolean
-        policy_type:
-          enum:
-          - ALLOW
-          - DENY
-          format: enum
-          type: string
-        excepted_values:
-          additionalProperties:
-            $ref: '#/components/schemas/Cdn_Settings_GeoAcl_StringArray'
-          type: object
-      type: object
-    Cdn_Settings_GeoAcl_StringArray:
-      example:
-        values:
-        - values
-        - values
-      properties:
-        values:
-          items:
-            type: string
-          type: array
       type: object
     Cdn_Settings_GzipCompression:
       example:
-        content_type:
-        - content_type
-        - content_type
         enable: true
       properties:
         enable:
           type: boolean
-        content_type:
-          items:
-            type: string
-          type: array
-      type: object
-    Cdn_Settings_IpAddressAcl:
-      example:
-        excepted_ip:
-        - excepted_ip
-        - excepted_ip
-        policy_type: ALLOW
-        enable: true
-      properties:
-        enable:
-          type: boolean
-        policy_type:
-          enum:
-          - ALLOW
-          - DENY
-          format: enum
-          type: string
-        excepted_ip:
-          items:
-            type: string
-          type: array
-      type: object
-    Cdn_Settings_RefererAcl:
-      example:
-        policy_type: ALLOW
-        enable: true
-        excepted_domain:
-        - excepted_domain
-        - excepted_domain
-      properties:
-        enable:
-          type: boolean
-        policy_type:
-          enum:
-          - ALLOW
-          - DENY
-          format: enum
-          type: string
-        excepted_domain:
-          items:
-            type: string
-          type: array
       type: object
     Cdn_Settings_ResponseHeadersHidingPolicy:
       example:
-        mode: HIDE
+        header:
+        - header
+        - header
         enabled: true
-        excepted:
-        - excepted
-        - excepted
       properties:
         enabled:
           type: boolean
-        excepted:
+        header:
           items:
             type: string
           type: array
-        mode:
-          enum:
-          - HIDE
-          - SHOW
-          format: enum
-          type: string
       type: object
     Cdn_Settings_Stale:
       example:
@@ -3666,13 +3331,11 @@ components:
       example:
         enable: true
         header:
-        - always: true
-          name: name
+        - name: name
           value:
           - value
           - value
-        - always: true
-          name: name
+        - name: name
           value:
           - value
           - value
@@ -3686,7 +3349,6 @@ components:
       type: object
     Cdn_Settings_StaticResponseHeader_Header:
       example:
-        always: true
         name: name
         value:
         - value
@@ -3698,8 +3360,6 @@ components:
           items:
             type: string
           type: array
-        always:
-          type: boolean
       type: object
     Cdn_Settings_TokenizedUrlSecureKey:
       example:
@@ -3713,27 +3373,6 @@ components:
           type: string
         include_ip:
           type: boolean
-      type: object
-    Cdn_Settings_UserAgentAcl:
-      example:
-        excepted_user_agent:
-        - excepted_user_agent
-        - excepted_user_agent
-        policy_type: ALLOW
-        enable: true
-      properties:
-        enable:
-          type: boolean
-        policy_type:
-          enum:
-          - ALLOW
-          - DENY
-          format: enum
-          type: string
-        excepted_user_agent:
-          items:
-            type: string
-          type: array
       type: object
     Cdn_SourceDomain:
       example:
@@ -4115,12 +3754,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -4130,35 +3763,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -4167,23 +3788,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -4203,7 +3807,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -4640,12 +4243,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -4655,35 +4252,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -4692,23 +4277,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -4728,7 +4296,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -5170,12 +4737,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -5185,35 +4746,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -5222,23 +4771,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -5258,7 +4790,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -5718,12 +5249,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -5733,35 +5258,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -5770,23 +5283,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -5806,7 +5302,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -6693,12 +6188,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -6708,35 +6197,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -6745,23 +6222,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -6781,7 +6241,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -7183,12 +6642,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -7198,35 +6651,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -7235,23 +6676,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -7271,7 +6695,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -7686,12 +7109,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -7701,35 +7118,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -7738,23 +7143,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -7774,7 +7162,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain
@@ -8193,12 +7580,6 @@ components:
             is_technical: true
             status: _
           settings:
-            ip_address_acl:
-              excepted_ip:
-              - excepted_ip
-              - excepted_ip
-              policy_type: ALLOW
-              enable: true
             cors:
               always: true
               value:
@@ -8208,35 +7589,23 @@ components:
             static_response_headers:
               enable: true
               header:
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
-              - always: true
-                name: name
+              - name: name
                 value:
                 - value
                 - value
             ignore_cookie: true
             caching_time: 6
-            referer_acl:
-              policy_type: ALLOW
-              enable: true
-              excepted_domain:
-              - excepted_domain
-              - excepted_domain
             response_headers_hiding_policy:
-              mode: HIDE
+              header:
+              - header
+              - header
               enabled: true
-              excepted:
-              - excepted
-              - excepted
             ignore_query_string: true
             follow_origin_redirect:
-              code:
-              - HTTP_301
-              - HTTP_301
               enable: true
             http3_enabled: true
             stale:
@@ -8245,23 +7614,6 @@ components:
               - HTTP_403
               - HTTP_403
             gzip_compression:
-              content_type:
-              - content_type
-              - content_type
-              enable: true
-            user_agent_acl:
-              excepted_user_agent:
-              - excepted_user_agent
-              - excepted_user_agent
-              policy_type: ALLOW
-              enable: true
-            geo_acl:
-              excepted_values:
-                key:
-                  values:
-                  - values
-                  - values
-              policy_type: ALLOW
               enable: true
             content_slice: true
             tokenized_url_secure_key:
@@ -8281,7 +7633,6 @@ components:
             caching_time_browser:
               enable: true
               time: 6
-              type: SOURCE
           source_domain:
             source_service_id: source_service_id
             domain: domain
@@ -9041,12 +8392,6 @@ components:
               is_technical: true
               status: _
             settings:
-              ip_address_acl:
-                excepted_ip:
-                - excepted_ip
-                - excepted_ip
-                policy_type: ALLOW
-                enable: true
               cors:
                 always: true
                 value:
@@ -9056,35 +8401,23 @@ components:
               static_response_headers:
                 enable: true
                 header:
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
-                - always: true
-                  name: name
+                - name: name
                   value:
                   - value
                   - value
               ignore_cookie: true
               caching_time: 6
-              referer_acl:
-                policy_type: ALLOW
-                enable: true
-                excepted_domain:
-                - excepted_domain
-                - excepted_domain
               response_headers_hiding_policy:
-                mode: HIDE
+                header:
+                - header
+                - header
                 enabled: true
-                excepted:
-                - excepted
-                - excepted
               ignore_query_string: true
               follow_origin_redirect:
-                code:
-                - HTTP_301
-                - HTTP_301
                 enable: true
               http3_enabled: true
               stale:
@@ -9093,23 +8426,6 @@ components:
                 - HTTP_403
                 - HTTP_403
               gzip_compression:
-                content_type:
-                - content_type
-                - content_type
-                enable: true
-              user_agent_acl:
-                excepted_user_agent:
-                - excepted_user_agent
-                - excepted_user_agent
-                policy_type: ALLOW
-                enable: true
-              geo_acl:
-                excepted_values:
-                  key:
-                    values:
-                    - values
-                    - values
-                policy_type: ALLOW
                 enable: true
               content_slice: true
               tokenized_url_secure_key:
@@ -9129,7 +8445,6 @@ components:
               caching_time_browser:
                 enable: true
                 time: 6
-                type: SOURCE
             source_domain:
               source_service_id: source_service_id
               domain: domain

@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **bool** |  | [optional] 
-**Code** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -50,31 +49,6 @@ SetEnable sets Enable field to given value.
 `func (o *CdnSettingsFollowOriginRedirect) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
-
-### GetCode
-
-`func (o *CdnSettingsFollowOriginRedirect) GetCode() []string`
-
-GetCode returns the Code field if non-nil, zero value otherwise.
-
-### GetCodeOk
-
-`func (o *CdnSettingsFollowOriginRedirect) GetCodeOk() (*[]string, bool)`
-
-GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCode
-
-`func (o *CdnSettingsFollowOriginRedirect) SetCode(v []string)`
-
-SetCode sets Code field to given value.
-
-### HasCode
-
-`func (o *CdnSettingsFollowOriginRedirect) HasCode() bool`
-
-HasCode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

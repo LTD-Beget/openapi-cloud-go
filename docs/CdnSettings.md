@@ -10,11 +10,7 @@ Name | Type | Description | Notes
 **IgnoreCookie** | Pointer to **bool** |  | [optional] 
 **IgnoreQueryString** | Pointer to **bool** |  | [optional] 
 **Stale** | Pointer to [**CdnSettingsStale**](CdnSettingsStale.md) |  | [optional] 
-**GeoAcl** | Pointer to [**CdnSettingsGeoAcl**](CdnSettingsGeoAcl.md) |  | [optional] 
-**RefererAcl** | Pointer to [**CdnSettingsRefererAcl**](CdnSettingsRefererAcl.md) |  | [optional] 
-**IpAddressAcl** | Pointer to [**CdnSettingsIpAddressAcl**](CdnSettingsIpAddressAcl.md) |  | [optional] 
 **RedirectHttpToHttps** | Pointer to **bool** |  | [optional] 
-**UserAgentAcl** | Pointer to [**CdnSettingsUserAgentAcl**](CdnSettingsUserAgentAcl.md) |  | [optional] 
 **TokenizedUrlSecureKey** | Pointer to [**CdnSettingsTokenizedUrlSecureKey**](CdnSettingsTokenizedUrlSecureKey.md) |  | [optional] 
 **AllowedHttpMethods** | Pointer to [**CdnSettingsAllowedHttpMethods**](CdnSettingsAllowedHttpMethods.md) |  | [optional] 
 **Http3Enabled** | Pointer to **bool** |  | [optional] 
@@ -194,81 +190,6 @@ SetStale sets Stale field to given value.
 
 HasStale returns a boolean if a field has been set.
 
-### GetGeoAcl
-
-`func (o *CdnSettings) GetGeoAcl() CdnSettingsGeoAcl`
-
-GetGeoAcl returns the GeoAcl field if non-nil, zero value otherwise.
-
-### GetGeoAclOk
-
-`func (o *CdnSettings) GetGeoAclOk() (*CdnSettingsGeoAcl, bool)`
-
-GetGeoAclOk returns a tuple with the GeoAcl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGeoAcl
-
-`func (o *CdnSettings) SetGeoAcl(v CdnSettingsGeoAcl)`
-
-SetGeoAcl sets GeoAcl field to given value.
-
-### HasGeoAcl
-
-`func (o *CdnSettings) HasGeoAcl() bool`
-
-HasGeoAcl returns a boolean if a field has been set.
-
-### GetRefererAcl
-
-`func (o *CdnSettings) GetRefererAcl() CdnSettingsRefererAcl`
-
-GetRefererAcl returns the RefererAcl field if non-nil, zero value otherwise.
-
-### GetRefererAclOk
-
-`func (o *CdnSettings) GetRefererAclOk() (*CdnSettingsRefererAcl, bool)`
-
-GetRefererAclOk returns a tuple with the RefererAcl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefererAcl
-
-`func (o *CdnSettings) SetRefererAcl(v CdnSettingsRefererAcl)`
-
-SetRefererAcl sets RefererAcl field to given value.
-
-### HasRefererAcl
-
-`func (o *CdnSettings) HasRefererAcl() bool`
-
-HasRefererAcl returns a boolean if a field has been set.
-
-### GetIpAddressAcl
-
-`func (o *CdnSettings) GetIpAddressAcl() CdnSettingsIpAddressAcl`
-
-GetIpAddressAcl returns the IpAddressAcl field if non-nil, zero value otherwise.
-
-### GetIpAddressAclOk
-
-`func (o *CdnSettings) GetIpAddressAclOk() (*CdnSettingsIpAddressAcl, bool)`
-
-GetIpAddressAclOk returns a tuple with the IpAddressAcl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIpAddressAcl
-
-`func (o *CdnSettings) SetIpAddressAcl(v CdnSettingsIpAddressAcl)`
-
-SetIpAddressAcl sets IpAddressAcl field to given value.
-
-### HasIpAddressAcl
-
-`func (o *CdnSettings) HasIpAddressAcl() bool`
-
-HasIpAddressAcl returns a boolean if a field has been set.
-
 ### GetRedirectHttpToHttps
 
 `func (o *CdnSettings) GetRedirectHttpToHttps() bool`
@@ -293,31 +214,6 @@ SetRedirectHttpToHttps sets RedirectHttpToHttps field to given value.
 `func (o *CdnSettings) HasRedirectHttpToHttps() bool`
 
 HasRedirectHttpToHttps returns a boolean if a field has been set.
-
-### GetUserAgentAcl
-
-`func (o *CdnSettings) GetUserAgentAcl() CdnSettingsUserAgentAcl`
-
-GetUserAgentAcl returns the UserAgentAcl field if non-nil, zero value otherwise.
-
-### GetUserAgentAclOk
-
-`func (o *CdnSettings) GetUserAgentAclOk() (*CdnSettingsUserAgentAcl, bool)`
-
-GetUserAgentAclOk returns a tuple with the UserAgentAcl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserAgentAcl
-
-`func (o *CdnSettings) SetUserAgentAcl(v CdnSettingsUserAgentAcl)`
-
-SetUserAgentAcl sets UserAgentAcl field to given value.
-
-### HasUserAgentAcl
-
-`func (o *CdnSettings) HasUserAgentAcl() bool`
-
-HasUserAgentAcl returns a boolean if a field has been set.
 
 ### GetTokenizedUrlSecureKey
 
