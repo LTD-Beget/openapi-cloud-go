@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.5
+  version: v1.6.6
 servers:
 - url: https://api.beget.com
 security:
@@ -2404,6 +2404,7 @@ components:
           - INTERNAL_ERROR
           - PROJECT_NOT_FOUND
           - SERVICE_DISABLED
+          - INVALID_SOURCE_SERVICE_ID
           format: enum
           type: string
       type: object
