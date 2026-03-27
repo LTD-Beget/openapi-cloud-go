@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceDomain** | Pointer to **[]string** |  | [optional] 
 **SourceDomain** | Pointer to [**CdnSourceDomain**](CdnSourceDomain.md) |  | [optional] 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**SourceParams** | Pointer to [**CdnCdnCreateParamsSourceParams**](CdnCdnCreateParamsSourceParams.md) |  | [optional] 
 
 ## Methods
 
@@ -77,30 +77,30 @@ SetSourceDomain sets SourceDomain field to given value.
 
 HasSourceDomain returns a boolean if a field has been set.
 
-### GetSettings
+### GetSourceParams
 
-`func (o *CdnCdnCreateParams) GetSettings() map[string]interface{}`
+`func (o *CdnCdnCreateParams) GetSourceParams() CdnCdnCreateParamsSourceParams`
 
-GetSettings returns the Settings field if non-nil, zero value otherwise.
+GetSourceParams returns the SourceParams field if non-nil, zero value otherwise.
 
-### GetSettingsOk
+### GetSourceParamsOk
 
-`func (o *CdnCdnCreateParams) GetSettingsOk() (*map[string]interface{}, bool)`
+`func (o *CdnCdnCreateParams) GetSourceParamsOk() (*CdnCdnCreateParamsSourceParams, bool)`
 
-GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
+GetSourceParamsOk returns a tuple with the SourceParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSettings
+### SetSourceParams
 
-`func (o *CdnCdnCreateParams) SetSettings(v map[string]interface{})`
+`func (o *CdnCdnCreateParams) SetSourceParams(v CdnCdnCreateParamsSourceParams)`
 
-SetSettings sets Settings field to given value.
+SetSourceParams sets SourceParams field to given value.
 
-### HasSettings
+### HasSourceParams
 
-`func (o *CdnCdnCreateParams) HasSettings() bool`
+`func (o *CdnCdnCreateParams) HasSourceParams() bool`
 
-HasSettings returns a boolean if a field has been set.
+HasSourceParams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

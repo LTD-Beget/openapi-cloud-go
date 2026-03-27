@@ -14,39 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the CdnSourceDomain type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CdnSourceDomain{}
+// checks if the CdnCdnCreateParamsSourceParams type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CdnCdnCreateParamsSourceParams{}
 
-// CdnSourceDomain struct for CdnSourceDomain
-type CdnSourceDomain struct {
+// CdnCdnCreateParamsSourceParams struct for CdnCdnCreateParamsSourceParams
+type CdnCdnCreateParamsSourceParams struct {
 	CdnServiceId *string `json:"cdn_service_id,omitempty"`
 	SourceServiceId *string `json:"source_service_id,omitempty"`
 	SourceServiceType *string `json:"source_service_type,omitempty"`
 	Domain *string `json:"domain,omitempty"`
-	SourceServiceDisplayName *string `json:"source_service_display_name,omitempty"`
-	SourceServiceSlug *string `json:"source_service_slug,omitempty"`
 	SourceProtocol *string `json:"source_protocol,omitempty"`
 }
 
-// NewCdnSourceDomain instantiates a new CdnSourceDomain object
+// NewCdnCdnCreateParamsSourceParams instantiates a new CdnCdnCreateParamsSourceParams object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCdnSourceDomain() *CdnSourceDomain {
-	this := CdnSourceDomain{}
+func NewCdnCdnCreateParamsSourceParams() *CdnCdnCreateParamsSourceParams {
+	this := CdnCdnCreateParamsSourceParams{}
 	return &this
 }
 
-// NewCdnSourceDomainWithDefaults instantiates a new CdnSourceDomain object
+// NewCdnCdnCreateParamsSourceParamsWithDefaults instantiates a new CdnCdnCreateParamsSourceParams object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCdnSourceDomainWithDefaults() *CdnSourceDomain {
-	this := CdnSourceDomain{}
+func NewCdnCdnCreateParamsSourceParamsWithDefaults() *CdnCdnCreateParamsSourceParams {
+	this := CdnCdnCreateParamsSourceParams{}
 	return &this
 }
 
 // GetCdnServiceId returns the CdnServiceId field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetCdnServiceId() string {
+func (o *CdnCdnCreateParamsSourceParams) GetCdnServiceId() string {
 	if o == nil || IsNil(o.CdnServiceId) {
 		var ret string
 		return ret
@@ -56,7 +54,7 @@ func (o *CdnSourceDomain) GetCdnServiceId() string {
 
 // GetCdnServiceIdOk returns a tuple with the CdnServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetCdnServiceIdOk() (*string, bool) {
+func (o *CdnCdnCreateParamsSourceParams) GetCdnServiceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CdnServiceId) {
 		return nil, false
 	}
@@ -64,7 +62,7 @@ func (o *CdnSourceDomain) GetCdnServiceIdOk() (*string, bool) {
 }
 
 // HasCdnServiceId returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasCdnServiceId() bool {
+func (o *CdnCdnCreateParamsSourceParams) HasCdnServiceId() bool {
 	if o != nil && !IsNil(o.CdnServiceId) {
 		return true
 	}
@@ -73,12 +71,12 @@ func (o *CdnSourceDomain) HasCdnServiceId() bool {
 }
 
 // SetCdnServiceId gets a reference to the given string and assigns it to the CdnServiceId field.
-func (o *CdnSourceDomain) SetCdnServiceId(v string) {
+func (o *CdnCdnCreateParamsSourceParams) SetCdnServiceId(v string) {
 	o.CdnServiceId = &v
 }
 
 // GetSourceServiceId returns the SourceServiceId field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetSourceServiceId() string {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceServiceId() string {
 	if o == nil || IsNil(o.SourceServiceId) {
 		var ret string
 		return ret
@@ -88,7 +86,7 @@ func (o *CdnSourceDomain) GetSourceServiceId() string {
 
 // GetSourceServiceIdOk returns a tuple with the SourceServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetSourceServiceIdOk() (*string, bool) {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceServiceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SourceServiceId) {
 		return nil, false
 	}
@@ -96,7 +94,7 @@ func (o *CdnSourceDomain) GetSourceServiceIdOk() (*string, bool) {
 }
 
 // HasSourceServiceId returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasSourceServiceId() bool {
+func (o *CdnCdnCreateParamsSourceParams) HasSourceServiceId() bool {
 	if o != nil && !IsNil(o.SourceServiceId) {
 		return true
 	}
@@ -105,12 +103,12 @@ func (o *CdnSourceDomain) HasSourceServiceId() bool {
 }
 
 // SetSourceServiceId gets a reference to the given string and assigns it to the SourceServiceId field.
-func (o *CdnSourceDomain) SetSourceServiceId(v string) {
+func (o *CdnCdnCreateParamsSourceParams) SetSourceServiceId(v string) {
 	o.SourceServiceId = &v
 }
 
 // GetSourceServiceType returns the SourceServiceType field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetSourceServiceType() string {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceServiceType() string {
 	if o == nil || IsNil(o.SourceServiceType) {
 		var ret string
 		return ret
@@ -120,7 +118,7 @@ func (o *CdnSourceDomain) GetSourceServiceType() string {
 
 // GetSourceServiceTypeOk returns a tuple with the SourceServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetSourceServiceTypeOk() (*string, bool) {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceServiceTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.SourceServiceType) {
 		return nil, false
 	}
@@ -128,7 +126,7 @@ func (o *CdnSourceDomain) GetSourceServiceTypeOk() (*string, bool) {
 }
 
 // HasSourceServiceType returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasSourceServiceType() bool {
+func (o *CdnCdnCreateParamsSourceParams) HasSourceServiceType() bool {
 	if o != nil && !IsNil(o.SourceServiceType) {
 		return true
 	}
@@ -137,12 +135,12 @@ func (o *CdnSourceDomain) HasSourceServiceType() bool {
 }
 
 // SetSourceServiceType gets a reference to the given string and assigns it to the SourceServiceType field.
-func (o *CdnSourceDomain) SetSourceServiceType(v string) {
+func (o *CdnCdnCreateParamsSourceParams) SetSourceServiceType(v string) {
 	o.SourceServiceType = &v
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetDomain() string {
+func (o *CdnCdnCreateParamsSourceParams) GetDomain() string {
 	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
@@ -152,7 +150,7 @@ func (o *CdnSourceDomain) GetDomain() string {
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetDomainOk() (*string, bool) {
+func (o *CdnCdnCreateParamsSourceParams) GetDomainOk() (*string, bool) {
 	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
@@ -160,7 +158,7 @@ func (o *CdnSourceDomain) GetDomainOk() (*string, bool) {
 }
 
 // HasDomain returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasDomain() bool {
+func (o *CdnCdnCreateParamsSourceParams) HasDomain() bool {
 	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
@@ -169,76 +167,12 @@ func (o *CdnSourceDomain) HasDomain() bool {
 }
 
 // SetDomain gets a reference to the given string and assigns it to the Domain field.
-func (o *CdnSourceDomain) SetDomain(v string) {
+func (o *CdnCdnCreateParamsSourceParams) SetDomain(v string) {
 	o.Domain = &v
 }
 
-// GetSourceServiceDisplayName returns the SourceServiceDisplayName field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetSourceServiceDisplayName() string {
-	if o == nil || IsNil(o.SourceServiceDisplayName) {
-		var ret string
-		return ret
-	}
-	return *o.SourceServiceDisplayName
-}
-
-// GetSourceServiceDisplayNameOk returns a tuple with the SourceServiceDisplayName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetSourceServiceDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceServiceDisplayName) {
-		return nil, false
-	}
-	return o.SourceServiceDisplayName, true
-}
-
-// HasSourceServiceDisplayName returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasSourceServiceDisplayName() bool {
-	if o != nil && !IsNil(o.SourceServiceDisplayName) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceServiceDisplayName gets a reference to the given string and assigns it to the SourceServiceDisplayName field.
-func (o *CdnSourceDomain) SetSourceServiceDisplayName(v string) {
-	o.SourceServiceDisplayName = &v
-}
-
-// GetSourceServiceSlug returns the SourceServiceSlug field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetSourceServiceSlug() string {
-	if o == nil || IsNil(o.SourceServiceSlug) {
-		var ret string
-		return ret
-	}
-	return *o.SourceServiceSlug
-}
-
-// GetSourceServiceSlugOk returns a tuple with the SourceServiceSlug field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetSourceServiceSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceServiceSlug) {
-		return nil, false
-	}
-	return o.SourceServiceSlug, true
-}
-
-// HasSourceServiceSlug returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasSourceServiceSlug() bool {
-	if o != nil && !IsNil(o.SourceServiceSlug) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceServiceSlug gets a reference to the given string and assigns it to the SourceServiceSlug field.
-func (o *CdnSourceDomain) SetSourceServiceSlug(v string) {
-	o.SourceServiceSlug = &v
-}
-
 // GetSourceProtocol returns the SourceProtocol field value if set, zero value otherwise.
-func (o *CdnSourceDomain) GetSourceProtocol() string {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceProtocol() string {
 	if o == nil || IsNil(o.SourceProtocol) {
 		var ret string
 		return ret
@@ -248,7 +182,7 @@ func (o *CdnSourceDomain) GetSourceProtocol() string {
 
 // GetSourceProtocolOk returns a tuple with the SourceProtocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CdnSourceDomain) GetSourceProtocolOk() (*string, bool) {
+func (o *CdnCdnCreateParamsSourceParams) GetSourceProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.SourceProtocol) {
 		return nil, false
 	}
@@ -256,7 +190,7 @@ func (o *CdnSourceDomain) GetSourceProtocolOk() (*string, bool) {
 }
 
 // HasSourceProtocol returns a boolean if a field has been set.
-func (o *CdnSourceDomain) HasSourceProtocol() bool {
+func (o *CdnCdnCreateParamsSourceParams) HasSourceProtocol() bool {
 	if o != nil && !IsNil(o.SourceProtocol) {
 		return true
 	}
@@ -265,11 +199,11 @@ func (o *CdnSourceDomain) HasSourceProtocol() bool {
 }
 
 // SetSourceProtocol gets a reference to the given string and assigns it to the SourceProtocol field.
-func (o *CdnSourceDomain) SetSourceProtocol(v string) {
+func (o *CdnCdnCreateParamsSourceParams) SetSourceProtocol(v string) {
 	o.SourceProtocol = &v
 }
 
-func (o CdnSourceDomain) MarshalJSON() ([]byte, error) {
+func (o CdnCdnCreateParamsSourceParams) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,7 +211,7 @@ func (o CdnSourceDomain) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CdnSourceDomain) ToMap() (map[string]interface{}, error) {
+func (o CdnCdnCreateParamsSourceParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CdnServiceId) {
 		toSerialize["cdn_service_id"] = o.CdnServiceId
@@ -291,50 +225,44 @@ func (o CdnSourceDomain) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-	if !IsNil(o.SourceServiceDisplayName) {
-		toSerialize["source_service_display_name"] = o.SourceServiceDisplayName
-	}
-	if !IsNil(o.SourceServiceSlug) {
-		toSerialize["source_service_slug"] = o.SourceServiceSlug
-	}
 	if !IsNil(o.SourceProtocol) {
 		toSerialize["source_protocol"] = o.SourceProtocol
 	}
 	return toSerialize, nil
 }
 
-type NullableCdnSourceDomain struct {
-	value *CdnSourceDomain
+type NullableCdnCdnCreateParamsSourceParams struct {
+	value *CdnCdnCreateParamsSourceParams
 	isSet bool
 }
 
-func (v NullableCdnSourceDomain) Get() *CdnSourceDomain {
+func (v NullableCdnCdnCreateParamsSourceParams) Get() *CdnCdnCreateParamsSourceParams {
 	return v.value
 }
 
-func (v *NullableCdnSourceDomain) Set(val *CdnSourceDomain) {
+func (v *NullableCdnCdnCreateParamsSourceParams) Set(val *CdnCdnCreateParamsSourceParams) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCdnSourceDomain) IsSet() bool {
+func (v NullableCdnCdnCreateParamsSourceParams) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCdnSourceDomain) Unset() {
+func (v *NullableCdnCdnCreateParamsSourceParams) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCdnSourceDomain(val *CdnSourceDomain) *NullableCdnSourceDomain {
-	return &NullableCdnSourceDomain{value: val, isSet: true}
+func NewNullableCdnCdnCreateParamsSourceParams(val *CdnCdnCreateParamsSourceParams) *NullableCdnCdnCreateParamsSourceParams {
+	return &NullableCdnCdnCreateParamsSourceParams{value: val, isSet: true}
 }
 
-func (v NullableCdnSourceDomain) MarshalJSON() ([]byte, error) {
+func (v NullableCdnCdnCreateParamsSourceParams) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCdnSourceDomain) UnmarshalJSON(src []byte) error {
+func (v *NullableCdnCdnCreateParamsSourceParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
