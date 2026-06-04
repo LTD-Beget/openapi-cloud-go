@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **PostgresqlParams** | Pointer to [**PostgresqlPgCreateParams**](PostgresqlPgCreateParams.md) |  | [optional] 
 **S3Params** | Pointer to [**S3S3CreateParams**](S3S3CreateParams.md) |  | [optional] 
 **CdnParams** | Pointer to [**CdnCdnCreateParams**](CdnCdnCreateParams.md) |  | [optional] 
+**NetworkDriveParams** | Pointer to [**NetworkDriveNetworkDriveCreateParams**](NetworkDriveNetworkDriveCreateParams.md) |  | [optional] 
 **Extra** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
@@ -211,6 +212,31 @@ SetCdnParams sets CdnParams field to given value.
 `func (o *CloudCreateRequest) HasCdnParams() bool`
 
 HasCdnParams returns a boolean if a field has been set.
+
+### GetNetworkDriveParams
+
+`func (o *CloudCreateRequest) GetNetworkDriveParams() NetworkDriveNetworkDriveCreateParams`
+
+GetNetworkDriveParams returns the NetworkDriveParams field if non-nil, zero value otherwise.
+
+### GetNetworkDriveParamsOk
+
+`func (o *CloudCreateRequest) GetNetworkDriveParamsOk() (*NetworkDriveNetworkDriveCreateParams, bool)`
+
+GetNetworkDriveParamsOk returns a tuple with the NetworkDriveParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkDriveParams
+
+`func (o *CloudCreateRequest) SetNetworkDriveParams(v NetworkDriveNetworkDriveCreateParams)`
+
+SetNetworkDriveParams sets NetworkDriveParams field to given value.
+
+### HasNetworkDriveParams
+
+`func (o *CloudCreateRequest) HasNetworkDriveParams() bool`
+
+HasNetworkDriveParams returns a boolean if a field has been set.
 
 ### GetExtra
 

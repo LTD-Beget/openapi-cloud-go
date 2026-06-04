@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Stale** | Pointer to [**CdnSettingsStale**](CdnSettingsStale.md) |  | [optional] 
 **RedirectHttpToHttps** | Pointer to **bool** |  | [optional] 
 **TokenizedUrlSecureKey** | Pointer to [**CdnSettingsTokenizedUrlSecureKey**](CdnSettingsTokenizedUrlSecureKey.md) |  | [optional] 
+**IsAllowedHttpMethodsLocked** | Pointer to **bool** |  | [optional] 
 **AllowedHttpMethods** | Pointer to [**CdnSettingsAllowedHttpMethods**](CdnSettingsAllowedHttpMethods.md) |  | [optional] 
 **Http3Enabled** | Pointer to **bool** |  | [optional] 
 **GzipCompression** | Pointer to [**CdnSettingsGzipCompression**](CdnSettingsGzipCompression.md) |  | [optional] 
@@ -239,6 +240,31 @@ SetTokenizedUrlSecureKey sets TokenizedUrlSecureKey field to given value.
 `func (o *CdnSettings) HasTokenizedUrlSecureKey() bool`
 
 HasTokenizedUrlSecureKey returns a boolean if a field has been set.
+
+### GetIsAllowedHttpMethodsLocked
+
+`func (o *CdnSettings) GetIsAllowedHttpMethodsLocked() bool`
+
+GetIsAllowedHttpMethodsLocked returns the IsAllowedHttpMethodsLocked field if non-nil, zero value otherwise.
+
+### GetIsAllowedHttpMethodsLockedOk
+
+`func (o *CdnSettings) GetIsAllowedHttpMethodsLockedOk() (*bool, bool)`
+
+GetIsAllowedHttpMethodsLockedOk returns a tuple with the IsAllowedHttpMethodsLocked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAllowedHttpMethodsLocked
+
+`func (o *CdnSettings) SetIsAllowedHttpMethodsLocked(v bool)`
+
+SetIsAllowedHttpMethodsLocked sets IsAllowedHttpMethodsLocked field to given value.
+
+### HasIsAllowedHttpMethodsLocked
+
+`func (o *CdnSettings) HasIsAllowedHttpMethodsLocked() bool`
+
+HasIsAllowedHttpMethodsLocked returns a boolean if a field has been set.
 
 ### GetAllowedHttpMethods
 

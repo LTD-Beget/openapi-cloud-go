@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Postgresql14** | Pointer to [**PostgresqlPostgresql14Configuration**](PostgresqlPostgresql14Configuration.md) |  | [optional] 
 **Postgresql164** | Pointer to [**PostgresqlPostgresql164Configuration**](PostgresqlPostgresql164Configuration.md) |  | [optional] 
 **S3** | Pointer to [**S3S3Configuration**](S3S3Configuration.md) |  | [optional] 
+**NetworkDrive** | Pointer to [**NetworkDriveNetworkDriveConfiguration**](NetworkDriveNetworkDriveConfiguration.md) |  | [optional] 
 
 ## Methods
 
@@ -335,6 +336,31 @@ SetS3 sets S3 field to given value.
 `func (o *CloudServiceConfiguration) HasS3() bool`
 
 HasS3 returns a boolean if a field has been set.
+
+### GetNetworkDrive
+
+`func (o *CloudServiceConfiguration) GetNetworkDrive() NetworkDriveNetworkDriveConfiguration`
+
+GetNetworkDrive returns the NetworkDrive field if non-nil, zero value otherwise.
+
+### GetNetworkDriveOk
+
+`func (o *CloudServiceConfiguration) GetNetworkDriveOk() (*NetworkDriveNetworkDriveConfiguration, bool)`
+
+GetNetworkDriveOk returns a tuple with the NetworkDrive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkDrive
+
+`func (o *CloudServiceConfiguration) SetNetworkDrive(v NetworkDriveNetworkDriveConfiguration)`
+
+SetNetworkDrive sets NetworkDrive field to given value.
+
+### HasNetworkDrive
+
+`func (o *CloudServiceConfiguration) HasNetworkDrive() bool`
+
+HasNetworkDrive returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

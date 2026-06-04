@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **PostgresqlError** | Pointer to [**PostgresqlPgCreateError**](PostgresqlPgCreateError.md) |  | [optional] 
 **S3Error** | Pointer to [**S3S3CreateError**](S3S3CreateError.md) |  | [optional] 
 **CdnError** | Pointer to [**CdnCdnCreateError**](CdnCdnCreateError.md) |  | [optional] 
+**NetworkDriveError** | Pointer to [**NetworkDriveNetworkDriveCreateError**](NetworkDriveNetworkDriveCreateError.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetCdnError sets CdnError field to given value.
 `func (o *CloudCreateResponse) HasCdnError() bool`
 
 HasCdnError returns a boolean if a field has been set.
+
+### GetNetworkDriveError
+
+`func (o *CloudCreateResponse) GetNetworkDriveError() NetworkDriveNetworkDriveCreateError`
+
+GetNetworkDriveError returns the NetworkDriveError field if non-nil, zero value otherwise.
+
+### GetNetworkDriveErrorOk
+
+`func (o *CloudCreateResponse) GetNetworkDriveErrorOk() (*NetworkDriveNetworkDriveCreateError, bool)`
+
+GetNetworkDriveErrorOk returns a tuple with the NetworkDriveError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkDriveError
+
+`func (o *CloudCreateResponse) SetNetworkDriveError(v NetworkDriveNetworkDriveCreateError)`
+
+SetNetworkDriveError sets NetworkDriveError field to given value.
+
+### HasNetworkDriveError
+
+`func (o *CloudCreateResponse) HasNetworkDriveError() bool`
+
+HasNetworkDriveError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

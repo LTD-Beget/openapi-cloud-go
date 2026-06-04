@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Postgresql164** | Pointer to [**PostgresqlPostgresql164**](PostgresqlPostgresql164.md) |  | [optional] 
 **S3** | Pointer to [**S3S3**](S3S3.md) |  | [optional] 
 **Cdn** | Pointer to [**CdnCdn**](CdnCdn.md) |  | [optional] 
+**NetworkDrive** | Pointer to [**NetworkDriveNetworkDrive**](NetworkDriveNetworkDrive.md) |  | [optional] 
 **ManageEnabled** | Pointer to **bool** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **MonitorableResources** | Pointer to **[]string** |  | [optional] 
@@ -552,6 +553,31 @@ SetCdn sets Cdn field to given value.
 `func (o *CloudService) HasCdn() bool`
 
 HasCdn returns a boolean if a field has been set.
+
+### GetNetworkDrive
+
+`func (o *CloudService) GetNetworkDrive() NetworkDriveNetworkDrive`
+
+GetNetworkDrive returns the NetworkDrive field if non-nil, zero value otherwise.
+
+### GetNetworkDriveOk
+
+`func (o *CloudService) GetNetworkDriveOk() (*NetworkDriveNetworkDrive, bool)`
+
+GetNetworkDriveOk returns a tuple with the NetworkDrive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkDrive
+
+`func (o *CloudService) SetNetworkDrive(v NetworkDriveNetworkDrive)`
+
+SetNetworkDrive sets NetworkDrive field to given value.
+
+### HasNetworkDrive
+
+`func (o *CloudService) HasNetworkDrive() bool`
+
+HasNetworkDrive returns a boolean if a field has been set.
 
 ### GetManageEnabled
 

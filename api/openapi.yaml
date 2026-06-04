@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.7
+  version: v1.6.8
 servers:
 - url: https://api.beget.com
 security:
@@ -13,6 +13,7 @@ tags:
 - name: MysqlBackupService
 - name: MysqlService
 - name: MysqlStatisticService
+- name: NetworkDriveService
 - name: PostgresqlBackupService
 - name: PostgresqlService
 - name: PostgresqlStatisticService
@@ -961,6 +962,155 @@ paths:
           description: OK
       tags:
       - MysqlStatisticService
+  /v1/cloud/network-drive/limits:
+    get:
+      operationId: NetworkDriveService_GetLimits
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_GetLimitsResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+  /v1/cloud/network-drive/mounts:
+    get:
+      operationId: NetworkDriveService_GetMounts
+      parameters:
+      - explode: true
+        in: query
+        name: resource_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: resource_type
+        required: false
+        schema:
+          enum:
+          - VPS
+          format: enum
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_GetMountsResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+    post:
+      operationId: NetworkDriveService_SetMounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkDrive_SetMountsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_SetMountsResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+  /v1/cloud/network-drive/price:
+    get:
+      operationId: NetworkDriveService_GetPrice
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_GetPriceResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+  /v1/cloud/network-drive/{service_id}/mount:
+    post:
+      operationId: NetworkDriveService_Mount
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkDrive_MountRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_MountResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+  /v1/cloud/network-drive/{service_id}/resize:
+    post:
+      operationId: NetworkDriveService_Resize
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkDrive_ResizeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_ResizeResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
+  /v1/cloud/network-drive/{service_id}/unmount:
+    post:
+      operationId: NetworkDriveService_Unmount
+      parameters:
+      - explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkDrive_UnmountRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkDrive_UnmountResponse'
+          description: OK
+      tags:
+      - NetworkDriveService
   /v1/cloud/postgresql/backup:
     get:
       operationId: PostgresqlBackupService_GetList
@@ -2262,6 +2412,7 @@ components:
             - header
             enabled: true
           ignore_query_string: true
+          is_allowed_http_methods_locked: true
           follow_origin_redirect:
             enable: true
           http3_enabled: true
@@ -2622,6 +2773,7 @@ components:
               - header
               enabled: true
             ignore_query_string: true
+            is_allowed_http_methods_locked: true
             follow_origin_redirect:
               enable: true
             http3_enabled: true
@@ -2851,6 +3003,7 @@ components:
               - header
               enabled: true
             ignore_query_string: true
+            is_allowed_http_methods_locked: true
             follow_origin_redirect:
               enable: true
             http3_enabled: true
@@ -2949,6 +3102,7 @@ components:
               - header
               enabled: true
             ignore_query_string: true
+            is_allowed_http_methods_locked: true
             follow_origin_redirect:
               enable: true
             http3_enabled: true
@@ -3057,6 +3211,7 @@ components:
               - header
               enabled: true
             ignore_query_string: true
+            is_allowed_http_methods_locked: true
             follow_origin_redirect:
               enable: true
             http3_enabled: true
@@ -3165,6 +3320,7 @@ components:
           - header
           enabled: true
         ignore_query_string: true
+        is_allowed_http_methods_locked: true
         follow_origin_redirect:
           enable: true
         http3_enabled: true
@@ -3211,6 +3367,8 @@ components:
           type: boolean
         tokenized_url_secure_key:
           $ref: '#/components/schemas/Cdn_Settings_TokenizedUrlSecureKey'
+        is_allowed_http_methods_locked:
+          type: boolean
         allowed_http_methods:
           $ref: '#/components/schemas/Cdn_Settings_AllowedHttpMethods'
         http3_enabled:
@@ -3711,6 +3869,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -3798,6 +3966,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -4200,6 +4369,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -4287,6 +4466,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -4694,6 +4874,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -4781,6 +4971,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -4913,6 +5104,8 @@ components:
           $ref: '#/components/schemas/S3_S3CreateParams'
         cdn_params:
           $ref: '#/components/schemas/Cdn_CdnCreateParams'
+        network_drive_params:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDriveCreateParams'
         extra:
           type: string
         region:
@@ -5206,6 +5399,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -5293,6 +5496,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -5389,6 +5593,9 @@ components:
         postgresql_error:
           code: _
           message: message
+        network_drive_error:
+          code: _
+          message: message
         cdn_error:
           domain_error:
           - code: _
@@ -5420,6 +5627,8 @@ components:
           $ref: '#/components/schemas/S3_S3CreateError'
         cdn_error:
           $ref: '#/components/schemas/Cdn_CdnCreateError'
+        network_drive_error:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDriveCreateError'
       type: object
     Cloud_GetConfigurationListResponse:
       example:
@@ -5428,6 +5637,78 @@ components:
             traffic_price_day: 5.962133916683182
             traffic_price_month: 5.637376656633329
             free_traffic_amount: 1
+          price_month: 6.027456183070403
+          mysql8:
+            memory: 3
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 9
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 7
+          type: MYSQL5
+          mysql5:
+            memory: 5
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 5
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 1
           postgresql14:
             memory: 9
             display_version: display_version
@@ -5498,7 +5779,6 @@ components:
               key: param_default
             version: version
             cpu_count: 6
-          price_month: 6.027456183070403
           mysql84:
             memory: 1
             display_version: display_version
@@ -5535,79 +5815,8 @@ components:
             version: version
             cpu_count: 4
           price_day: 0.8008281904610115
-          mysql8:
-            memory: 3
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 9
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 7
           id: id
           region: region
-          type: MYSQL5
-          mysql5:
-            memory: 5
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 5
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 1
           postgresql15:
             memory: 7
             display_version: display_version
@@ -5643,10 +5852,87 @@ components:
               key: param_default
             version: version
             cpu_count: 1
+          network_drive:
+            storage_class: _
+            min_size: 2
+            max_size: 7
+            step_size: 9
         - s3:
             traffic_price_day: 5.962133916683182
             traffic_price_month: 5.637376656633329
             free_traffic_amount: 1
+          price_month: 6.027456183070403
+          mysql8:
+            memory: 3
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 9
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 7
+          type: MYSQL5
+          mysql5:
+            memory: 5
+            display_version: display_version
+            param_config:
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            - string_value: "{}"
+              set_value:
+                value:
+                - value
+                - value
+              name: name
+              enum_value:
+                value:
+                - value
+                - value
+              float_value: "{}"
+              integer_value: "{}"
+              documentation_link: documentation_link
+            disk_size: 5
+            param_default:
+              key: param_default
+            version: version
+            cpu_count: 1
           postgresql14:
             memory: 9
             display_version: display_version
@@ -5717,7 +6003,6 @@ components:
               key: param_default
             version: version
             cpu_count: 6
-          price_month: 6.027456183070403
           mysql84:
             memory: 1
             display_version: display_version
@@ -5754,79 +6039,8 @@ components:
             version: version
             cpu_count: 4
           price_day: 0.8008281904610115
-          mysql8:
-            memory: 3
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 9
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 7
           id: id
           region: region
-          type: MYSQL5
-          mysql5:
-            memory: 5
-            display_version: display_version
-            param_config:
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            - string_value: "{}"
-              set_value:
-                value:
-                - value
-                - value
-              name: name
-              enum_value:
-                value:
-                - value
-                - value
-              float_value: "{}"
-              integer_value: "{}"
-              documentation_link: documentation_link
-            disk_size: 5
-            param_default:
-              key: param_default
-            version: version
-            cpu_count: 1
           postgresql15:
             memory: 7
             display_version: display_version
@@ -5862,6 +6076,11 @@ components:
               key: param_default
             version: version
             cpu_count: 1
+          network_drive:
+            storage_class: _
+            min_size: 2
+            max_size: 7
+            step_size: 9
       properties:
         configuration:
           items:
@@ -6145,6 +6364,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -6232,6 +6461,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -6599,6 +6829,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -6686,6 +6926,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -6779,7 +7020,7 @@ components:
           price_day: 0.8008281904610115
           region: region
           status: CREATING
-        total_count: 5
+        total_count: 6
       properties:
         service:
           items:
@@ -7066,6 +7307,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -7153,6 +7404,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -7537,6 +7789,16 @@ components:
           disk_left: disk_left
         configuration_id: configuration_id
         status_details: _
+        network_drive:
+          storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
         slug: slug
         migrating: true
         s3:
@@ -7624,6 +7886,7 @@ components:
               - header
               enabled: true
             ignore_query_string: true
+            is_allowed_http_methods_locked: true
             follow_origin_redirect:
               enable: true
             http3_enabled: true
@@ -7773,6 +8036,8 @@ components:
           $ref: '#/components/schemas/S3_S3'
         cdn:
           $ref: '#/components/schemas/Cdn_Cdn'
+        network_drive:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
         manage_enabled:
           type: boolean
         slug:
@@ -7797,6 +8062,7 @@ components:
           - POSTGRESQL164
           - S_3
           - CDN
+          - NETWORK_DRIVE
           format: enum
           type: string
         restoring:
@@ -7810,6 +8076,78 @@ components:
           traffic_price_day: 5.962133916683182
           traffic_price_month: 5.637376656633329
           free_traffic_amount: 1
+        price_month: 6.027456183070403
+        mysql8:
+          memory: 3
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 9
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 7
+        type: MYSQL5
+        mysql5:
+          memory: 5
+          display_version: display_version
+          param_config:
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          - string_value: "{}"
+            set_value:
+              value:
+              - value
+              - value
+            name: name
+            enum_value:
+              value:
+              - value
+              - value
+            float_value: "{}"
+            integer_value: "{}"
+            documentation_link: documentation_link
+          disk_size: 5
+          param_default:
+            key: param_default
+          version: version
+          cpu_count: 1
         postgresql14:
           memory: 9
           display_version: display_version
@@ -7880,7 +8218,6 @@ components:
             key: param_default
           version: version
           cpu_count: 6
-        price_month: 6.027456183070403
         mysql84:
           memory: 1
           display_version: display_version
@@ -7917,79 +8254,8 @@ components:
           version: version
           cpu_count: 4
         price_day: 0.8008281904610115
-        mysql8:
-          memory: 3
-          display_version: display_version
-          param_config:
-          - string_value: "{}"
-            set_value:
-              value:
-              - value
-              - value
-            name: name
-            enum_value:
-              value:
-              - value
-              - value
-            float_value: "{}"
-            integer_value: "{}"
-            documentation_link: documentation_link
-          - string_value: "{}"
-            set_value:
-              value:
-              - value
-              - value
-            name: name
-            enum_value:
-              value:
-              - value
-              - value
-            float_value: "{}"
-            integer_value: "{}"
-            documentation_link: documentation_link
-          disk_size: 9
-          param_default:
-            key: param_default
-          version: version
-          cpu_count: 7
         id: id
         region: region
-        type: MYSQL5
-        mysql5:
-          memory: 5
-          display_version: display_version
-          param_config:
-          - string_value: "{}"
-            set_value:
-              value:
-              - value
-              - value
-            name: name
-            enum_value:
-              value:
-              - value
-              - value
-            float_value: "{}"
-            integer_value: "{}"
-            documentation_link: documentation_link
-          - string_value: "{}"
-            set_value:
-              value:
-              - value
-              - value
-            name: name
-            enum_value:
-              value:
-              - value
-              - value
-            float_value: "{}"
-            integer_value: "{}"
-            documentation_link: documentation_link
-          disk_size: 5
-          param_default:
-            key: param_default
-          version: version
-          cpu_count: 1
         postgresql15:
           memory: 7
           display_version: display_version
@@ -8025,6 +8291,11 @@ components:
             key: param_default
           version: version
           cpu_count: 1
+        network_drive:
+          storage_class: _
+          min_size: 2
+          max_size: 7
+          step_size: 9
       properties:
         id:
           type: string
@@ -8046,6 +8317,7 @@ components:
           - S_3
           - POSTGRESQL164
           - CDN
+          - NETWORK_DRIVE
           format: enum
           type: string
         mysql5:
@@ -8062,6 +8334,8 @@ components:
           $ref: '#/components/schemas/Postgresql_Postgresql164Configuration'
         s3:
           $ref: '#/components/schemas/S3_S3Configuration'
+        network_drive:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDriveConfiguration'
       type: object
     Cloud_UpdateRequest:
       properties:
@@ -8349,6 +8623,16 @@ components:
             disk_left: disk_left
           configuration_id: configuration_id
           status_details: _
+          network_drive:
+            storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
           slug: slug
           migrating: true
           s3:
@@ -8436,6 +8720,7 @@ components:
                 - header
                 enabled: true
               ignore_query_string: true
+              is_allowed_http_methods_locked: true
               follow_origin_redirect:
                 enable: true
               http3_enabled: true
@@ -9766,6 +10051,577 @@ components:
           enum:
           - _
           - INVALID_DESCRIPTION
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_GetLimitsResponse:
+      example:
+        limits:
+        - available_total_size:
+          - storage_class: _
+            size: 5
+          - storage_class: _
+            size: 5
+          available_network_drives: 6
+          max_mounts_per_resource: 1
+          max_network_drives: 0
+          max_total_size:
+          - storage_class: _
+            size: 5
+          - storage_class: _
+            size: 5
+          region: region
+        - available_total_size:
+          - storage_class: _
+            size: 5
+          - storage_class: _
+            size: 5
+          available_network_drives: 6
+          max_mounts_per_resource: 1
+          max_network_drives: 0
+          max_total_size:
+          - storage_class: _
+            size: 5
+          - storage_class: _
+            size: 5
+          region: region
+      properties:
+        limits:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_GetLimitsResponse_Limits'
+          type: array
+      type: object
+    NetworkDrive_GetLimitsResponse_Limits:
+      example:
+        available_total_size:
+        - storage_class: _
+          size: 5
+        - storage_class: _
+          size: 5
+        available_network_drives: 6
+        max_mounts_per_resource: 1
+        max_network_drives: 0
+        max_total_size:
+        - storage_class: _
+          size: 5
+        - storage_class: _
+          size: 5
+        region: region
+      properties:
+        region:
+          type: string
+        max_network_drives:
+          format: uint32
+          type: integer
+        available_network_drives:
+          format: uint32
+          type: integer
+        max_mounts_per_resource:
+          format: uint32
+          type: integer
+        max_total_size:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_GetLimitsResponse_Limits_TotalSize'
+          type: array
+        available_total_size:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_GetLimitsResponse_Limits_TotalSize'
+          type: array
+      type: object
+    NetworkDrive_GetLimitsResponse_Limits_TotalSize:
+      example:
+        storage_class: _
+        size: 5
+      properties:
+        size:
+          format: uint32
+          type: integer
+        storage_class:
+          enum:
+          - _
+          - NVME
+          - HDD
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_GetMountsResponse:
+      example:
+        network_drive_list:
+          network_drive:
+          - storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
+          - storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
+        error:
+          code: _
+          message: message
+      properties:
+        network_drive_list:
+          $ref: '#/components/schemas/NetworkDrive_GetMountsResponse_NetworkDriveList'
+        error:
+          $ref: '#/components/schemas/NetworkDrive_GetMountsResponse_Error'
+      type: object
+    NetworkDrive_GetMountsResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - RESOURCE_NOT_FOUND
+          - INVALID_RESOURCE_TYPE
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_GetMountsResponse_NetworkDriveList:
+      example:
+        network_drive:
+        - storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+        - storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+      properties:
+        network_drive:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
+          type: array
+      type: object
+    NetworkDrive_GetPriceResponse:
+      example:
+        network_drive:
+        - network_drive_id: network_drive_id
+          size: 0
+          rate: 6.027456183070403
+          created_at: created_at
+          display_name: display_name
+        - network_drive_id: network_drive_id
+          size: 0
+          rate: 6.027456183070403
+          created_at: created_at
+          display_name: display_name
+      properties:
+        network_drive:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_GetPriceResponse_NetworkDrive'
+          type: array
+      type: object
+    NetworkDrive_GetPriceResponse_NetworkDrive:
+      example:
+        network_drive_id: network_drive_id
+        size: 0
+        rate: 6.027456183070403
+        created_at: created_at
+        display_name: display_name
+      properties:
+        network_drive_id:
+          type: string
+        display_name:
+          type: string
+        created_at:
+          type: string
+        size:
+          format: uint32
+          type: integer
+        rate:
+          format: double
+          type: number
+      type: object
+    NetworkDrive_MountRequest:
+      properties:
+        service_id:
+          type: string
+        resource_id:
+          type: string
+        resource_type:
+          enum:
+          - VPS
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_MountResponse:
+      example:
+        error:
+          code: _
+          message: message
+        network_drive:
+          storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+      properties:
+        network_drive:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
+        error:
+          $ref: '#/components/schemas/NetworkDrive_MountResponse_Error'
+      type: object
+    NetworkDrive_MountResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - RESOURCE_NOT_FOUND
+          - INVALID_RESOURCE_TYPE
+          - ALREADY_MOUNTED_TO_ANOTHER_RESOURCE
+          - MOUNT_LIMIT_REACHED
+          - REGION_MISMATCH
+          - RESOURCE_UNAVAILABLE
+          - SERVICE_NOT_FOUND
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_NetworkDrive:
+      example:
+        storage_class: _
+        size: 5
+        mounted_resource:
+          service_slug: service_slug
+          service_display_name: service_display_name
+          mount_status: MOUNTING
+          service_id: service_id
+          resource_type: _
+        id: id
+      properties:
+        id:
+          type: string
+        size:
+          format: uint32
+          type: integer
+        storage_class:
+          enum:
+          - _
+          - NVME
+          - HDD
+          format: enum
+          type: string
+        mounted_resource:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDrive_MountedResource'
+      type: object
+    NetworkDrive_NetworkDriveConfiguration:
+      example:
+        storage_class: _
+        min_size: 2
+        max_size: 7
+        step_size: 9
+      properties:
+        min_size:
+          format: uint32
+          type: integer
+        max_size:
+          format: uint32
+          type: integer
+        step_size:
+          format: uint32
+          type: integer
+        storage_class:
+          enum:
+          - _
+          - NVME
+          - HDD
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_NetworkDriveCreateError:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - INSUFFICIENT_FUNDS
+          - CONFIGURATION_NOT_FOUND
+          - INVALID_DISPLAY_NAME
+          - INVALID_DESCRIPTION
+          - TEMPORARILY_UNAVAILABLE
+          - SERVICE_DISABLED
+          - PROJECT_NOT_FOUND
+          - NETWORK_DRIVE_LIMIT_REACHED
+          - INVALID_SIZE
+          - SIZE_LIMIT_REACHED
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_NetworkDriveCreateParams:
+      properties:
+        size:
+          format: uint32
+          type: integer
+      type: object
+    NetworkDrive_NetworkDrive_MountedResource:
+      example:
+        service_slug: service_slug
+        service_display_name: service_display_name
+        mount_status: MOUNTING
+        service_id: service_id
+        resource_type: _
+      properties:
+        service_id:
+          type: string
+        service_display_name:
+          type: string
+        service_slug:
+          type: string
+        resource_type:
+          enum:
+          - _
+          - VPS
+          format: enum
+          type: string
+        mount_status:
+          enum:
+          - MOUNTING
+          - MOUNTED
+          - UNMOUNTING
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_ResizeRequest:
+      properties:
+        service_id:
+          type: string
+        size:
+          format: uint32
+          type: integer
+      type: object
+    NetworkDrive_ResizeResponse:
+      example:
+        error:
+          code: _
+          message: message
+        network_drive:
+          storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+      properties:
+        network_drive:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
+        error:
+          $ref: '#/components/schemas/NetworkDrive_ResizeResponse_Error'
+      type: object
+    NetworkDrive_ResizeResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - INSUFFICIENT_FUNDS
+          - TEMPORARILY_UNAVAILABLE
+          - INVALID_SIZE
+          - SIZE_LIMIT_REACHED
+          - SERVICE_NOT_FOUND
+          - ALREADY_RESIZING
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_SetMountsRequest:
+      properties:
+        service_id:
+          items:
+            type: string
+          type: array
+        resource_id:
+          type: string
+        resource_type:
+          enum:
+          - VPS
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_SetMountsResponse:
+      example:
+        network_drive_list:
+          network_drive:
+          - storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
+          - storage_class: _
+            size: 5
+            mounted_resource:
+              service_slug: service_slug
+              service_display_name: service_display_name
+              mount_status: MOUNTING
+              service_id: service_id
+              resource_type: _
+            id: id
+        error_list:
+          error:
+          - code: _
+            service_id: service_id
+            message: message
+          - code: _
+            service_id: service_id
+            message: message
+      properties:
+        network_drive_list:
+          $ref: '#/components/schemas/NetworkDrive_SetMountsResponse_NetworkDriveList'
+        error_list:
+          $ref: '#/components/schemas/NetworkDrive_SetMountsResponse_ErrorList'
+      type: object
+    NetworkDrive_SetMountsResponse_Error:
+      example:
+        code: _
+        service_id: service_id
+        message: message
+      properties:
+        service_id:
+          type: string
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - SERVICE_NOT_FOUND
+          - RESOURCE_NOT_FOUND
+          - INVALID_RESOURCE_TYPE
+          - MOUNT_LIMIT_REACHED
+          - REGION_MISMATCH
+          - RESOURCE_UNAVAILABLE
+          format: enum
+          type: string
+      type: object
+    NetworkDrive_SetMountsResponse_ErrorList:
+      example:
+        error:
+        - code: _
+          service_id: service_id
+          message: message
+        - code: _
+          service_id: service_id
+          message: message
+      properties:
+        error:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_SetMountsResponse_Error'
+          type: array
+      type: object
+    NetworkDrive_SetMountsResponse_NetworkDriveList:
+      example:
+        network_drive:
+        - storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+        - storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+      properties:
+        network_drive:
+          items:
+            $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
+          type: array
+      type: object
+    NetworkDrive_UnmountRequest:
+      properties:
+        service_id:
+          type: string
+      type: object
+    NetworkDrive_UnmountResponse:
+      example:
+        error:
+          code: _
+          message: message
+        network_drive:
+          storage_class: _
+          size: 5
+          mounted_resource:
+            service_slug: service_slug
+            service_display_name: service_display_name
+            mount_status: MOUNTING
+            service_id: service_id
+            resource_type: _
+          id: id
+      properties:
+        network_drive:
+          $ref: '#/components/schemas/NetworkDrive_NetworkDrive'
+        error:
+          $ref: '#/components/schemas/NetworkDrive_UnmountResponse_Error'
+      type: object
+    NetworkDrive_UnmountResponse_Error:
+      example:
+        code: _
+        message: message
+      properties:
+        message:
+          type: string
+        code:
+          enum:
+          - _
+          - SERVICE_DISABLED
+          - MOUNT_NOT_FOUND
+          - SERVICE_NOT_FOUND
           format: enum
           type: string
       type: object
