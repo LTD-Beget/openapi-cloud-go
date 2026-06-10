@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: API Управляемых сервисов
-  version: v1.6.8
+  version: v1.6.9
 servers:
 - url: https://api.beget.com
 security:
@@ -2482,6 +2482,9 @@ components:
           message: message
         error:
           code: _
+          insufficient_funds_details:
+            balance: 0.8008281904610115
+            needed_balance: 6.027456183070403
           message: message
       properties:
         error:
@@ -2537,6 +2540,9 @@ components:
     Cdn_CdnCreateError_Error:
       example:
         code: _
+        insufficient_funds_details:
+          balance: 0.8008281904610115
+          needed_balance: 6.027456183070403
         message: message
       properties:
         message:
@@ -2558,6 +2564,20 @@ components:
           - INVALID_SOURCE_SERVICE_ID
           format: enum
           type: string
+        insufficient_funds_details:
+          $ref: '#/components/schemas/Cdn_CdnCreateError_Error_InsufficientFundsDetails'
+      type: object
+    Cdn_CdnCreateError_Error_InsufficientFundsDetails:
+      example:
+        balance: 0.8008281904610115
+        needed_balance: 6.027456183070403
+      properties:
+        balance:
+          format: double
+          type: number
+        needed_balance:
+          format: double
+          type: number
       type: object
     Cdn_CdnCreateParams:
       properties:
@@ -5612,6 +5632,9 @@ components:
             message: message
           error:
             code: _
+            insufficient_funds_details:
+              balance: 0.8008281904610115
+              needed_balance: 6.027456183070403
             message: message
         s3_error:
           code: _
